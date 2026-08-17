@@ -1,0 +1,715 @@
+# =============================================================================
+# THE ALBION ONLINE DATA PROJECT - API DOCUMENTATION
+# =============================================================================
+service: "The Albion Online Data Project"
+version: "v2"
+description: "Dados em tempo real de mercado, ouro e eventos de Albion Online."
+disclaimer: "Não oficial / Sem afiliação com Sandbox Interactive GmbH."
+documentation: "https://www.albion-online-data.com/"
+
+# =============================================================================
+# HOSTS E ENDPOINTS
+# =============================================================================
+hosts:
+  rest_api:
+    description: "API REST para consultas de preços, histórico e ouro"
+    americas_west: "https://west.albion-online-data.com"
+    asia_east: "https://east.albion-online-data.com"
+    europe: "https://europe.albion-online-data.com"
+    recommended: "Usar servidor mais próximo geograficamente"
+  
+  nats_pubsub:
+    description: "Streaming em tempo real via NATS"
+    americas_west: "nats://public:thenewalbiondata@nats.albion-online-data.com:4222"
+    asia_east: "nats://public:thenewalbiondata@nats.albion-online-data.com:24222"
+    europe: "nats://public:thenewalbiondata@nats.albion-online-data.com:34222"
+  
+  database_dumps:
+    description: "Dumps completos do banco de dados"
+    americas_west: "https://www.albion-online-data.com/database/"
+    asia_east: "https://www.albion-online-data.com/database-east/"
+    europe: "https://www.albion-online-data.com/database-europe/"
+
+# =============================================================================
+# RATE LIMITS E RESTRIÇÕES
+# =============================================================================
+rate_limits:
+  short_term: "180 requisições / 1 minuto"
+  medium_term: "300 requisições / 5 minutos"
+  max_url_length: 4096
+  best_practices:
+    - "Usar compressão Gzip (header: Accept-Encoding: gzip)"
+    - "Cachear respostas quando apropriado"
+    - "Fazer batch de múltiplos itens em uma requisição"
+    - "Evitar polling muito frequente (recomendado: mínimo 30 segundos)"
+  error_handling:
+    429: "Rate limit excedido - aguardar antes de nova tentativa"
+    404: "Endpoint ou recurso não encontrado"
+    500: "Erro interno do servidor - tentar novamente após delay"
+
+# =============================================================================
+# VALORES VÁLIDOS DE PARÂMETROS
+# =============================================================================
+valid_parameters:
+  locations:
+    description: "Cidades disponíveis no jogo (case-sensitive)"
+    values:
+      - "Black Market"
+      - "Brecilien"
+      - "Bridgewatch"
+      - "Caerleon"
+      - "Fort Sterling"
+      - "Lymhurst"
+      - "Martlock"
+      - "Thetford"
+    usage: "Separar múltiplas localizações por vírgula"
+    examples:
+      - "Caerleon"
+      - "Caerleon,Bridgewatch"
+      - "Caerleon,Bridgewatch,Lymhurst"
+  
+  qualities:
+    description: "Qualidade/raridade dos itens"
+    values:
+      1: "Normal"
+      2: "Good"
+      3: "Outstanding"
+      4: "Excellent"
+      5: "Masterpiece"
+    usage: "Separar múltiplas qualidades por vírgula"
+    examples:
+      - "1"      # Apenas normal
+      - "1,2,3"  # Normal, Good e Outstanding
+      - "5"      # Apenas Masterpiece
+  
+  item_ids:
+    description: "IDs dos itens seguem padrão específico"
+    pattern: "T{tier}_{CATEGORY}[@{enchantment}]"
+    tier_range: "1-8"
+    enchantment_range: "0-4 (opcional, @0 a @4)"
+    categories:
+      resources:
+        - "WOOD"      # Madeira
+        - "ORE"       # Minério
+        - "HIDE"      # Couro
+        - "FIBER"     # Fibra
+        - "ROCK"      # Pedra
+        - "LEATHER"   # Couro curtido
+      equipment:
+        - "HEAD"      # Capacetes
+        - "ARMOR"     # Armaduras
+        - "SHOES"     # Botas
+        - "OFF"       # Escudos/Tomos
+      weapons:
+        - "2H_BOW"    # Arco 2 mãos
+        - "MAIN_SWORD" # Espada 1 mão
+        - "2H_HAMMER" # Martelo 2 mãos
+    examples:
+      - "T4_LEATHER"           # Couro T4 normal
+      - "T5_WOOD"              # Madeira T5 normal
+      - "T6_ORE@2"             # Minério T6 encantamento +2
+      - "T8_HEAD_PLATE_ROYAL@3" # Capacete T8 encantamento +3
+    usage: "Separar múltiplos IDs por vírgula (max ~50 por requisição)"
+  
+  time_scale:
+    description: "Escala de tempo para dados históricos"
+    values:
+      1: "Dados por hora (hourly)"
+      6: "Dados a cada 6 horas"
+      24: "Dados diários (daily)"
+    default: 24
+    note: "Valores menores retornam mais pontos de dados"
+  
+  date_formats:
+    supported:
+      - "YYYY-MM-DD"    # Ex: 2026-08-17
+      - "MM-DD-YYYY"    # Ex: 08-17-2026
+    examples:
+      date: "2026-08-01"
+      end_date: "2026-08-17"
+    note: "Usar datas no passado. Datas futuras são ignoradas."
+
+# =============================================================================
+# REST API ENDPOINTS
+# =============================================================================
+rest_endpoints:
+  
+  # ---------------------------------------------------------------------------
+  # 1. PREÇOS ATUAIS (Current Prices)
+  # ---------------------------------------------------------------------------
+  current_prices:
+    description: "Retorna os preços atuais de venda e compra de itens"
+    
+    json:
+      method: "GET"
+      path: "/api/v2/stats/prices/{item_ids}.json"
+      params:
+        item_ids: "OBRIGATÓRIO - IDs dos itens separados por vírgula"
+        locations: "OPCIONAL - Localizações separadas por vírgula (padrão: todas)"
+        qualities: "OPCIONAL - Qualidades separadas por vírgula (padrão: todas)"
+      
+      examples:
+        - description: "Preço de um item em todas localizações"
+          url: "/api/v2/stats/prices/T4_LEATHER.json"
+        
+        - description: "Preço em localização específica"
+          url: "/api/v2/stats/prices/T4_LEATHER.json?locations=Caerleon"
+        
+        - description: "Múltiplos itens e localizações"
+          url: "/api/v2/stats/prices/T4_LEATHER,T5_WOOD,T6_ORE.json?locations=Caerleon,Bridgewatch"
+        
+        - description: "Filtrar por qualidade"
+          url: "/api/v2/stats/prices/T8_HEAD_PLATE_ROYAL.json?locations=Caerleon&qualities=4,5"
+      
+      response_schema:
+        type: "array"
+        description: "Array de objetos com preços por localização e qualidade"
+        fields:
+          item_id:
+            type: "string"
+            description: "ID do item"
+            example: "T4_LEATHER"
+          
+          city:
+            type: "string"
+            description: "Nome da cidade/localização"
+            example: "Caerleon"
+          
+          quality:
+            type: "integer"
+            description: "Qualidade do item (1-5)"
+            example: 1
+          
+          sell_price_min:
+            type: "integer"
+            description: "Menor preço de venda atual"
+            example: 449
+            note: "0 indica sem dados disponíveis"
+          
+          sell_price_min_date:
+            type: "string (ISO 8601)"
+            description: "Data do menor preço de venda"
+            example: "2026-08-16T23:15:00"
+            note: "0001-01-01T00:00:00 indica sem dados"
+          
+          sell_price_max:
+            type: "integer"
+            description: "Maior preço de venda atual"
+            example: 501
+          
+          sell_price_max_date:
+            type: "string (ISO 8601)"
+            description: "Data do maior preço de venda"
+            example: "2026-08-16T23:15:00"
+          
+          buy_price_min:
+            type: "integer"
+            description: "Menor ordem de compra atual"
+            example: 1
+            note: "0 indica sem ordens de compra"
+          
+          buy_price_min_date:
+            type: "string (ISO 8601)"
+            description: "Data da menor ordem de compra"
+            example: "2026-08-16T23:15:00"
+          
+          buy_price_max:
+            type: "integer"
+            description: "Maior ordem de compra atual"
+            example: 371
+          
+          buy_price_max_date:
+            type: "string (ISO 8601)"
+            description: "Data da maior ordem de compra"
+            example: "2026-08-16T23:15:00"
+        
+        example_response: |
+          [
+            {
+              "item_id": "T4_LEATHER",
+              "city": "Caerleon",
+              "quality": 1,
+              "sell_price_min": 449,
+              "sell_price_min_date": "2026-08-16T23:15:00",
+              "sell_price_max": 501,
+              "sell_price_max_date": "2026-08-16T23:15:00",
+              "buy_price_min": 1,
+              "buy_price_min_date": "2026-08-16T23:15:00",
+              "buy_price_max": 371,
+              "buy_price_max_date": "2026-08-16T23:15:00"
+            }
+          ]
+      
+      special_behaviors:
+        - "Item inválido retorna 200 com valores zerados (não retorna erro)"
+        - "Localização inválida é ignorada silenciosamente"
+        - "Qualidade inválida é ignorada silenciosamente"
+        - "Sem parâmetros opcionais = retorna todas localizações e qualidades"
+    
+    table_view:
+      method: "GET"
+      path: "/api/v2/stats/view/{item_ids}"
+      description: "Retorna HTML com tabela formatada (para visualização em browser)"
+      params:
+        item_ids: "OBRIGATÓRIO - IDs dos itens separados por vírgula"
+        locations: "OPCIONAL - Localizações separadas por vírgula"
+        qualities: "OPCIONAL - Qualidades separadas por vírgula"
+  
+  # ---------------------------------------------------------------------------
+  # 2. HISTÓRICO DE PREÇOS (Historical Prices)
+  # ---------------------------------------------------------------------------
+  historical_prices:
+    description: "Retorna histórico de preços de vendas realizadas"
+    
+    json:
+      method: "GET"
+      path: "/api/v2/stats/history/{item_ids}.json"
+      params:
+        item_ids: "OBRIGATÓRIO - IDs dos itens separados por vírgula"
+        date: "OPCIONAL - Data inicial (padrão: 7 dias atrás)"
+        end_date: "OPCIONAL - Data final (padrão: hoje)"
+        locations: "OPCIONAL - Localizações separadas por vírgula (padrão: todas)"
+        qualities: "OPCIONAL - Qualidades (padrão: todas)"
+        time-scale: "OPCIONAL - Escala de tempo: 1, 6 ou 24 (padrão: 24)"
+      
+      examples:
+        - description: "Histórico dos últimos 7 dias"
+          url: "/api/v2/stats/history/T4_LEATHER.json"
+        
+        - description: "Histórico em período específico"
+          url: "/api/v2/stats/history/T4_LEATHER.json?date=2026-08-01&end_date=2026-08-17"
+        
+        - description: "Histórico com localização e escala"
+          url: "/api/v2/stats/history/T4_LEATHER.json?date=2026-08-01&end_date=2026-08-17&locations=Caerleon&time-scale=24"
+        
+        - description: "Múltiplos itens histórico"
+          url: "/api/v2/stats/history/T4_LEATHER,T5_WOOD.json?locations=Caerleon,Bridgewatch&time-scale=6"
+      
+      response_schema:
+        type: "array"
+        description: "Array de objetos com série temporal de preços"
+        fields:
+          location:
+            type: "string"
+            description: "Nome da localização"
+            example: "Caerleon"
+          
+          item_id:
+            type: "string"
+            description: "ID do item"
+            example: "T4_LEATHER"
+          
+          quality:
+            type: "integer"
+            description: "Qualidade do item (1-5)"
+            example: 1
+          
+          data:
+            type: "array"
+            description: "Array de pontos de dados históricos"
+            fields:
+              item_count:
+                type: "integer"
+                description: "Quantidade de itens vendidos no período"
+                example: 36620
+              
+              avg_price:
+                type: "integer"
+                description: "Preço médio das vendas no período"
+                example: 409
+              
+              timestamp:
+                type: "string (ISO 8601)"
+                description: "Data/hora do ponto de dados"
+                example: "2026-08-10T00:00:00"
+        
+        example_response: |
+          [
+            {
+              "location": "Caerleon",
+              "item_id": "T4_LEATHER",
+              "quality": 1,
+              "data": [
+                {
+                  "item_count": 36620,
+                  "avg_price": 409,
+                  "timestamp": "2026-08-10T00:00:00"
+                },
+                {
+                  "item_count": 46471,
+                  "avg_price": 393,
+                  "timestamp": "2026-08-11T00:00:00"
+                }
+              ]
+            }
+          ]
+    
+    charts:
+      method: "GET"
+      path: "/api/v2/stats/charts/{item_ids}.json"
+      description: "Retorna dados formatados para gráficos"
+      params: "Mesmos parâmetros de /history/"
+  
+  # ---------------------------------------------------------------------------
+  # 3. PREÇOS DE OURO (Gold Prices)
+  # ---------------------------------------------------------------------------
+  gold_prices:
+    description: "Retorna preços de ouro (conversão gold <-> silver)"
+    
+    by_date_range:
+      method: "GET"
+      path: "/api/v2/stats/gold.json"
+      params:
+        date: "OPCIONAL - Data inicial"
+        end_date: "OPCIONAL - Data final"
+      
+      examples:
+        - description: "Preços de ouro em período específico"
+          url: "/api/v2/stats/gold.json?date=2026-08-01&end_date=2026-08-17"
+    
+    by_count:
+      method: "GET"
+      path: "/api/v2/stats/gold.json"
+      params:
+        count: "OPCIONAL - Número de registros mais recentes (padrão: 1)"
+      
+      examples:
+        - description: "Últimos 10 preços de ouro"
+          url: "/api/v2/stats/gold.json?count=10"
+        
+        - description: "Preço de ouro mais recente"
+          url: "/api/v2/stats/gold.json?count=1"
+    
+    response_schema:
+      type: "array"
+      description: "Array de preços de ouro com timestamps"
+      fields:
+        price:
+          type: "integer"
+          description: "Preço em silver por gold"
+          example: 7909
+        
+        timestamp:
+          type: "string (ISO 8601)"
+          description: "Data/hora do preço"
+          example: "2026-08-17T12:00:00"
+      
+      example_response: |
+        [
+          {
+            "price": 7909,
+            "timestamp": "2026-08-17T12:00:00"
+          },
+          {
+            "price": 7916,
+            "timestamp": "2026-08-17T11:00:00"
+          }
+        ]
+  
+  # ---------------------------------------------------------------------------
+  # 4. FESTIVIDADES (Festivities/Events)
+  # ---------------------------------------------------------------------------
+  festivities:
+    method: "GET"
+    path: "/api/v2/stats/festivities"
+    description: "Retorna eventos ativos no mundo (bandidos, invasões, etc.)"
+    note: "Retorna 404 se expirado até que novo snapshot seja confirmado"
+    response_note: "Schema varia por tipo de evento (ver data_schemas abaixo)"
+
+# =============================================================================
+# NATS STREAMING (Pub/Sub em Tempo Real)
+# =============================================================================
+nats_streaming:
+  description: "Sistema de mensagens em tempo real para dados de mercado"
+  deduplication_window: "5 minutos"
+  
+  connection:
+    protocol: "NATS"
+    credentials:
+      username: "public"
+      password: "thenewalbiondata"
+    note: "Credenciais públicas - sem autenticação necessária"
+  
+  topics:
+    raw_ingest:
+      description: "Dados brutos sem deduplicação (pode conter duplicatas)"
+      subjects:
+        - name: "goldprices.ingest"
+          description: "Preços de ouro brutos"
+        
+        - name: "marketorders.ingest"
+          description: "Ordens de mercado brutas"
+        
+        - name: "markethistories.ingest"
+          description: "Histórico de mercado bruto"
+    
+    deduplicated:
+      description: "Dados deduplicados (janela de 5 minutos)"
+      subjects:
+        - name: "goldprices.deduped"
+          description: "Preços de ouro deduplicados"
+        
+        - name: "marketorders.deduped"
+          description: "Ordens de mercado deduplicadas"
+        
+        - name: "markethistories.deduped"
+          description: "Histórico de mercado deduplicado"
+        
+        - name: "festivities.deduped"
+          description: "Eventos deduplicados"
+  
+  usage_example_python: |
+    from nats.aio.client import Client as NATS
+    import asyncio
+    
+    async def main():
+        nc = NATS()
+        await nc.connect("nats://public:thenewalbiondata@nats.albion-online-data.com:4222")
+        
+        async def message_handler(msg):
+            print(f"Received: {msg.data.decode()}")
+        
+        await nc.subscribe("marketorders.deduped", cb=message_handler)
+        
+        # Keep connection alive
+        await asyncio.sleep(3600)
+    
+    if __name__ == '__main__':
+        asyncio.run(main())
+
+# =============================================================================
+# SCHEMAS DE DADOS E CONVERSÕES
+# =============================================================================
+data_schemas:
+  
+  timestamp_conversion:
+    description: "Conversão de C# Ticks para Unix Epoch"
+    type: "C# Ticks to Unix Epoch Seconds"
+    formula: "(ticks - 621355968000000000) / 10000000"
+    note: "Alguns eventos usam C# Ticks ao invés de Unix timestamp"
+    
+    example_python: |
+      def csharp_ticks_to_unix(ticks):
+          return (ticks - 621355968000000000) / 10000000
+      
+      # Uso
+      unix_timestamp = csharp_ticks_to_unix(637965312000000000)
+  
+  bandit_event_schema:
+    description: "Schema para eventos de bandidos/invasões"
+    fields:
+      EventTime:
+        type: "long (C# ticks)"
+        description: "Timestamp do evento em C# ticks"
+        note: "Converter usando fórmula acima"
+      
+      Phase:
+        type: "integer"
+        description: "Fase atual do evento"
+        values:
+          1:
+            description: "Evento ainda não começou"
+            note: "Inicia em EventTime"
+          2:
+            description: "Evento escalou"
+            note: "Evento está ativo"
+          3:
+            description: "Evento terminou"
+            note: "Evento concluído"
+
+# =============================================================================
+# EXEMPLOS DE CÓDIGO
+# =============================================================================
+code_examples:
+  
+  python_requests:
+    description: "Exemplo usando biblioteca requests"
+    code: |
+      import requests
+      
+      # Configuração base
+      BASE_URL = "https://west.albion-online-data.com"
+      
+      # 1. Buscar preços atuais
+      def get_current_prices(item_ids, locations=None, qualities=None):
+          url = f"{BASE_URL}/api/v2/stats/prices/{item_ids}.json"
+          params = {}
+          if locations:
+              params['locations'] = locations
+          if qualities:
+              params['qualities'] = qualities
+          
+          response = requests.get(url, params=params, headers={'Accept-Encoding': 'gzip'})
+          return response.json() if response.status_code == 200 else None
+      
+      # 2. Buscar histórico
+      def get_price_history(item_ids, date=None, end_date=None, locations=None, time_scale=24):
+          url = f"{BASE_URL}/api/v2/stats/history/{item_ids}.json"
+          params = {'time-scale': time_scale}
+          if date:
+              params['date'] = date
+          if end_date:
+              params['end_date'] = end_date
+          if locations:
+              params['locations'] = locations
+          
+          response = requests.get(url, params=params, headers={'Accept-Encoding': 'gzip'})
+          return response.json() if response.status_code == 200 else None
+      
+      # 3. Buscar preços de ouro
+      def get_gold_prices(count=10):
+          url = f"{BASE_URL}/api/v2/stats/gold.json"
+          response = requests.get(url, params={'count': count}, headers={'Accept-Encoding': 'gzip'})
+          return response.json() if response.status_code == 200 else None
+      
+      # Uso
+      if __name__ == "__main__":
+          # Exemplo 1: Preços atuais de couro T4 em Caerleon
+          prices = get_current_prices("T4_LEATHER", locations="Caerleon")
+          print(prices)
+          
+          # Exemplo 2: Histórico de madeira T5 dos últimos 7 dias
+          history = get_price_history("T5_WOOD", locations="Caerleon")
+          print(history)
+          
+          # Exemplo 3: Últimos 5 preços de ouro
+          gold = get_gold_prices(count=5)
+          print(gold)
+  
+  curl_examples:
+    description: "Exemplos usando cURL"
+    examples:
+      - description: "Preços atuais de um item"
+        command: |
+          curl -H "Accept-Encoding: gzip" \
+            "https://west.albion-online-data.com/api/v2/stats/prices/T4_LEATHER.json?locations=Caerleon"
+      
+      - description: "Histórico com múltiplos parâmetros"
+        command: |
+          curl -H "Accept-Encoding: gzip" \
+            "https://west.albion-online-data.com/api/v2/stats/history/T4_LEATHER.json?date=2026-08-01&end_date=2026-08-17&locations=Caerleon&time-scale=24"
+      
+      - description: "Últimos preços de ouro"
+        command: |
+          curl -H "Accept-Encoding: gzip" \
+            "https://west.albion-online-data.com/api/v2/stats/gold.json?count=10"
+
+# =============================================================================
+# CASOS DE USO COMUNS
+# =============================================================================
+use_cases:
+  
+  price_comparison:
+    description: "Comparar preços de um item entre diferentes cidades"
+    approach: "Fazer uma requisição sem filtro de locations para obter todas"
+    example_url: "/api/v2/stats/prices/T4_LEATHER.json"
+    processing: "Filtrar e comparar os campos sell_price_min por city"
+  
+  profit_calculator:
+    description: "Calcular lucro de arbitragem entre cidades"
+    approach: "Buscar preços em múltiplas localizações e calcular diferença"
+    example_url: "/api/v2/stats/prices/T4_LEATHER.json?locations=Caerleon,Bridgewatch"
+    formula: "profit = sell_price_min(CityA) - buy_price_max(CityB) - taxes - transport_cost"
+  
+  market_trends:
+    description: "Analisar tendências de preço ao longo do tempo"
+    approach: "Usar endpoint de histórico com time-scale apropriado"
+    example_url: "/api/v2/stats/history/T4_LEATHER.json?date=2026-07-01&end_date=2026-08-17&time-scale=24"
+    analysis: "Plotar avg_price vs timestamp para visualizar tendências"
+  
+  gold_tracking:
+    description: "Monitorar taxa de câmbio gold/silver"
+    approach: "Poll endpoint de gold periodicamente"
+    example_url: "/api/v2/stats/gold.json?count=1"
+    note: "Respeitar rate limits - mínimo 30 segundos entre requisições"
+  
+  high_quality_items:
+    description: "Focar em itens de alta qualidade (Excellent/Masterpiece)"
+    approach: "Filtrar por qualities 4 e 5"
+    example_url: "/api/v2/stats/prices/T8_HEAD_PLATE_ROYAL.json?qualities=4,5"
+    note: "Itens de alta qualidade têm preços significativamente maiores"
+
+# =============================================================================
+# TROUBLESHOOTING E FAQ
+# =============================================================================
+troubleshooting:
+  
+  empty_results:
+    problem: "API retorna array vazio ou dados zerados"
+    solutions:
+      - "Verificar se item_id está correto (case-sensitive)"
+      - "Verificar se item existe no jogo"
+      - "Alguns itens raros podem não ter dados de mercado"
+      - "Tentar sem filtros de location/quality primeiro"
+  
+  rate_limit_hit:
+    problem: "Recebendo erro 429 (Too Many Requests)"
+    solutions:
+      - "Implementar backoff exponencial"
+      - "Cachear resultados quando possível"
+      - "Fazer batch de múltiplos itens em uma requisição"
+      - "Reduzir frequência de polling"
+  
+  dates_not_working:
+    problem: "Datas retornam resultados inesperados"
+    solutions:
+      - "Usar formato YYYY-MM-DD ou MM-DD-YYYY"
+      - "Não usar datas futuras"
+      - "Verificar se há dados para o período solicitado"
+      - "Alguns itens podem ter histórico limitado"
+  
+  slow_responses:
+    problem: "Respostas muito lentas"
+    solutions:
+      - "Sempre usar header 'Accept-Encoding: gzip'"
+      - "Limitar número de itens por requisição (~50 max)"
+      - "Usar servidor geograficamente mais próximo"
+      - "Considerar usar NATS para dados em tempo real"
+
+faq:
+  - question: "Qual a diferença entre sell_price e buy_price?"
+    answer: "sell_price são ofertas de venda (asks), buy_price são ofertas de compra (bids). Para comprar, você paga sell_price. Para vender, você recebe buy_price."
+  
+  - question: "Por que buy_price_max pode ser maior que sell_price_min?"
+    answer: "Isso indica arbitragem disponível - há compradores dispostos a pagar mais do que o menor preço de venda, geralmente em localizações diferentes."
+  
+  - question: "O que significa quality?"
+    answer: "Qualidade do item craftado: 1=Normal, 2=Good, 3=Outstanding, 4=Excellent, 5=Masterpiece. Maior qualidade = melhores stats e preço mais alto."
+  
+  - question: "Como saber quais item_ids existem?"
+    answer: "Não há endpoint oficial. Recomenda-se manter uma lista baseada na wiki do jogo ou usar ferramentas da comunidade."
+  
+  - question: "Posso usar a API comercialmente?"
+    answer: "Dados são fornecidos pela comunidade sem garantias. Verificar termos de uso no site oficial. Não afiliado com Sandbox Interactive."
+  
+  - question: "Com que frequência os dados são atualizados?"
+    answer: "Depende dos contribuidores. Dados populares (cidades principais, itens comuns) atualizam frequentemente. Itens raros podem ter delays."
+  
+  - question: "NATS vs REST API - qual usar?"
+    answer: "REST para consultas pontuais e históricas. NATS para monitoramento em tempo real e aplicações que precisam de atualizações instantâneas."
+
+# =============================================================================
+# RECURSOS ADICIONAIS
+# =============================================================================
+resources:
+  official_website: "https://www.albion-online-data.com/"
+  game_wiki: "https://wiki.albiononline.com/"
+  community_tools:
+    - "AlbionOnline2D" # Mapas e recursos
+    - "Albion Market" # Ferramentas de mercado
+  
+  recommended_libraries:
+    python:
+      - "requests" # HTTP client
+      - "aiohttp" # Async HTTP client
+      - "nats-py" # NATS client
+    
+    javascript:
+      - "axios" # HTTP client
+      - "nats.js" # NATS client
+  
+  notes:
+    - "Esta API depende de contribuições da comunidade"
+    - "Qualidade dos dados varia por região e item"
+    - "Sempre implementar tratamento de erros robusto"
+    - "Considerar implementar retry logic com backoff exponencial"

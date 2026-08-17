@@ -1,0 +1,54 @@
+{
+  "name": "Albion Market Analysis - Full Orchestration",
+  "email_notifications": {},
+  "webhook_notifications": {},
+  "timeout_seconds": 1800,
+  "schedule": {
+    "quartz_cron_expression": "0 */10 * * * ?",
+    "timezone_id": "America/Sao_Paulo",
+    "pause_status": "UNPAUSED"
+  },
+  "max_concurrent_runs": 1,
+  "format": "MULTI_TASK",
+  "queue": {
+    "enabled": true
+  },
+  "environments": [
+    {
+      "environment_key": "default",
+      "spec": {
+        "client": "1",
+        "dependencies": [
+          "nats-py"
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "task_key": "bronze_ingestion",
+      "description": "Consome streams NATS em tempo real e popula tabelas main.bronze.market_orders_raw e main.bronze.market_history_raw",
+      "spark_python_task": {
+        "python_file": "dbfs:/Workspace/Users/ztriickster@gmail.com/albion-tools/app/src/scripts/bronze_ingestion.py"
+      },
+      "environment_key": "default",
+      "timeout_seconds": 1800,
+      "max_retries": 2,
+      "run_if": "ALL_SUCCESS"
+    },
+    {
+      "task_key": "silver_gold_transformation",
+      "description": "Processa dados do Bronze para Silver (Star Schema) e Gold (Analytics)",
+      "depends_on": [
+        {
+          "task_key": "bronze_ingestion"
+        }
+      ],
+      "pipeline_task": {
+        "pipeline_id": "054f7e79-126e-444e-9231-dc4f1a0915dc"
+      },
+      "timeout_seconds": 1800,
+      "run_if": "ALL_SUCCESS"
+    }
+  ]
+}

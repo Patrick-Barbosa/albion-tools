@@ -1,0 +1,102 @@
+# Databricks Asset Bundle (DAB) Configuration
+# Para CI/CD do projeto Albion Online Market Analysis
+# Deploy: databricks bundle deploy -t prod
+# Run: databricks bundle run orchestrator -t prod
+
+bundle:
+  name: albion_market_analysis
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog_name:
+    default: main
+    description: Unity Catalog para tabelas do projeto
+  
+  bronze_schema:
+    default: bronze
+    description: Schema Bronze (raw data)
+  
+  silver_schema:
+    default: silver
+    description: Schema Silver (curated data)
+  
+  nats_server:
+    default: "nats://public:thenewalbiondata@nats.albion-online-data.com:4222"
+    description: Servidor NATS para ingestão de dados
+
+targets:
+  # Ambiente de desenvolvimento
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-6dd8e8ac-b9a1.cloud.databricks.com
+    variables:
+      catalog_name: dev
+  
+  # Ambiente de produção
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-6dd8e8ac-b9a1.cloud.databricks.com
+      root_path: /Users/ztriickster@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    run_as:
+      user_name: ztriickster@gmail.com
+
+resources:
+  # Job orquestrador principal
+  jobs:
+    orchestrator:
+      name: "[${bundle.target}] Albion Market Analysis - Full Orchestration"
+      
+      schedule:
+        quartz_cron_expression: "0 */10 * * * ?"  # A cada 10 minutos
+        timezone_id: "America/Sao_Paulo"
+        pause_status: UNPAUSED
+      
+      max_concurrent_runs: 1
+      timeout_seconds: 1800
+      
+      job_clusters:
+        - job_cluster_key: default_cluster
+          new_cluster:
+            spark_version: 15.4.x-scala2.12
+            node_type_id: i3.xlarge
+            num_workers: 0
+            spark_conf:
+              spark.master: "local[*]"
+              spark.databricks.cluster.profile: singleNode
+            custom_tags:
+              ResourceClass: SingleNode
+      
+      tasks:
+        # Task Única: Transformação Silver + Gold via SDP
+        # (Bronze roda 24/7 em job separado - ver bronze_nats_job.yml)
+        - task_key: silver_gold_transformation
+          description: "Pipeline SDP: Bronze → Silver → Gold"
+          
+          pipeline_task:
+            pipeline_id: "054f7e79-126e-444e-9231-dc4f1a0915dc"
+          
+          timeout_seconds: 1800
+  
+  # Pipeline SDP (referência)
+  pipelines:
+    sdp_transformation:
+      name: "[${bundle.target}] Albion Online Market Analysis"
+      catalog: ${var.catalog_name}
+      target: ${var.silver_schema}
+      
+      configuration:
+        bronze_schema: ${var.bronze_schema}
+        silver_schema: ${var.silver_schema}
+      
+      libraries:
+        - file:
+            path: ./workflows/SDP
+      
+      serverless: true
+      continuous: false
+      development: false

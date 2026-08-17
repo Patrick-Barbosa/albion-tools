@@ -1,0 +1,6 @@
+# Bronze Layer - NATS Real-time Ingestion
+nats-py>=2.9.0
+
+# Databricks built-in (no install needed)
+# pyspark
+# delta-spark
