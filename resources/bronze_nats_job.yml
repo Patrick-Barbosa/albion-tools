@@ -1,45 +1,22 @@
 # =============================================================================
 # Bronze NATS Ingestion Job
-# Ingestão em tempo real via NATS Streaming
+# Ingestão via NATS
 # =============================================================================
 
 resources:
   jobs:
     bronze_nats_ingestion:
-      name: "[${bundle.target}] Bronze NATS Ingestion (24/7)"
-      
-      # Job de ingestão contínua - roda 24/7 capturando eventos NATS
-      # Deploy: databricks bundle deploy -t prod
-      # Start:  databricks bundle run bronze_nats_ingestion -t prod
-      # 
-      # IMPORTANTE: Este job NÃO tem schedule - execute UMA VEZ manualmente
-      # e ele ficará rodando continuamente até você parar.
-      
+      name: "[${bundle.target}] Bronze NATS Ingestion"
+
       max_concurrent_runs: 1
-      timeout_seconds: 0  # Sem timeout - roda indefinidamente
-      
-      job_clusters:
-        - job_cluster_key: nats_cluster
-          new_cluster:
-            spark_version: 15.4.x-scala2.12
-            node_type_id: i3.xlarge
-            num_workers: 0  # Single-node para Community Edition
-            spark_conf:
-              spark.master: "local[*]"
-              spark.databricks.cluster.profile: singleNode
-            custom_tags:
-              ResourceClass: SingleNode
-              Project: AlbionMarketAnalysis
-              Layer: Bronze
-      
+      timeout_seconds: 0
+
       tasks:
         - task_key: nats_streaming_ingestion
           description: "Consome mensagens do NATS broker e grava na tabela Bronze"
-          
-          job_cluster_key: nats_cluster
-          
+
           spark_python_task:
-            python_file: ./app/src/scripts/bronze_ingestion.py
+            python_file: ../app/src/scripts/bronze_ingestion.py
             parameters:
               - "--catalog"
               - "${var.catalog_name}"
@@ -48,16 +25,21 @@ resources:
               - "--table"
               - "market_orders_raw"
               - "--duration"
-              - "86400"  # 24 horas (1 dia) - ajuste conforme necessário
+              - "86400"
               - "--buffer-size"
               - "1000"
               - "--flush-interval"
               - "30"
-          
-          libraries:
-            - pypi:
-                package: nats-py>=2.9.0
-          
-          timeout_seconds: 0  # Sem timeout - roda indefinidamente
-          max_retries: 0  # Não retry em job contínuo
+
+          environment_key: default
+
+          timeout_seconds: 0
+          max_retries: 0
           retry_on_timeout: false
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "2"
+            dependencies:
+              - "nats-py>=2.9.0"
