@@ -22,6 +22,32 @@ import json
 import os
 from pathlib import Path
 
+# Reconfigura stdout/stderr para UTF-8 no Windows para evitar UnicodeEncodeError com emojis
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+if hasattr(sys.stderr, 'reconfigure'):
+    try:
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+
+
+def safe_print(text=""):
+    """Imprime texto garantindo compatibilidade de encoding."""
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        encoding = getattr(sys.stdout, 'encoding', 'utf-8') or 'utf-8'
+        try:
+            encoded = text.encode(encoding, errors='replace')
+            print(encoded.decode(encoding, errors='replace'))
+        except Exception:
+            # Fallback final: remover caracteres não-ASCII se tudo mais falhar
+            print(text.encode('ascii', errors='replace').decode('ascii'))
+
 
 class Colors:
     """ANSI color codes para output colorido."""
@@ -59,35 +85,55 @@ def run_command(cmd, capture_output=True):
         
         return success, output, error
         
+    except FileNotFoundError:
+        return False, "", f"Comando '{cmd[0]}' não foi encontrado no sistema."
     except Exception as e:
         return False, "", str(e)
 
 
 def print_header(text):
     """Imprime cabeçalho formatado."""
-    print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*80}{Colors.END}")
-    print(f"{Colors.BOLD}{Colors.CYAN}{text:^80}{Colors.END}")
-    print(f"{Colors.BOLD}{Colors.CYAN}{'='*80}{Colors.END}\n")
+    safe_print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*80}{Colors.END}")
+    safe_print(f"{Colors.BOLD}{Colors.CYAN}{text:^80}{Colors.END}")
+    safe_print(f"{Colors.BOLD}{Colors.CYAN}{'='*80}{Colors.END}\n")
 
 
 def print_success(text):
     """Imprime mensagem de sucesso."""
-    print(f"{Colors.GREEN}✅ {text}{Colors.END}")
+    safe_print(f"{Colors.GREEN}✅ {text}{Colors.END}")
 
 
 def print_error(text):
     """Imprime mensagem de erro."""
-    print(f"{Colors.RED}❌ {text}{Colors.END}")
+    safe_print(f"{Colors.RED}❌ {text}{Colors.END}")
 
 
 def print_info(text):
     """Imprime mensagem informativa."""
-    print(f"{Colors.BLUE}ℹ️  {text}{Colors.END}")
+    safe_print(f"{Colors.BLUE}ℹ️  {text}{Colors.END}")
 
 
 def print_warning(text):
     """Imprime mensagem de aviso."""
-    print(f"{Colors.YELLOW}⚠️  {text}{Colors.END}")
+    safe_print(f"{Colors.YELLOW}⚠️  {text}{Colors.END}")
+
+
+def check_databricks_cli():
+    """
+    Verifica se o CLI do Databricks está instalado no ambiente.
+    
+    Returns:
+        bool: True se databricks CLI estiver acessível.
+    """
+    success, output, error = run_command(["databricks", "--version"])
+    if not success:
+        print_error("Databricks CLI não foi encontrado ou não está instalado no sistema.")
+        print_info("Para instalar o Databricks CLI:")
+        safe_print("  • Windows (winget): winget install Databricks.CLI")
+        safe_print("  • Documentação oficial: https://docs.databricks.com/dev-tools/cli/index.html")
+        safe_print("  • Após a instalação, configure o acesso executando: databricks configure\n")
+        return False
+    return True
 
 
 def find_bundle_root():
@@ -135,6 +181,9 @@ def validate_bundle():
     """
     print_header("VALIDANDO BUNDLE")
     
+    if not check_databricks_cli():
+        return False
+
     # Encontrar e mudar para o diretório raiz do bundle
     try:
         bundle_root = find_bundle_root()
@@ -150,11 +199,11 @@ def validate_bundle():
     
     if success:
         print_success("Bundle validado com sucesso!")
-        print(output)
+        safe_print(output)
         return True
     else:
         print_error("Falha na validação do bundle")
-        print(error)
+        safe_print(error)
         return False
 
 
@@ -170,15 +219,18 @@ def deploy_bundle(target="dev"):
     """
     print_header(f"DEPLOY - AMBIENTE: {target.upper()}")
     
+    if not check_databricks_cli():
+        return False
+
     # Validar primeiro
     print_info("Validando bundle antes do deploy...")
     if not validate_bundle():
         return False
     
-    print()
+    safe_print()
     print_info(f"Iniciando deploy no ambiente '{target}'...")
     print_warning("Isso pode levar alguns minutos...")
-    print()
+    safe_print()
     
     success, output, error = run_command(
         ["databricks", "bundle", "deploy", "-t", target],
@@ -186,45 +238,54 @@ def deploy_bundle(target="dev"):
     )
     
     if success:
-        print()
+        safe_print()
         print_success(f"Deploy concluído com sucesso no ambiente '{target}'!")
-        print()
+        safe_print()
         print_info("Jobs criados/atualizados:")
-        print("  1. bronze_nats_ingestion (24/7 streaming)")
-        print("  2. orchestrator (Silver/Gold a cada 10min)")
-        print()
+        safe_print("  1. bronze_nats_ingestion (24/7 streaming)")
+        safe_print("  2. orchestrator (Silver/Gold a cada 10min)")
+        safe_print()
         print_info("Próximos passos:")
-        print(f"  python deploy.py --run-bronze {target}")
-        print(f"  python deploy.py --status {target}")
+        safe_print(f"  python deploy.py --run-bronze {target}")
+        safe_print(f"  python deploy.py --status {target}")
         return True
     else:
-        print()
+        safe_print()
         print_error("Falha no deploy")
         return False
 
 
-def run_job_bronze(target="prod"):
+def run_job_bronze(target="prod", auto_confirm=False):
     """
     Inicia o job de ingestão Bronze (24/7).
     
     Args:
         target (str): Ambiente alvo
+        auto_confirm (bool): Se True, ignora prompt de confirmação
     
     Returns:
         bool: True se job foi iniciado
     """
     print_header("INICIAR JOB BRONZE (24/7)")
     
+    if not check_databricks_cli():
+        return False
+
     print_warning("Este job rodará por 24 horas capturando eventos NATS!")
     print_info("Para parar antes: use a UI do Databricks (Workflows)")
-    print()
+    safe_print()
     
-    confirm = input("Confirma iniciar job Bronze? (s/N): ").strip().lower()
-    if confirm != 's':
-        print_info("Operação cancelada.")
-        return False
+    if not auto_confirm:
+        try:
+            confirm = input("Confirma iniciar job Bronze? (s/N): ").strip().lower()
+            if confirm != 's':
+                print_info("Operação cancelada.")
+                return False
+        except (EOFError, KeyboardInterrupt):
+            print_info("Operação cancelada.")
+            return False
     
-    print()
+    safe_print()
     print_info("Iniciando job bronze_nats_ingestion...")
     
     success, output, error = run_command(
@@ -233,44 +294,53 @@ def run_job_bronze(target="prod"):
     )
     
     if success:
-        print()
+        safe_print()
         print_success("Job Bronze iniciado com sucesso!")
-        print()
+        safe_print()
         print_info("O job está rodando em background no Databricks.")
         print_info("Dados serão ingeridos continuamente na tabela Bronze.")
-        print()
+        safe_print()
         print_info("Monitorar:")
-        print(f"  python deploy.py --status {target}")
-        print("  Ou via UI: Workflows > Jobs > Bronze NATS Ingestion")
+        safe_print(f"  python deploy.py --status {target}")
+        safe_print("  Ou via UI: Workflows > Jobs > Bronze NATS Ingestion")
         return True
     else:
-        print()
+        safe_print()
         print_error("Falha ao iniciar job Bronze")
         return False
 
 
-def run_job_orchestrator(target="prod"):
+def run_job_orchestrator(target="prod", auto_confirm=False):
     """
     Executa o job orquestrador uma vez (teste manual).
     
     Args:
         target (str): Ambiente alvo
+        auto_confirm (bool): Se True, ignora prompt de confirmação
     
     Returns:
         bool: True se job foi executado
     """
     print_header("EXECUTAR JOB ORQUESTRADOR (TESTE MANUAL)")
     
+    if not check_databricks_cli():
+        return False
+
     print_info("Este job processa Bronze → Silver → Gold")
     print_info("Normalmente roda automaticamente a cada 10 minutos")
-    print()
+    safe_print()
     
-    confirm = input("Confirma executar job Orquestrador? (s/N): ").strip().lower()
-    if confirm != 's':
-        print_info("Operação cancelada.")
-        return False
+    if not auto_confirm:
+        try:
+            confirm = input("Confirma executar job Orquestrador? (s/N): ").strip().lower()
+            if confirm != 's':
+                print_info("Operação cancelada.")
+                return False
+        except (EOFError, KeyboardInterrupt):
+            print_info("Operação cancelada.")
+            return False
     
-    print()
+    safe_print()
     print_info("Executando job orchestrator...")
     
     success, output, error = run_command(
@@ -279,15 +349,15 @@ def run_job_orchestrator(target="prod"):
     )
     
     if success:
-        print()
+        safe_print()
         print_success("Job Orquestrador executado com sucesso!")
-        print()
+        safe_print()
         print_info("Dados processados:")
-        print("  Bronze → Silver (curado)")
-        print("  Silver → Gold (agregado)")
+        safe_print("  Bronze → Silver (curado)")
+        safe_print("  Silver → Gold (agregado)")
         return True
     else:
-        print()
+        safe_print()
         print_error("Falha ao executar job Orquestrador")
         return False
 
@@ -304,8 +374,11 @@ def show_status(target="prod"):
     """
     print_header(f"STATUS DOS JOBS - AMBIENTE: {target.upper()}")
     
+    if not check_databricks_cli():
+        return False
+
     print_info("Listando jobs do bundle...")
-    print()
+    safe_print()
     
     # Listar jobs do workspace
     success, output, error = run_command(
@@ -314,22 +387,25 @@ def show_status(target="prod"):
     
     if not success:
         print_error("Falha ao listar jobs")
-        print(error)
+        safe_print(error)
         return False
     
     try:
         jobs = json.loads(output)
         
+        # Lista de jobs retornada pela API (pode estar na chave 'jobs' ou ser lista direta)
+        jobs_list = jobs.get('jobs', []) if isinstance(jobs, dict) else jobs
+        
         # Filtrar jobs do bundle
         bundle_jobs = [
-            job for job in jobs.get('jobs', [])
+            job for job in jobs_list
             if f"[{target}]" in job.get('settings', {}).get('name', '')
         ]
         
         if not bundle_jobs:
             print_warning(f"Nenhum job encontrado para o ambiente '{target}'")
             print_info("Execute o deploy primeiro:")
-            print(f"  python deploy.py --deploy {target}")
+            safe_print(f"  python deploy.py --deploy {target}")
             return False
         
         print_success(f"Encontrados {len(bundle_jobs)} job(s):\n")
@@ -338,8 +414,8 @@ def show_status(target="prod"):
             job_id = job.get('job_id')
             name = job.get('settings', {}).get('name', 'N/A')
             
-            print(f"{Colors.BOLD}{name}{Colors.END}")
-            print(f"  Job ID: {job_id}")
+            safe_print(f"{Colors.BOLD}{name}{Colors.END}")
+            safe_print(f"  Job ID: {job_id}")
             
             # Pegar últimas runs
             success_run, output_run, _ = run_command(
@@ -349,7 +425,7 @@ def show_status(target="prod"):
             if success_run:
                 try:
                     runs_data = json.loads(output_run)
-                    runs = runs_data.get('runs', [])
+                    runs = runs_data.get('runs', []) if isinstance(runs_data, dict) else runs_data
                     
                     if runs:
                         latest_run = runs[0]
@@ -362,21 +438,21 @@ def show_status(target="prod"):
                             'PENDING': '🟡',
                         }.get(state, '❓')
                         
-                        print(f"  Status: {state_emoji} {state}")
+                        safe_print(f"  Status: {state_emoji} {state}")
                         if state == 'TERMINATED':
-                            print(f"  Resultado: {result}")
-                        print(f"  Últimas {len(runs)} runs disponíveis")
+                            safe_print(f"  Resultado: {result}")
+                        safe_print(f"  Últimas {len(runs)} runs disponíveis")
                     else:
-                        print("  Status: Nunca executado")
-                except:
-                    print("  Status: N/A")
+                        safe_print("  Status: Nunca executado")
+                except Exception:
+                    safe_print("  Status: N/A")
             
-            print()
+            safe_print()
         
         return True
         
     except json.JSONDecodeError:
-        print_error("Falha ao processar resposta da API")
+        print_error("Falha ao processar resposta da API do Databricks")
         return False
 
 
@@ -427,6 +503,12 @@ Exemplos:
         choices=['dev', 'prod'],
         help='Ver status dos jobs no ambiente especificado'
     )
+
+    parser.add_argument(
+        '--yes', '-y',
+        action='store_true',
+        help='Confirmar execuções automaticamente sem prompt interativo'
+    )
     
     # Se nenhum argumento, deploy prod
     if len(sys.argv) == 1:
@@ -435,11 +517,14 @@ Exemplos:
     
     try:
         args = parser.parse_args()
-    except SystemExit:
-        # Em ambiente notebook, argparse pode falhar
-        # Nesses casos, fazer deploy prod por padrão
-        success = deploy_bundle("prod")
-        return
+    except SystemExit as e:
+        if e.code == 0:
+            return
+        # Se for ambiente notebook/ipython onde args não correspondem
+        if any('ipykernel' in arg or 'jupyter' in arg for arg in sys.argv):
+            success = deploy_bundle("prod")
+            return
+        sys.exit(e.code)
     
     # Executar ação solicitada
     success = True
@@ -451,10 +536,10 @@ Exemplos:
         success = deploy_bundle(args.deploy)
     
     if args.run_bronze:
-        success = run_job_bronze(args.run_bronze)
+        success = run_job_bronze(args.run_bronze, auto_confirm=args.yes)
     
     if args.run_orchestrator:
-        success = run_job_orchestrator(args.run_orchestrator)
+        success = run_job_orchestrator(args.run_orchestrator, auto_confirm=args.yes)
     
     if args.status:
         success = show_status(args.status)
