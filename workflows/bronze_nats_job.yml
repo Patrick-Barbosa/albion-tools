@@ -1,6 +1,6 @@
 # =============================================================================
 # Bronze NATS Ingestion Job
-# Ingestão via NATS
+# Ingestão contínua em tempo real via NATS
 # =============================================================================
 
 resources:
@@ -9,14 +9,14 @@ resources:
       name: "[${bundle.target}] Bronze NATS Ingestion"
 
       max_concurrent_runs: 1
-      timeout_seconds: 0
+      timeout_seconds: 0  # Roda continuamente
 
       tasks:
         - task_key: nats_streaming_ingestion
-          description: "Consome mensagens do NATS broker e grava na tabela Bronze"
+          description: "Consome mensagens do broker NATS e grava na tabela Bronze"
 
           spark_python_task:
-            python_file: ../app/src/scripts/bronze_ingestion.py
+            python_file: ./app/src/scripts/bronze_ingestion.py
             parameters:
               - "--catalog"
               - "${var.catalog_name}"

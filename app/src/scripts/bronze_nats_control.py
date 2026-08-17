@@ -15,14 +15,29 @@ Uso:
     from bronze_nats_control import start_ingestion, stop_ingestion
 """
 
-import sys
-import time
+import os
 from pathlib import Path
 
-# Adicionar o diretório pai ao path para importar o módulo nats
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Adicionar diretório pai ao path de forma segura (compatível com Databricks / exec)
+try:
+    _current_dir = Path(__file__).resolve().parent
+except NameError:
+    _current_dir = Path.cwd()
 
-from nats.ingestion import NATSBronzeIngestion
+for _p in [
+    str(_current_dir.parent),                  # app/src
+    str(_current_dir.parent.parent),           # app
+    str(_current_dir),                         # app/src/scripts
+    str(Path.cwd()),                           # workspace root
+    str(Path.cwd() / "app" / "src"),           # workspace/app/src
+]:
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+
+try:
+    from nats.ingestion import NATSBronzeIngestion
+except ImportError:
+    from app.src.nats.ingestion import NATSBronzeIngestion
 
 # ============================================================================
 # ⚙️ CONFIGURAÇÃO

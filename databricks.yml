@@ -1,13 +1,11 @@
 # Databricks Asset Bundle (DAB) Configuration
-# Para CI/CD do projeto Albion Online Market Analysis
-# Deploy: databricks bundle deploy -t prod
-# Run: databricks bundle run orchestrator -t prod
+# Projeto: Albion Online Market Analysis (PROD)
 
 bundle:
   name: albion_market_analysis
 
 include:
-  - resources/*.yml
+  - workflows/*.yml
 
 variables:
   catalog_name:
@@ -27,7 +25,6 @@ variables:
     description: Servidor NATS para ingestão de dados
 
 targets:
-  # Ambiente de produção
   prod:
     mode: production
     default: true
@@ -38,13 +35,15 @@ targets:
       user_name: ztriickster@gmail.com
 
 resources:
-  # Job orquestrador principal
+  # ===========================================================================
+  # 1. Job Orquestrador SDP (Bronze → Silver → Gold)
+  # ===========================================================================
   jobs:
     orchestrator:
       name: "[${bundle.target}] Albion Market Analysis - Full Orchestration"
       
       schedule:
-        quartz_cron_expression: "0 */2 * * * ?"  # A cada 2 minutos
+        quartz_cron_expression: "0 */10 * * * ?"  # A cada 10 minutos
         timezone_id: "America/Sao_Paulo"
         pause_status: UNPAUSED
       
@@ -52,17 +51,15 @@ resources:
       timeout_seconds: 1800
       
       tasks:
-        # Task Única: Transformação Silver + Gold via SDP
-        # (Bronze roda 24/7 em job separado - ver bronze_nats_job.yml)
         - task_key: silver_gold_transformation
-          description: "Pipeline SDP: Bronze → Silver → Gold"
-          
+          description: "Executa Pipeline SDP: Bronze → Silver → Gold"
           pipeline_task:
-            pipeline_id: "054f7e79-126e-444e-9231-dc4f1a0915dc"
-          
+            pipeline_id: ${resources.pipelines.sdp_transformation.id}
           timeout_seconds: 1800
-  
-  # Pipeline SDP (referência)
+
+  # ===========================================================================
+  # 2. Pipeline SDP Declarativa
+  # ===========================================================================
   pipelines:
     sdp_transformation:
       name: "[${bundle.target}] Albion Online Market Analysis"
