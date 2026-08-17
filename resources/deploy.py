@@ -118,6 +118,29 @@ def print_warning(text):
     safe_print(f"{Colors.YELLOW}⚠️  {text}{Colors.END}")
 
 
+def is_in_databricks():
+    """Detecta se o script está rodando dentro do Databricks."""
+    return (
+        'DATABRICKS_RUNTIME_VERSION' in os.environ
+        or 'DATABRICKS_HOST' in os.environ
+        or any('db_ipykernel' in str(arg) or 'sandboxapi' in str(arg) for arg in sys.argv)
+    )
+
+
+def is_notebook_environment():
+    """Detecta se o script está rodando dentro de um notebook (Databricks / Jupyter / IPython)."""
+    if is_in_databricks():
+        return True
+    if any('ipykernel' in str(arg) or 'jupyter' in str(arg) for arg in sys.argv):
+        return True
+    try:
+        # Check if IPython is active in namespace
+        get_ipython()  # noqa: F821
+        return True
+    except NameError:
+        return False
+
+
 def check_databricks_cli():
     """
     Verifica se o CLI do Databricks está instalado no ambiente.
@@ -127,11 +150,22 @@ def check_databricks_cli():
     """
     success, output, error = run_command(["databricks", "--version"])
     if not success:
-        print_error("Databricks CLI não foi encontrado ou não está instalado no sistema.")
-        print_info("Para instalar o Databricks CLI:")
-        safe_print("  • Windows (winget): winget install Databricks.CLI")
-        safe_print("  • Documentação oficial: https://docs.databricks.com/dev-tools/cli/index.html")
-        safe_print("  • Após a instalação, configure o acesso executando: databricks configure\n")
+        print_error("Databricks CLI não foi encontrado no ambiente atual.")
+        if is_in_databricks():
+            print_info("Detectado que você está executando dentro de um Notebook/Cluster Databricks.")
+            safe_print("  • O script 'deploy.py' (DABs) foi feito para gerenciar o bundle a partir da sua máquina LOCAL ou CI/CD.")
+            safe_print("  • Para executar a ingestão DIRETAMENTE neste notebook Databricks:")
+            safe_print("      %run ../app/src/scripts/bronze_nats_control.py")
+            safe_print("      ou:")
+            safe_print("      from app.src.scripts.bronze_nats_control import start_ingestion")
+            safe_print("      start_ingestion()")
+            safe_print("  • Se quiser instalar o Databricks CLI no cluster Databricks, execute em uma célula %sh:")
+            safe_print("      %sh curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh\n")
+        else:
+            print_info("Para instalar o Databricks CLI na sua máquina local:")
+            safe_print("  • Windows (winget): winget install Databricks.CLI")
+            safe_print("  • Documentação oficial: https://docs.databricks.com/dev-tools/cli/index.html")
+            safe_print("  • Após a instalação, configure o acesso executando: databricks configure\n")
         return False
     return True
 
@@ -458,6 +492,8 @@ def show_status(target="prod"):
 
 def main():
     """Função principal."""
+    in_notebook = is_notebook_environment()
+
     parser = argparse.ArgumentParser(
         description='Deploy e gerenciamento de jobs - Albion Market Analysis',
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -510,39 +546,54 @@ Exemplos:
         help='Confirmar execuções automaticamente sem prompt interativo'
     )
     
-    # Se nenhum argumento, deploy prod
-    if len(sys.argv) == 1:
-        success = deploy_bundle("prod")
-        return
-    
+    # Parse com parse_known_args para ignorar flags do kernel (ex: -f /path/to/connection.json)
     try:
-        args = parser.parse_args()
+        args, unknown = parser.parse_known_args()
     except SystemExit as e:
         if e.code == 0:
             return
-        # Se for ambiente notebook/ipython onde args não correspondem
-        if any('ipykernel' in arg or 'jupyter' in arg for arg in sys.argv):
-            success = deploy_bundle("prod")
-            return
         sys.exit(e.code)
     
-    # Executar ação solicitada
-    success = True
+    has_action = any([args.validate, args.deploy, args.run_bronze, args.run_orchestrator, args.status])
     
+    # Se estiver rodando dentro do notebook do Databricks sem argumentos CLI específicos
+    if in_notebook and not has_action:
+        print_header("ALBION MARKET ANALYSIS - DEPLOY HELPER")
+        print_info("Ambiente de Notebook / Databricks detectado.")
+        safe_print("Opções de uso:")
+        safe_print("  1. Ingestão direta no Databricks (Recomendado no Notebook):")
+        safe_print("     %run ../app/src/scripts/bronze_nats_control.py")
+        safe_print("     ou:")
+        safe_print("     from app.src.scripts.bronze_nats_control import start_ingestion, get_status")
+        safe_print("     start_ingestion()")
+        safe_print()
+        safe_print("  2. Deploy via Databricks Asset Bundles (DABs):")
+        safe_print("     Execute no seu terminal LOCAL (computador/workstation):")
+        safe_print("     python resources/deploy.py --deploy dev")
+        safe_print("     python resources/deploy.py --run-bronze dev")
+        safe_print()
+        return
+
+    # Se nenhum argumento no terminal CLI, deploy prod por padrão
+    if not has_action and len(sys.argv) == 1:
+        deploy_bundle("prod")
+        return
+    
+    # Executar ação solicitada
     if args.validate:
-        success = validate_bundle()
+        validate_bundle()
     
     if args.deploy:
-        success = deploy_bundle(args.deploy)
+        deploy_bundle(args.deploy)
     
     if args.run_bronze:
-        success = run_job_bronze(args.run_bronze, auto_confirm=args.yes)
+        run_job_bronze(args.run_bronze, auto_confirm=args.yes)
     
     if args.run_orchestrator:
-        success = run_job_orchestrator(args.run_orchestrator, auto_confirm=args.yes)
+        run_job_orchestrator(args.run_orchestrator, auto_confirm=args.yes)
     
     if args.status:
-        success = show_status(args.status)
+        show_status(args.status)
     
     return
 
