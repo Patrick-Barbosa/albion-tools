@@ -18,7 +18,7 @@ import argparse
 import os
 from pathlib import Path
 
-# Reconfigura stdout/stderr para UTF-8 no Windows para evitar UnicodeEncodeError
+# Reconfigura stdout/stderr para UTF-8 no Windows/Linux para evitar UnicodeEncodeError
 if hasattr(sys.stdout, 'reconfigure'):
     try:
         sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -55,23 +55,29 @@ class Colors:
     END = '\033[0m'
 
 
-def run_command(cmd, capture_output=True):
+def run_command(cmd, capture_output=True, env=None):
     """
     Executa comando shell e retorna resultado.
     
     Args:
         cmd (list): Comando e argumentos
         capture_output (bool): Se True, captura output
+        env (dict, optional): Variáveis de ambiente adicionais
     
     Returns:
         tuple: (success: bool, output: str, error: str)
     """
+    cmd_env = os.environ.copy()
+    if env:
+        cmd_env.update(env)
+
     try:
         result = subprocess.run(
             cmd,
             capture_output=capture_output,
             text=True,
-            check=False
+            check=False,
+            env=cmd_env
         )
         
         success = result.returncode == 0
@@ -122,43 +128,96 @@ def is_in_databricks():
     )
 
 
-def is_notebook_environment():
-    """Detecta se o script está rodando dentro de um notebook (Databricks / Jupyter / IPython)."""
-    if is_in_databricks():
-        return True
-    if any('ipykernel' in str(arg) or 'jupyter' in str(arg) for arg in sys.argv):
-        return True
+def setup_databricks_auth():
+    """Configura autenticação automática quando executado dentro do Databricks Notebook."""
     try:
-        get_ipython()  # noqa: F821
-        return True
-    except NameError:
-        return False
+        dbutils = None
+        try:
+            import IPython
+            ip = IPython.get_ipython()
+            if ip and 'dbutils' in ip.user_ns:
+                dbutils = ip.user_ns['dbutils']
+        except Exception:
+            pass
+
+        if not dbutils:
+            try:
+                import pyspark.dbutils
+                dbutils = pyspark.dbutils.DBUtils()
+            except Exception:
+                pass
+
+        if dbutils:
+            context = dbutils.notebook.entry_point.getDbutils().notebook().getContext()
+            api_url = None
+            try:
+                api_url = context.apiUrl().getOrElse(None)
+            except Exception:
+                pass
+            if not api_url:
+                try:
+                    browser_host = context.browserHostName().getOrElse(None)
+                    if browser_host:
+                        api_url = f"https://{browser_host}"
+                except Exception:
+                    pass
+            
+            token = None
+            try:
+                token = context.apiToken().getOrElse(None)
+            except Exception:
+                pass
+
+            if api_url and not os.environ.get('DATABRICKS_HOST'):
+                os.environ['DATABRICKS_HOST'] = api_url
+            if token and not os.environ.get('DATABRICKS_TOKEN'):
+                os.environ['DATABRICKS_TOKEN'] = token
+    except Exception:
+        pass
 
 
-def check_databricks_cli():
+def ensure_databricks_cli():
     """
-    Verifica se o CLI do Databricks está instalado no ambiente.
+    Garante que o Databricks CLI está instalado e disponível no PATH.
+    Se estiver no ambiente Linux do Databricks, instala automaticamente se necessário.
     
     Returns:
-        bool: True se databricks CLI estiver acessível.
+        bool: True se databricks CLI estiver pronto para uso.
     """
-    success, output, error = run_command(["databricks", "--version"])
-    if not success:
-        print_error("Databricks CLI não foi encontrado no ambiente atual.")
-        if is_in_databricks():
-            print_info("Detectado que você está executando dentro de um Notebook/Cluster Databricks.")
-            safe_print("  • O script 'deploy.py' (DABs) foi feito para gerenciar o bundle a partir da sua máquina LOCAL ou CI/CD.")
-            safe_print("  • Para executar os pipelines diretamente neste notebook Databricks:")
-            safe_print("      %run ../app/src/scripts/bronze_nats_control.py")
-            safe_print("  • Se quiser instalar o Databricks CLI no cluster Databricks, execute em uma célula %sh:")
-            safe_print("      %sh curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh\n")
-        else:
-            print_info("Para instalar o Databricks CLI na sua máquina local:")
-            safe_print("  • Windows (winget): winget install Databricks.CLI")
-            safe_print("  • Documentação oficial: https://docs.databricks.com/dev-tools/cli/index.html")
-            safe_print("  • Após a instalação, configure o acesso executando: databricks configure\n")
-        return False
-    return True
+    # 1. Verificar se já está no PATH
+    success, _, _ = run_command(["databricks", "--version"])
+    if success:
+        return True
+
+    # 2. Verificar diretórios comuns
+    common_paths = ["/usr/local/bin", os.path.expanduser("~/.local/bin"), "/tmp/bin"]
+    for p in common_paths:
+        candidate = Path(p) / "databricks"
+        if candidate.exists():
+            os.environ["PATH"] = f"{p}:{os.environ.get('PATH', '')}"
+            success, _, _ = run_command(["databricks", "--version"])
+            if success:
+                return True
+
+    # 3. Se estiver no Databricks / Linux, instalar CLI automaticamente
+    if sys.platform.startswith("linux") or is_in_databricks():
+        print_info("Instalando Databricks CLI no cluster...")
+        install_res, _, _ = run_command(["sh", "-c", "curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh"])
+        for p in ["/usr/local/bin", os.path.expanduser("~/.local/bin")]:
+            if p not in os.environ.get("PATH", ""):
+                os.environ["PATH"] = f"{p}:{os.environ.get('PATH', '')}"
+        
+        success, _, _ = run_command(["databricks", "--version"])
+        if success:
+            print_success("Databricks CLI instalada com sucesso!")
+            return True
+
+    # 4. Caso contrário (Windows local sem CLI instalada)
+    print_error("Databricks CLI não foi encontrado no sistema.")
+    print_info("Para instalar no Windows:")
+    safe_print("  winget install Databricks.CLI")
+    safe_print("  Após a instalação, configure o acesso executando: databricks configure\n")
+    return False
 
 
 def find_bundle_root():
@@ -201,7 +260,8 @@ def validate_bundle():
     """
     print_header("VALIDANDO BUNDLE - PROD")
     
-    if not check_databricks_cli():
+    setup_databricks_auth()
+    if not ensure_databricks_cli():
         return False
 
     try:
@@ -237,7 +297,8 @@ def deploy_bundle():
     """
     print_header("DEPLOY - AMBIENTE: PROD")
     
-    if not check_databricks_cli():
+    setup_databricks_auth()
+    if not ensure_databricks_cli():
         return False
 
     # 1. Validar primeiro
@@ -246,7 +307,7 @@ def deploy_bundle():
         return False
     
     safe_print()
-    print_info("Iniciando deploy das pipelines e jobs no ambiente 'prod'...")
+    print_info("Iniciando deploy das pipelines no ambiente 'prod'...")
     print_warning("Isso pode levar alguns minutos...")
     safe_print()
     
@@ -274,8 +335,6 @@ def deploy_bundle():
 
 def main():
     """Função principal."""
-    in_notebook = is_notebook_environment()
-
     parser = argparse.ArgumentParser(
         description='Deploy de Pipelines - Albion Market Analysis (PROD)',
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -306,28 +365,12 @@ Exemplos:
             return
         sys.exit(e.code)
     
-    has_action = args.validate or args.deploy
-    
-    # Se estiver rodando dentro do notebook do Databricks sem argumentos CLI específicos
-    if in_notebook and not has_action:
-        print_header("ALBION MARKET ANALYSIS - DEPLOY HELPER")
-        print_info("Ambiente de Notebook / Databricks detectado.")
-        safe_print("Opções:")
-        safe_print("  1. Execução direta neste Notebook Databricks:")
-        safe_print("     %run ../app/src/scripts/bronze_nats_control.py")
-        safe_print()
-        safe_print("  2. Deploy das pipelines via DABs (PROD):")
-        safe_print("     Execute no seu terminal LOCAL (computador/workstation):")
-        safe_print("     python resources/deploy.py --deploy")
-        safe_print()
-        return
-
     # Se --validate foi especificado explicitamente
     if args.validate and not args.deploy:
         validate_bundle()
         return
 
-    # Por padrão (ou com --deploy), executa validação e deploy em PROD
+    # Por padrão (ou com --deploy), executa validação e deploy em PROD imediatamente
     deploy_bundle()
 
 
