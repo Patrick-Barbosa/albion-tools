@@ -1,121 +1,129 @@
-# Albion Market Analysis - NATS Real-Time Ingestion
+# ⚔️ Albion Online — Market Intelligence MCP Server
 
-## 📋 Visão Geral
+Servidor **MCP (Model Context Protocol)** de alta performance projetado para conectar ferramentas agênticas de IA (Antigravity, Claude Desktop, Cursor, LangChain e agentes autônomos) ao ecossistema econômico do **Albion Online**.
 
-Solução de ingestão em tempo real via NATS para a camada Bronze de uma arquitetura Medallion no Databricks.
-
-### Características
-
-* ✅ **Ingestão em tempo real** via NATS broker público do Albion Online
-* ✅ **Execução em background** (non-blocking) via threading + asyncio
-* ✅ **Buffer em memória** com micro-batch writes automáticos
-* ✅ **Delta Lake** como destino (ACID, time-travel, schema evolution)
-* ✅ **Monitoramento** via API de status (mensagens recebidas/gravadas, erros, uptime)
-* ✅ **Graceful shutdown** com flush final garantido
-* ✅ **Retry logic** com backoff exponencial
-* ✅ **Suporte a DABs** (Declarative Automation Bundles)
+O MCP opera com **Core em NATS Firehose (tempo real) e AODP REST API (batching inteligente e proteção de rate limits)**, cálculos fiscais oficiais (4% premium / 8% sem premium) e suporte analítico **100% opcional ao Databricks Unity Catalog**.
 
 ---
 
-## 🏗️ Estrutura do Projeto
+## 🚀 Arquitetura & Destaques
 
-```
-albion-tools/
-├── databricks.yml                    # Configuração principal do Bundle
-├── requirements.txt                  # Dependências Python
-├── README.md                         # Esta documentação
-├── resources/
-│   └── bronze_nats_job.yml          # ✅ Definição do job de ingestão NATS
-├── app/
-│   └── src/
-│       ├── nats/
-│       │   ├── __init__.py
-│       │   └── ingestion.py         # ✅ Módulo reutilizável NATS
-│       └── scripts/
-│           └── bronze_ingestion.py  # ✅ Script principal (ponto de entrada)
-├── notebooks/
-│   └── bronze_nats_control          # ✅ Notebook de controle interativo
-└── workflows/
-    └── SDP/                         # Pipelines Silver/Gold (já existentes)
-```
+- **⚡ Core em NATS Firehose (Tempo Real)**: Escuta o broker oficial da comunidade (`nats://public:thenewalbiondata@nats.albion-online-data.com:4222`), mantendo buffer em memória para ordens do Mercado Negro (*Black Market*) e Cidades Reais com **consumo ZERO de requisições HTTP**.
+- **🛡️ Proteção Rigorosa contra Limites Baixos da API AODP**:
+  - Limites monitorados: **180 req/min** e **300 req/5min**.
+  - **Batching automático**: Agrupa até 50 itens por chamada GET respeitando o limite de 4096 caracteres na URL.
+  - **Cache em memória com TTL**: 120s para cotações correntes, 30 min para histórico diário.
+  - Rate Limiter ativo (Token Bucket) e backoff automático em caso de HTTP 429.
+- **🪙 Motor Econômico Oficial ([BUSINESS_RULES.md](BUSINESS_RULES.md))**:
+  - Impostos: 4% com Premium, 8% sem Premium, 2.5% de Setup Fee.
+  - Simulação de encantamento de itens (.0 → .1/.2/.3) respeitando múltiplos de 96 runas/almas/relíquias por slot.
+  - Simulação de refino em capitais com bônus (40% RRR / 53.9% foco) e nutrição de estações.
+  - Cascata de insumos e otimização de kits de transporte (Montarias, Bolsas, Tortas de Porco).
+- **☁️ Databricks 100% Opcional**: Conecta à tabela Gold (`main.gold.history_features`) via Statement Execution API se configurado no `.env`; caso contrário, o MCP opera normalmente sem dependências rígidas.
+- **📁 Legado Preservado**: Todo o código original de dashboards anteriores (FastAPI e Streamlit) está arquivado na pasta `old/`.
 
 ---
 
-## 🚀 Quickstart
+## 🛠️ Instalação & Execução
 
-### ⚡ OPÇÃO 1: Execução Rápida via Notebook (Recomendado para AGORA)
-
-**Por que usar o notebook primeiro?**
-* ✅ **Imediato**: Roda agora mesmo, sem deploy
-* ✅ **Interativo**: Você vê os dados chegando em tempo real
-* ✅ **Debugging fácil**: Pode parar/reiniciar instantaneamente
-
-**Passos:**
-
-1. **Abra o notebook** `notebooks/bronze_nats_control`
-
-2. **Execute célula por célula**: Instalação → Configuração → Iniciar → Status → Consultar
-
-3. **Monitorar em tempo real**:
-   ```python
-   status = ingestion.get_status()
-   # >>> Mensagens recebidas: 42,350
-   # >>> Mensagens gravadas: 41,000
-   ```
-
-**⏱️ Tempo total: ~2 minutos**
-
----
-
-### 🎯 OPÇÃO 2: Deploy via DABs (Para Produção)
-
-**Deploy:**
-
+### 1. Instalar dependências
 ```bash
-# 1. Validar bundle
-databricks bundle validate -t dev
+pip install -r requirements.txt
+```
 
-# 2. Deploy (cria o job no workspace)
-databricks bundle deploy -t dev
+### 2. Executar o Servidor MCP
 
-# 3. Executar job manualmente
-databricks bundle run bronze_nats_ingestion -t dev
+#### Modo Standard I/O (`stdio`) — Recomendado para Claude Desktop / Cursor / Antigravity:
+```bash
+python -m src.albion_mcp
+# ou
+python src/albion_mcp/server.py
+```
+
+#### Modo SSE / HTTP:
+```bash
+python src/albion_mcp/server.py sse
+```
+
+### 3. Rodar a Suíte de Testes
+```bash
+python -m pytest tests -v
 ```
 
 ---
 
-## 🗃️ Schema da Tabela Bronze
+## 🔌 Conectando o MCP em Agentes e Ferramentas
 
-| Coluna | Tipo | Nullable | Descrição |
-|--------|------|----------|-----------|
-| `ingestion_timestamp` | `TimestampType` | Não | Timestamp UTC da ingestão |
-| `message_id` | `LongType` | Não | ID único da ordem (Albion) |
-| `item_id` | `StringType` | Sim | ID do item (ex: `T4_BAG`) |
-| `item_name` | `StringType` | Sim | Nome do grupo do item |
-| `quality_level` | `IntegerType` | Sim | Qualidade (1-5) |
-| `enchantment_level` | `IntegerType` | Sim | Encantamento (0-4) |
-| `unit_price_silver` | `LongType` | Sim | Preço unitário em silver |
-| `amount` | `IntegerType` | Sim | Quantidade |
-| `auction_type` | `StringType` | Sim | Tipo (offer/request) |
-| `expires_at` | `TimestampType` | Sim | Expiração da ordem |
-| `location_id` | `IntegerType` | Sim | ID da cidade (ex: 3003 = Caerleon) |
-| `raw_json` | `StringType` | Sim | Payload JSON original (debug) |
+### No Claude Desktop (`claude_desktop_config.json`)
+```json
+{
+  "mcpServers": {
+    "albion-market": {
+      "command": "python",
+      "args": ["-m", "src.albion_mcp"],
+      "cwd": "C:\\Users\\pk\\Documents\\GitHub\\albion-tools"
+    }
+  }
+}
+```
 
----
-
-## 📝 Notas Técnicas
-
-### Fonte de Dados NATS
-
-* **Broker**: `nats://public:thenewalbiondata@nats.albion-online-data.com:4222`
-* **Tópico**: `marketorders.deduped` (já deduplicado na origem)
-
-### Conversão de Timestamps
-
-O Albion Online usa Windows File Time (ticks desde 1601-01-01). A conversão está implementada no módulo `app/src/nats/ingestion.py`.
+### No Cursor (`.cursor/mcp.json`)
+```json
+{
+  "mcpServers": {
+    "albion-market": {
+      "command": "python",
+      "args": ["-m", "src.albion_mcp"]
+    }
+  }
+}
+```
 
 ---
 
-## 📜 Licença
+## 📋 Catálogo de Ferramentas MCP (22 Tools)
 
-Uso livre para fins pessoais e educacionais.
+| Categoria | Ferramenta | Descrição | Fonte Primária |
+|---|---|---|---|
+| **Itens & Metadados** | `albion_search_items` | Busca itens em PT-BR/EN por Tier (T4..T8), encantamento (.0..4) e categoria. | Metadados locais |
+| | `albion_get_item_details` | Ficha técnica completa, slot do item e insumos de encantamento (múltiplos de 96). | Metadados locais |
+| **Mercado ao Vivo** | `albion_get_current_prices` | Cotações atuais de compra e venda em lote. Aplica batching e cache TTL. | AODP REST API |
+| | `albion_nats_get_live_orders` | Ordens em tempo real transmitidas pelo NATS (< 60s) com ZERO consumo de HTTP. | NATS Stream |
+| | `albion_get_gold_prices` | Histórico recente de preço do ouro em prata. | AODP REST API |
+| | `albion_get_api_quota_status` | Relatório de saúde do rate limiter e chamadas restantes no minuto. | Rate Limiter |
+| **Histórico & Pareto** | `albion_get_price_history` | Histórico consolidado de preços e volumes diários por praça. | AODP REST API |
+| | `albion_get_market_pareto` | Curva de Pareto 80/20 dos itens mais movimentados em prata diária. | Polars Engine |
+| **Economia & Cálculos** | `albion_calculate_tax_and_fees` | Cálculo exato de custo efetivo, receita líquida e ROI (4% / 8% / 2.5%). | Regras Fiscais |
+| | `albion_simulate_enchantment` | Simula encantamento na Artifact Foundry cruzando custo de insumos e receita líquida. | Engine Econômica |
+| | `albion_calculate_refining` | Viabilidade de refino de recurso na capital com bônus (40% RRR / 53.9% Foco). | Polars Engine |
+| | `albion_calculate_cascade_refining` | Simulação de refino em cascata até o tier alvo com otimização de carga e montaria. | Polars Engine |
+| | `albion_find_arbitrage_opportunities` | Oportunidades de arbitragem entre Cidades Reais e para o Black Market. | Engine Econômica |
+| **Builds & Equipamentos** | `albion_optimize_budget_build` | Identifica a combinação mais barata (ex: 4.3, 5.2, 6.1 vs 7.0) para Tier Equivalente alvo. | Engine de Otimização |
+| **Anti-Alucinação (Zero-Error)** | `albion_calculate_breakeven_price` | Álgebra reversa exata para preço mínimo de venda e tolerância a renovações. | Engine Determinística |
+| | `albion_audit_quote_freshness_and_phantom` | Auditoria estatística de idade e detecção de ordens fantasma / manipulações. | SQLite / Estatística |
+| | `albion_allocate_portfolio_budget` | Knapsack inteiro de alocação de orçamento sem frações e com setup fee reservada. | Otimizador Inteiro |
+| | `albion_simulate_quality_reroll` | Valor esperado (EV) e pior caso (95% confiança) para rerolls na Repair Station. | Modelo Estocástico |
+| | `albion_calculate_exact_loadout_capacity` | Física exata de carga in-game com diagnóstico de sobrecarga (`SAFE_SPRINT`, etc.). | Motor de Carga |
+| | `albion_calculate_transmutation_cost` | Comparativo financeiro de taxa de transmutação do sistema vs compra direta. | Transmutador Municipal |
+| **Databricks (Opcional)** | `albion_databricks_status` | Verifica se o Unity Catalog está configurado no ambiente. | Databricks Client |
+| | `albion_databricks_query_gold` | Consulta features pré-agregadas da tabela `main.gold.history_features`. | Databricks Client |
+
+---
+
+## 🧙‍♂️ Suíte de Skills Antigravity (`.agents/skills/`)
+
+O ecossistema disponibiliza 6 Skills Especializadas com slash commands de primeira classe para agentes agênticos (Antigravity, Cursor e Claude):
+
+| Skill | Slash Command | Descrição |
+|---|---|---|
+| **`albion-investment-wizard`** | `/albion-investment-wizard` | Consultoria financeira de mercado, profiling de capital (500k a 50M+), triagem in-game e carteiras vivas. |
+| **`albion-refining-specialist`** | `/albion-refining-specialist` | Refino industrial nas 5 capitais bônus (40% RRR / 53.9% foco), sobras em cascata e dimensionamento de carga. |
+| **`albion-arbitrage-copilot`** | `/albion-arbitrage-copilot` | Rotas de transporte seguras (Zonas Azuis/Amarelas), filtros anti-ordens fantasmas e cálculo de breakeven. |
+| **`albion-black-market-sniper`** | `/albion-black-market-sniper` | Monitoramento via NATS streaming do Black Market de Caerleon, venda direta e segurança em Red Zones. |
+| **`albion-build-optimizer`** | `/albion-build-optimizer` | Resolução do menor custo por slot para atingir Tier Equivalente (ex: 4.3, 5.2, 6.1 vs 7.0) e reroll de qualidade. |
+| **`albion-market-analyst`** | `/albion-market-analyst` | Curva de Pareto 80/20, volume em prata diária, liquidez e monitoramento do índice do Ouro (Gold). |
+
+---
+
+## 📜 Aviso Legal
+Ferramenta comunitária não oficial construída com dados do [Albion Online Data Project](https://www.albion-online-data.com/). Não afiliada à Sandbox Interactive GmbH.
