@@ -13,15 +13,18 @@ Albion Online Market Intelligence MCP (Model Context Protocol). Servidor MCP ass
 ## Architecture
 
 - **MCP Server (`src/albion_mcp/`)**:
-  - `server.py`: Instância do `MCPServer` oficial do MCP 2.x com registro de 22 ferramentas e ciclo de vida assíncrono (`server_lifespan`).
+  - `server.py`: Instância do `MCPServer` oficial do MCP 2.x com registro de 26 ferramentas e ciclo de vida assíncrono (`server_lifespan`).
   - `core/`:
     - `rate_limiter.py`: Sliding window ativo respeitando os limites da AODP (180 req/min e 300 req/5min) com backoff automático em 429.
     - `aodp_client.py`: Cliente REST com batching de até 50 itens por chamada (respeitando limite de 4096 caracteres na URL) e cache TTL.
     - `nats_client.py`: Core streaming em tempo real via NATS Firehose (`nats://public:thenewalbiondata@nats.albion-online-data.com:4222`), buffer em memória e detecção de buy orders do Black Market com ZERO consumo de requisições HTTP.
     - `calculator.py`: Regras financeiras oficiais (4% premium / 8% sem premium, 2.5% setup fee, fórmulas de buy/sell orders e instant sell).
-    - `metadata.py`: Dicionário com 12.000+ itens traduzidos em PT-BR, identificação de tiers (T2..T8), encantamentos (.0..4), slots e custos em múltiplos de 96.
+    - `metadata.py`: Dicionário com itens e traduções PT-BR, identificação de tiers (T2..T8), encantamentos (.0..4), slots e custos em múltiplos de 96.
+    - `loadout_optimizer.py`: Motor universal de otimização de carga e montarias com efeitos sinérgicos multiplicativos `(Base + Mount + Bag) * (1 + Pie) * (1 + Boots)`.
+    - `faction_transport.py`: Motor de transporte de facção em grafo topológico com cálculo de ida e volta, guardrails e árvore de decisão dos 11 corações sombrios.
+    - `cape_crafting.py`: Cadeia downstream de manufatura de capas de facção (T4..T8, encantamentos e reroll de qualidade).
     - `build_optimizer.py`: Motor de resolução de famílias de equipamentos e otimização de menor custo para builds por tier equivalente (ex: 4.3, 5.2, 6.1 vs 7.0).
-    - `polars_analytics.py`: Motor analítico em Polars de alta velocidade para cálculo de refino (40% RRR / 53.9% foco), cascata de insumos, montarias e curva de Pareto.
+    - `polars_analytics.py`: Motor analítico em Polars de alta velocidade para cálculo de refino (40% RRR / 53.9% foco), cascata de insumos e curva de Pareto.
     - `databricks_client.py`: Conector Databricks **100% opcional** via Statement Execution API. Se ausente no `.env`, o MCP opera normalmente com dados de NATS e AODP API.
   - `tools/`:
     - `items.py`: `albion_search_items`, `albion_get_item_details`.
@@ -29,8 +32,11 @@ Albion Online Market Intelligence MCP (Model Context Protocol). Servidor MCP ass
     - `market_history.py`: `albion_get_price_history`, `albion_get_market_pareto`.
     - `economics.py`: `albion_calculate_tax_and_fees`, `albion_simulate_enchantment`, `albion_calculate_refining`, `albion_calculate_cascade_refining`, `albion_find_arbitrage_opportunities`.
     - `build_optimizer.py`: `albion_optimize_budget_build`.
+    - `logistics_tools.py`: `albion_optimize_loadout_capacity`.
+    - `faction_tools.py`: `albion_calculate_faction_transport`, `albion_simulate_heart_cycle`, `albion_evaluate_heart_downstream`.
     - `anti_hallucination.py`: `albion_calculate_breakeven_price`, `albion_audit_quote_freshness_and_phantom`, `albion_allocate_portfolio_budget`, `albion_simulate_quality_reroll`, `albion_calculate_exact_loadout_capacity`, `albion_calculate_transmutation_cost`.
     - `databricks_tools.py`: `albion_databricks_status`, `albion_databricks_query_gold`.
+
 
 ## Ressalvas Importantes de Limites da API (AODP REST)
 

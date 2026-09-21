@@ -21,8 +21,15 @@ from ..core.calculator import (
     get_tax_rate,
     SETUP_FEE_RATE
 )
-from ..core.metadata import metadata_manager, DATA_DIR, SAFE_ROYAL_CITIES, CITIES
-from ..core.polars_analytics import MOUNTS_LIST, BAG_LOAD_MAP, PIE_LOAD_MAP, BOOTS_PASSIVE_MAP
+from ..core.loadout_optimizer import (
+    MOUNTS_LIST,
+    BAG_LOAD_MAP,
+    PIE_LOAD_MAP,
+    BOOTS_PASSIVE_MAP,
+    solve_cheapest_loadout,
+    calculate_effective_capacity
+)
+from ..core.metadata import metadata_manager, DATA_DIR
 
 
 def albion_calculate_breakeven_price(
@@ -114,6 +121,26 @@ def albion_audit_quote_freshness_and_phantom(
             conn.close()
         except Exception:
             pass
+
+    # Fallback de preços históricos de referência se SQLite local não contiver o item
+    BASE_HISTORICAL_ESTIMATES = {
+        "T4_BAG": 4500,
+        "T5_BAG": 15000,
+        "T6_BAG": 45000,
+        "T7_BAG": 120000,
+        "T8_BAG": 350000,
+        "T4_MAIN_AXE": 15000,
+        "T5_MAIN_AXE": 40000,
+        "T6_MAIN_AXE": 95000,
+        "T7_MAIN_AXE": 180000,
+        "T8_MAIN_AXE": 450000,
+        "T4_MAIN_SWORD": 14000,
+        "T5_MAIN_SWORD": 35000,
+        "T6_MAIN_SWORD": 85000,
+    }
+    if avg_hist_price <= 0 and clean_base in BASE_HISTORICAL_ESTIMATES:
+        avg_hist_price = BASE_HISTORICAL_ESTIMATES[clean_base]
+        daily_sales = 500.0
 
     # Se não houver registro histórico, usa quote_price como referência
     reference_price = avg_hist_price if avg_hist_price > 0 else quote_price
@@ -294,6 +321,17 @@ def albion_calculate_exact_loadout_capacity(
         "pie_name": pie["name"],
         "boots_passive_name": boots["name"]
     }
+
+    # Integração com o Solver: se sobrecarregado ou para referência de otimização
+    cargo_weight = capacity_res.get("total_cargo_weight_kg", 0.0)
+    if cargo_weight > 0:
+        opt = solve_cheapest_loadout(target_weight_kg=cargo_weight, current_mount_id=mount.get("id"))
+        capacity_res["solver_recommendation"] = {
+            "is_current_kit_sufficient": capacity_res.get("capacity_usage_pct", 0.0) <= 100.0,
+            "cheapest_loadout": opt.get("cheapest_loadout"),
+            "silver_saved_vs_naive": opt.get("silver_saved_vs_naive_mount", 0)
+        }
+
     return capacity_res
 
 
@@ -306,34 +344,40 @@ def albion_calculate_transmutation_cost(
     to_item_market_price: int = 600
 ) -> Dict[str, Any]:
     """
-    Calcula a viabilidade matemática exata da transmutação de recursos no Transmutador municipal.
+    Calcula a viabilidade matemática exata da transmutação no Transmutador municipal.
 
-    No Albion Online, o Transmutador converte recursos inferiores em superiores mediante
-    uma taxa fixa de prata por unidade cobrada pelo sistema do jogo.
+    No Albion Online, o Transmutador converte:
+    1. Recursos refinados inferiores em superiores (T4 -> T5 -> T6 -> T7 -> T8).
+    2. Corações Sombrios em Corações de Cidade Real (taxa fixa de 5.780 prata por unidade).
 
     Parâmetros:
-    - resource_type: Tipo de recurso ('ORE', 'WOOD', 'FIBER', 'HIDE', 'ROCK').
+    - resource_type: Tipo de recurso ('ORE', 'WOOD', 'FIBER', 'HIDE', 'ROCK', 'HEART').
     - from_tier: Tier de origem (ex: 4).
     - to_tier: Tier de destino (ex: 5).
     - quantity: Quantidade de unidades a transmutar.
     - from_item_buy_price: Custo de compra da matéria-prima do tier inferior (em prata).
     - to_item_market_price: Preço de mercado atual do produto do tier superior já pronto.
     """
-    # Taxa fixa de prata do sistema de jogo por transmutação de tier (valores padrão de referência)
-    SYSTEM_TRANSMUTE_FEE_PER_TIER = {
-        (4, 5): 225,
-        (5, 6): 580,
-        (6, 7): 1650,
-        (7, 8): 4800,
-    }
-
-    step_fee = SYSTEM_TRANSMUTE_FEE_PER_TIER.get((from_tier, to_tier))
-    if not step_fee:
-        # Se pular tiers (ex: T4 -> T6)
-        total_fee_unit = 0
-        for t in range(from_tier, to_tier):
-            total_fee_unit += SYSTEM_TRANSMUTE_FEE_PER_TIER.get((t, t + 1), 500 * t)
-        step_fee = total_fee_unit
+    res_upper = resource_type.upper().strip()
+    if res_upper in ("HEART", "FACTION_HEART", "CORACAO", "CORAÇÃO"):
+        step_fee = 5780
+        path_label = "Coração Sombrio -> Coração de Cidade Real"
+    else:
+        # Taxa fixa de prata do sistema de jogo por transmutação de tier (valores padrão de referência)
+        SYSTEM_TRANSMUTE_FEE_PER_TIER = {
+            (4, 5): 225,
+            (5, 6): 580,
+            (6, 7): 1650,
+            (7, 8): 4800,
+        }
+        step_fee = SYSTEM_TRANSMUTE_FEE_PER_TIER.get((from_tier, to_tier))
+        if not step_fee:
+            # Se pular tiers (ex: T4 -> T6)
+            total_fee_unit = 0
+            for t in range(from_tier, to_tier):
+                total_fee_unit += SYSTEM_TRANSMUTE_FEE_PER_TIER.get((t, t + 1), 500 * t)
+            step_fee = total_fee_unit
+        path_label = f"T{from_tier} -> T{to_tier}"
 
     # Custo total de produzir via transmutação
     unit_transmute_cost = from_item_buy_price + step_fee
@@ -346,8 +390,8 @@ def albion_calculate_transmutation_cost(
     is_worth_transmuting = silver_difference > 0
 
     return {
-        "resource": resource_type.upper(),
-        "transmutation_path": f"T{from_tier} -> T{to_tier}",
+        "resource": res_upper,
+        "transmutation_path": path_label,
         "quantity": quantity,
         "input_tier_unit_cost": from_item_buy_price,
         "system_silver_fee_per_unit": step_fee,
@@ -361,6 +405,6 @@ def albion_calculate_transmutation_cost(
         "verdict": (
             f"🟢 Transmutar é MAIS BARATO: economiza {silver_difference:,} 🪙 no lote."
             if is_worth_transmuting else
-            f"🔴 NÃO TRANSMUTE: Comprar o T{to_tier} pronto no mercado é mais barato por {abs(silver_difference):,} 🪙."
+            f"🔴 NÃO TRANSMUTE: Comprar pronto no mercado é mais barato por {abs(silver_difference):,} 🪙."
         ).replace(",", ".")
     }

@@ -1,6 +1,6 @@
 # ⚔️ Albion Online — Market Intelligence MCP Server
 
-Servidor **MCP (Model Context Protocol)** de alta performance projetado para conectar ferramentas agênticas de IA (Antigravity, Claude Desktop, Cursor, LangChain e agentes autônomos) ao ecossistema econômico do **Albion Online**.
+Servidor **MCP (Model Context Protocol)** de alta performance projetado para conectar ferramentas agênticas de IA (**OpenCode**, Antigravity, Claude Desktop, Cursor e agentes autônomos) ao ecossistema econômico do **Albion Online**.
 
 O MCP opera com **Core em NATS Firehose (tempo real) e AODP REST API (batching inteligente e proteção de rate limits)**, cálculos fiscais oficiais (4% premium / 8% sem premium) e suporte analítico **100% opcional ao Databricks Unity Catalog**.
 
@@ -24,35 +24,204 @@ O MCP opera com **Core em NATS Firehose (tempo real) e AODP REST API (batching i
 
 ---
 
-## 🛠️ Instalação & Execução
+## 🤖 Guia de Instalação para OpenCode (Comando por Comando)
 
-### 1. Instalar dependências
+O [OpenCode](https://opencode.ai) possui suporte nativo ao Model Context Protocol (MCP). Siga o passo a passo exato para o seu sistema operacional:
+
+### 🐧 Instalação no Linux (Ubuntu / Debian / Fedora / Arch)
+
+Abra o seu terminal (Bash ou Zsh) e execute os comandos linha a linha:
+
+#### 1. Instalar pré-requisitos do sistema (se ainda não tiver)
 ```bash
+# Ubuntu / Debian / Pop!_OS:
+sudo apt update && sudo apt install -y python3 python3-venv python3-pip git
+
+# Fedora:
+# sudo dnf install -y python3 python3-pip git
+
+# Arch Linux:
+# sudo pacman -S python python-pip git
+```
+
+#### 2. Clonar o repositório e acessar a pasta
+```bash
+git clone https://github.com/Patrick-Barbosa/albion-tools.git
+cd albion-tools
+```
+
+#### 3. Criar e ativar o ambiente virtual (`.venv`)
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+#### 4. Atualizar o pip e instalar as dependências
+```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 2. Executar o Servidor MCP
-
-#### Modo Standard I/O (`stdio`) — Recomendado para Claude Desktop / Cursor / Antigravity:
+#### 5. Executar os testes para validar a instalação
 ```bash
-python -m src.albion_mcp
-# ou
-python src/albion_mcp/server.py
+pytest tests -v
+```
+*(Todos os testes devem passar com sucesso).*
+
+#### 6. Registrar o MCP no OpenCode
+
+Você tem duas opções igualmente fáceis:
+
+- **Opção A (Via CLI do OpenCode — Recomendada):**
+  Com o `.venv` ativado na pasta do projeto, execute:
+  ```bash
+  opencode mcp add albion-market -- python -m src.albion_mcp
+  ```
+
+- **Opção B (Automática via `opencode.json` do projeto):**
+  Este repositório já inclui o arquivo `opencode.json` pré-configurado na raiz:
+  ```json
+  {
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+      "albion-market": {
+        "type": "local",
+        "command": ["python", "-m", "src.albion_mcp"],
+        "enabled": true,
+        "timeout": 30000
+      }
+    }
+  }
+  ```
+  Basta iniciar o OpenCode a partir desta pasta (com o `.venv` ativado):
+  ```bash
+  opencode
+  ```
+
+#### 7. Verificar se as ferramentas foram carregadas
+```bash
+opencode mcp list
+```
+*(O `albion-market` aparecerá listado e ativo).*
+
+---
+
+### 🪟 Instalação no Windows (PowerShell ou Prompt de Comando)
+
+#### Pré-requisitos no Windows:
+1. **Python 3.10+**: Baixe pelo site oficial [python.org](https://www.python.org/) ou via Microsoft Store. **IMPORTANTE:** Durante a instalação, marque a caixa **"Add python.exe to PATH"**.
+2. **Git**: Baixe em [git-scm.com](https://git-scm.com/).
+
+---
+
+#### No Windows PowerShell:
+
+Execute os comandos abaixo no terminal do PowerShell:
+
+#### 1. Clonar o repositório e acessar a pasta
+```powershell
+git clone https://github.com/Patrick-Barbosa/albion-tools.git
+cd albion-tools
 ```
 
-#### Modo SSE / HTTP:
-```bash
-python src/albion_mcp/server.py sse
+#### 2. Criar o ambiente virtual (`.venv`)
+```powershell
+python -m venv .venv
 ```
 
-### 3. Rodar a Suíte de Testes
-```bash
-python -m pytest tests -v
+#### 3. Habilitar execução de scripts e ativar o ambiente virtual
+Caso o PowerShell bloqueie a execução de scripts, libere para a sessão atual e ative:
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
+*(Você verá o prefixo `(.venv)` no início da linha de comando).*
+
+#### 4. Atualizar o pip e instalar as dependências
+```powershell
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+#### 5. Executar os testes para validar
+```powershell
+pytest tests -v
+```
+
+#### 6. Registrar o MCP no OpenCode
+
+- **Opção A (Via CLI do OpenCode — Recomendada):**
+  ```powershell
+  opencode mcp add albion-market -- .\.venv\Scripts\python.exe -m src.albion_mcp
+  ```
+
+- **Opção B (Configuração Global no Windows):**
+  Se preferir que o MCP fique acessível em qualquer pasta no OpenCode, edite `%USERPROFILE%\.config\opencode\opencode.json`:
+  ```json
+  {
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+      "albion-market": {
+        "type": "local",
+        "command": ["C:\\caminho\\completo\\albion-tools\\.venv\\Scripts\\python.exe", "-m", "src.albion_mcp"],
+        "cwd": "C:\\caminho\\completo\\albion-tools",
+        "enabled": true,
+        "timeout": 30000
+      }
+    }
+  }
+  ```
+
+#### 7. Verificar status
+```powershell
+opencode mcp list
 ```
 
 ---
 
-## 🔌 Conectando o MCP em Agentes e Ferramentas
+#### No Prompt de Comando (CMD Tradicional):
+
+Se preferir o `cmd.exe`:
+
+```cmd
+:: 1. Clonar e entrar na pasta
+git clone https://github.com/Patrick-Barbosa/albion-tools.git
+cd albion-tools
+
+:: 2. Criar e ativar ambiente virtual
+python -m venv .venv
+.venv\Scripts\activate.bat
+
+:: 3. Instalar dependências
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+:: 4. Validar
+pytest tests -v
+
+:: 5. Conectar no OpenCode
+opencode mcp add albion-market -- .venv\Scripts\python.exe -m src.albion_mcp
+
+:: 6. Listar servidores
+opencode mcp list
+```
+
+---
+
+### 💬 Como usar no Chat do OpenCode
+
+Após conectar o MCP, abra o chat do OpenCode e pergunte naturalmente em português ou inglês:
+
+- *"Qual o preço atual de T4_BAG em Thetford, Caerleon e Fort Sterling?"*
+- *"Simule o refino de 1000 barras de ferro T4 em Fort Sterling com e sem foco."*
+- *"Encontre as melhores oportunidades de arbitragem entre Lymhurst e Caerleon."*
+- *"Otimize uma build de Arco T6 equivalente gastando o mínimo de prata possível."*
+- *"Mostre os itens da Curva de Pareto 80/20 em Martlock."*
+- *"Verifique o status da quota da API da AODP."*
+
+---
+
+## 🔌 Conectando em Outros Agentes e Clientes MCP
 
 ### No Claude Desktop (`claude_desktop_config.json`)
 ```json
@@ -61,7 +230,7 @@ python -m pytest tests -v
     "albion-market": {
       "command": "python",
       "args": ["-m", "src.albion_mcp"],
-      "cwd": "C:\\Users\\pk\\Documents\\GitHub\\albion-tools"
+      "cwd": "/caminho/para/albion-tools"
     }
   }
 }
@@ -78,6 +247,9 @@ python -m pytest tests -v
   }
 }
 ```
+
+### No Antigravity / Gemini CLI
+O servidor é detectado automaticamente via `.agents/skills/` e pelas ferramentas MCP declaradas em `src/albion_mcp/server.py`.
 
 ---
 

@@ -8,11 +8,15 @@ Implementa:
 - Análise de Pareto 80/20 do mercado.
 """
 
+from __future__ import annotations
 import os
 import sqlite3
 import logging
 from typing import Dict, Any, List, Optional
-import polars as pl
+try:
+    import polars as pl
+except ImportError:
+    pl = None
 
 from .metadata import metadata_manager, QUALITY_NAMES, SAFE_ROYAL_CITIES, CITIES
 from .calculator import calculate_trade_profit, get_tax_rate, SETUP_FEE_RATE
@@ -31,36 +35,14 @@ REFINING_SPECIALTIES = {
     "Lymhurst": {"resource": "FIBER", "name": "Fibra -> Tecidos", "raw_prefix": "FIBER", "refined_prefix": "CLOTH"},
 }
 
-MOUNTS_LIST = [
-    {"id": "HORSE_T5", "name": "Cavalo com Bolsa T5", "tier": "T5", "capacity_kg": 400, "est_cost": 25000},
-    {"id": "OX_T4", "name": "Boi de Transporte T4 (Adepto)", "tier": "T4", "capacity_kg": 800, "est_cost": 20000},
-    {"id": "OX_T5", "name": "Boi de Transporte T5 (Perito)", "tier": "T5", "capacity_kg": 1400, "est_cost": 55000},
-    {"id": "OX_T6", "name": "Boi de Transporte T6 (Mestre)", "tier": "T6", "capacity_kg": 2100, "est_cost": 130000},
-    {"id": "OX_T7", "name": "Boi de Transporte T7 (Grão-Mestre)", "tier": "T7", "capacity_kg": 2700, "est_cost": 300000},
-    {"id": "OX_T8", "name": "Boi de Transporte T8 (Ancião)", "tier": "T8", "capacity_kg": 3500, "est_cost": 650000},
-    {"id": "MAMMOTH_T8", "name": "Mamute de Transporte T8", "tier": "T8", "capacity_kg": 25000, "est_cost": 125000000},
-]
-
-BAG_LOAD_MAP = {
-    "NONE": {"name": "Sem Bolsa", "bonus_kg": 0, "est_cost": 0},
-    "T4.0": {"name": "Bolsa T4.0", "bonus_kg": 86, "est_cost": 5000},
-    "T5.0": {"name": "Bolsa T5.0", "bonus_kg": 141, "est_cost": 15000},
-    "T6.0": {"name": "Bolsa T6.0", "bonus_kg": 230, "est_cost": 40000},
-    "T7.0": {"name": "Bolsa T7.0", "bonus_kg": 377, "est_cost": 120000},
-    "T8.0": {"name": "Bolsa T8.0", "bonus_kg": 617, "est_cost": 350000},
-}
-
-PIE_LOAD_MAP = {
-    "NONE": {"name": "Sem Comida", "bonus_pct": 0.0, "est_cost": 0},
-    "T3_CHICKEN": {"name": "Torta de Galinha T3 (+10%)", "bonus_pct": 10.0, "est_cost": 500},
-    "T5_GOOSE": {"name": "Torta de Ganso T5 (+20%)", "bonus_pct": 20.0, "est_cost": 1500},
-    "T7_PORK": {"name": "Torta de Porco T7 (+30%)", "bonus_pct": 30.0, "est_cost": 3500},
-}
-
-BOOTS_PASSIVE_MAP = {
-    "NONE": {"name": "Sem Passiva", "bonus_pct": 0.0},
-    "COURIER_STANDARD": {"name": "Passiva Transportador (+14%)", "bonus_pct": 14.0},
-}
+# Mapeamentos centralizados importados da fonte única da verdade (loadout_optimizer)
+from .loadout_optimizer import (
+    MOUNTS_LIST,
+    BAG_LOAD_MAP,
+    PIE_LOAD_MAP,
+    BOOTS_PASSIVE_MAP,
+    solve_cheapest_loadout
+)
 
 
 class AlbionAnalyticsEngine:
@@ -68,7 +50,11 @@ class AlbionAnalyticsEngine:
         self.region = region
         self.df: Optional[pl.DataFrame] = None
 
-    def load_data(self) -> pl.DataFrame:
+    def load_data(self) -> Optional[Any]:
+        if pl is None:
+            self.df = None
+            return None
+
         if self.df is not None:
             return self.df
 
@@ -103,7 +89,7 @@ class AlbionAnalyticsEngine:
             except Exception as e:
                 logger.warning(f"Erro ao ler SQLite: {e}")
 
-        self.df = pl.DataFrame()
+        self.df = pl.DataFrame() if pl is not None else None
         return self.df
 
     def _enrich_dataframe(self, df: pl.DataFrame) -> pl.DataFrame:
@@ -276,12 +262,9 @@ class AlbionAnalyticsEngine:
         raw_qty = refine_base["raw_material"]["quantity"] * bars_produced
         weight_kg = round(raw_qty * UNIT_WEIGHTS.get(target_tier, 1.0), 1)
 
-        # Seleciona melhor montaria
-        recommended_mount = MOUNTS_LIST[-1]
-        for m in MOUNTS_LIST:
-            if m["capacity_kg"] >= weight_kg:
-                recommended_mount = m
-                break
+        # Resolve montaria e kit ótimo usando o Loadout Solver centralizado
+        loadout_sol = solve_cheapest_loadout(target_weight_kg=weight_kg, risk_level="SAFE_ONLY")
+        cheapest_kit = loadout_sol.get("cheapest_loadout") or {}
 
         return {
             "resource": resource_type.upper(),
@@ -296,11 +279,13 @@ class AlbionAnalyticsEngine:
             "roi_pct": roi_pct,
             "cargo": {
                 "total_weight_kg": weight_kg,
-                "recommended_mount": recommended_mount["name"],
-                "mount_capacity_kg": recommended_mount["capacity_kg"],
-                "est_mount_cost": recommended_mount["est_cost"],
-                "recommended_bag": "Bolsa T5.0 (Perito)",
-                "recommended_food": "Torta de Porco T7 (+30% Carga)"
+                "recommended_mount": cheapest_kit.get("mount_name", "Boi de Transporte T5"),
+                "mount_capacity_kg": cheapest_kit.get("effective_capacity_kg", 1400.0),
+                "est_mount_cost": cheapest_kit.get("total_cost_silver", 55000),
+                "recommended_bag": cheapest_kit.get("bag_name", "Sem Bolsa"),
+                "recommended_food": cheapest_kit.get("food_name", "Sem Comida"),
+                "usage_pct": cheapest_kit.get("usage_pct", 0.0),
+                "silver_saved_vs_naive": loadout_sol.get("silver_saved_vs_naive_mount", 0)
             },
             "unit_breakdown": refine_base
         }

@@ -17,10 +17,29 @@ from .calculator import (
     format_silver_compact,
 )
 from .metadata import metadata_manager, QUALITY_NAMES, CITIES, SAFE_ROYAL_CITIES, CATEGORIES, TIERS
-from .aodp_client import aodp_client
-from .nats_client import nats_subscriber
-from .databricks_client import databricks_client
-from .polars_analytics import analytics_engine
+try:
+    from .aodp_client import aodp_client
+except ImportError:
+    aodp_client = None
+
+try:
+    from .nats_client import nats_subscriber
+except ImportError:
+    nats_subscriber = None
+
+try:
+    from .databricks_client import databricks_client
+except ImportError:
+    databricks_client = None
+
+try:
+    from .polars_analytics import analytics_engine
+except ImportError:
+    analytics_engine = None
+
+from .loadout_optimizer import solve_cheapest_loadout, calculate_effective_capacity
+from .faction_transport import calculate_faction_transport_plan, simulate_post_trip_decision_tree
+from .cape_crafting import calculate_cape_crafting_cost, evaluate_cape_vs_raw_heart_profit
 
 __all__ = [
     "rate_limiter",
@@ -46,4 +65,10 @@ __all__ = [
     "nats_subscriber",
     "databricks_client",
     "analytics_engine",
+    "solve_cheapest_loadout",
+    "calculate_effective_capacity",
+    "calculate_faction_transport_plan",
+    "simulate_post_trip_decision_tree",
+    "calculate_cape_crafting_cost",
+    "evaluate_cape_vs_raw_heart_profit",
 ]

@@ -27,6 +27,12 @@ from .anti_hallucination import (
     albion_calculate_transmutation_cost,
 )
 from .build_optimizer import albion_optimize_budget_build
+from .logistics_tools import albion_optimize_loadout_capacity
+from .faction_tools import (
+    albion_calculate_faction_transport,
+    albion_simulate_heart_cycle,
+    albion_evaluate_heart_downstream,
+)
 
 ALL_TOOLS = [
     # Metadados e catálogo
@@ -58,6 +64,12 @@ ALL_TOOLS = [
     albion_simulate_quality_reroll,
     albion_calculate_exact_loadout_capacity,
     albion_calculate_transmutation_cost,
+    # Logística universal de carga
+    albion_optimize_loadout_capacity,
+    # Inteligência de transporte de facção
+    albion_calculate_faction_transport,
+    albion_simulate_heart_cycle,
+    albion_evaluate_heart_downstream,
 ]
 
 __all__ = [
@@ -84,4 +96,8 @@ __all__ = [
     "albion_simulate_quality_reroll",
     "albion_calculate_exact_loadout_capacity",
     "albion_calculate_transmutation_cost",
+    "albion_optimize_loadout_capacity",
+    "albion_calculate_faction_transport",
+    "albion_simulate_heart_cycle",
+    "albion_evaluate_heart_downstream",
 ]

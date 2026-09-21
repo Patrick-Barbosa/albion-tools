@@ -80,17 +80,8 @@ def resolve_item_family(query: str) -> Optional[Dict[str, Any]]:
     # Caso 2: Busca por texto (PT-BR ou EN)
     cleaned_query = clean_item_query(q).lower()
 
-    # Busca em items.json
-    try:
-        import json
-        if os.path.exists(ITEMS_FILE):
-            with open(ITEMS_FILE, "r", encoding="utf-8") as f:
-                catalog = json.load(f)
-        else:
-            catalog = []
-    except Exception as e:
-        logger.warning(f"Erro ao carregar catálogo para busca de família: {e}")
-        catalog = []
+    # Busca no catálogo de metadados
+    catalog = metadata_manager.get_raw_catalog()
 
     exact_matches = []
     prefix_matches = []

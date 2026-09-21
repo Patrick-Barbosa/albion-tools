@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "albion-market": {
+      "type": "local",
+      "command": ["python", "-m", "src.albion_mcp"],
+      "enabled": true,
+      "timeout": 30000
+    }
+  }
+}

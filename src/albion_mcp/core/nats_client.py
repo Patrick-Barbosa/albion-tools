@@ -14,7 +14,10 @@ import json
 import logging
 import time
 from typing import Dict, Any, List, Optional
-import nats
+try:
+    import nats
+except ImportError:
+    nats = None
 
 logger = logging.getLogger("albion_mcp.nats_client")
 

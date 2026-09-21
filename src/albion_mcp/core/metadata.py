@@ -92,9 +92,97 @@ class ItemMetadataManager:
             except Exception as e:
                 logger.warning(f"Falha ao ler cache de itens em {ITEMS_FILE}: {e}")
 
+        # Se items.json não existir, gera catálogo de fallback com os itens essenciais
+        fallback_data = self._build_fallback_catalog()
+        self._parse_items_json(fallback_data)
         self._is_loaded = True
 
+    def _build_fallback_catalog(self) -> List[Dict[str, Any]]:
+        affixes_pt = {
+            3: "do Iniciante",
+            4: "do Adepto",
+            5: "do Perito",
+            6: "do Mestre",
+            7: "do Grão-Mestre",
+            8: "do Ancião"
+        }
+        affixes_en = {
+            3: "Journeyman's",
+            4: "Adept's",
+            5: "Expert's",
+            6: "Master's",
+            7: "Grandmaster's",
+            8: "Elder's"
+        }
+        templates = [
+            ("BAG", "Bolsa", "Bag", 4, 8),
+            ("CAPE", "Capa", "Cape", 4, 8),
+            ("MAIN_AXE", "Machado de Guerra", "Battleaxe", 4, 8),
+            ("2H_AXE", "Grande Machado", "Greataxe", 4, 8),
+            ("MAIN_SWORD", "Espada Larga", "Broadsword", 4, 8),
+            ("2H_DUALSWORD", "Espadas Duplas", "Dual Swords", 4, 8),
+            ("2H_BOW", "Arco Curvo", "Bow", 4, 8),
+            ("2H_CROSSBOW", "Besta Pesada", "Crossbow", 4, 8),
+            ("HEAD_LEATHER_SET3", "Capuz de Assassino", "Assassin Hood", 4, 8),
+            ("ARMOR_LEATHER_SET1", "Casaco de Mercenário", "Mercenary Jacket", 4, 8),
+            ("HEAD_PLATE_SET1", "Elmo de Soldado", "Soldier Helmet", 4, 8),
+            ("ARMOR_PLATE_SET1", "Armadura de Soldado", "Soldier Armor", 4, 8),
+            ("SHOES_PLATE_SET1", "Botas de Soldado", "Soldier Boots", 4, 8),
+            ("SHOES_LEATHER_SET3", "Sapatos de Assassino", "Assassin Shoes", 4, 8),
+            ("METALBAR", "Barra de Metal", "Metal Bar", 4, 8),
+            ("PLANKS", "Tábuas de Madeira", "Planks", 4, 8),
+            ("CLOTH", "Tecido", "Cloth", 4, 8),
+            ("LEATHER", "Couro", "Leather", 4, 8),
+            ("STONEBLOCK", "Bloco de Pedra", "Stone Block", 4, 8),
+        ]
+        catalog = []
+        for base_id, pt_base, en_base, min_t, max_t in templates:
+            for t in range(min_t, max_t + 1):
+                pt_aff = affixes_pt.get(t, "")
+                en_aff = affixes_en.get(t, "")
+                for enc in range(5):
+                    uname = f"T{t}_{base_id}" if enc == 0 else f"T{t}_{base_id}@{enc}"
+                    pt_name = f"{pt_base} {pt_aff}".strip() + (f" .{enc}" if enc > 0 else "")
+                    en_name = f"{en_aff} {en_base}".strip() + (f" .{enc}" if enc > 0 else "")
+                    catalog.append({
+                        "UniqueName": uname,
+                        "LocalizedNames": {
+                            "PT-BR": pt_name,
+                            "EN-US": en_name
+                        }
+                    })
+
+        # Tokens e Corações de Facção
+        faction_tokens = [
+            ("QUESTITEM_TOKEN_LYMHURST", "Coração da Árvore", "Tree Heart"),
+            ("QUESTITEM_TOKEN_BRIDGEWATCH", "Coração do Deserto", "Mountain Heart"),
+            ("QUESTITEM_TOKEN_FORTSTERLING", "Coração da Montanha", "Rock Heart"),
+            ("QUESTITEM_TOKEN_MARTLOCK", "Coração da Rocha", "Vine Heart"),
+            ("QUESTITEM_TOKEN_THETFORD", "Coração do Pântano", "Swamp Heart"),
+            ("QUESTITEM_TOKEN_CAERLEON", "Coração Sombrio", "Shadowheart"),
+        ]
+        for tid, pt, en in faction_tokens:
+            catalog.append({
+                "UniqueName": tid,
+                "LocalizedNames": {"PT-BR": pt, "EN-US": en}
+            })
+
+        # Salva em disco para uso transparente por outros módulos
+        try:
+            os.makedirs(DATA_DIR, exist_ok=True)
+            with open(ITEMS_FILE, "w", encoding="utf-8") as f:
+                json.dump(catalog, f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
+
+        return catalog
+
+    def get_raw_catalog(self) -> List[Dict[str, Any]]:
+        self.ensure_data_loaded()
+        return self._items_catalog
+
     def _parse_items_json(self, raw_data: list):
+        self._items_catalog = raw_data
         for item in raw_data:
             unique_name = item.get("UniqueName")
             if not unique_name:
@@ -108,6 +196,7 @@ class ItemMetadataManager:
             self.item_names_en[unique_name] = en_name
 
     def get_item_name(self, raw_id: str) -> str:
+
         self.ensure_data_loaded()
         base_id = raw_id.split("@")[0]
         enchantment = self.get_enchantment_level(raw_id)

@@ -14,7 +14,10 @@ import asyncio
 import time
 import logging
 from typing import List, Dict, Any, Optional
-import httpx
+try:
+    import httpx
+except ImportError:
+    httpx = None
 
 from .rate_limiter import rate_limiter, RateLimitExceededException
 
@@ -104,7 +107,7 @@ class AODPClient:
                     continue
             missing_items.append(it)
 
-        if not missing_items:
+        if not missing_items or httpx is None:
             return results
 
         # Processa itens pendentes em lotes (batching)
@@ -185,7 +188,7 @@ class AODPClient:
                     continue
             missing_items.append(it)
 
-        if not missing_items:
+        if not missing_items or httpx is None:
             return results
 
         chunks = self._chunk_items(missing_items, max_chunk_size=20)
@@ -230,6 +233,9 @@ class AODPClient:
             cached = self._gold_cache[cache_key]
             if now - cached["ts"] < self.gold_cache_ttl:
                 return cached["data"]
+
+        if httpx is None:
+            return []
 
         await rate_limiter.acquire(wait_if_needed=True)
 
