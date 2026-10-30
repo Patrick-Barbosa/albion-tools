@@ -85,7 +85,8 @@ def test_guardrails_validation():
         risk_profile="SAFE_ONLY",
         has_premium=True,
         mount_type="T5_BOAR",
-        session_mode="CONTINUOUS_LOOP"
+        session_mode="CONTINUOUS_LOOP",
+        pack_size=7
     )
     assert inv1["is_valid"] is False
     assert any("current_city" in e for e in inv1["errors"])
@@ -97,19 +98,34 @@ def test_guardrails_validation():
         risk_profile="SAFE_ONLY",
         has_premium=True,
         mount_type="T5_BOAR",
-        session_mode="CONTINUOUS_LOOP"
+        session_mode="CONTINUOUS_LOOP",
+        pack_size=7
     )
     assert inv2["is_valid"] is False
     assert any("available_silver" in e for e in inv2["errors"])
 
-    # Válido
+    # Tamanho de fardo inválido (rejeita ausência/invalidez)
+    inv3 = validate_faction_inputs(
+        current_city="Lymhurst",
+        available_silver=100000,
+        risk_profile="SAFE_ONLY",
+        has_premium=True,
+        mount_type="T5_BOAR",
+        session_mode="CONTINUOUS_LOOP",
+        pack_size=99
+    )
+    assert inv3["is_valid"] is False
+    assert any("pack_size" in e for e in inv3["errors"])
+
+    # Válido com todos os 7 parâmetros reais informados
     val = validate_faction_inputs(
         current_city="Lymhurst",
         available_silver=500000,
         risk_profile="ALLOW_RED_ZONE",
         has_premium=True,
         mount_type="T5_BOAR",
-        session_mode="CONTINUOUS_LOOP"
+        session_mode="CONTINUOUS_LOOP",
+        pack_size=7
     )
     assert val["is_valid"] is True
 
@@ -119,7 +135,9 @@ def test_full_transport_plan_lymhurst():
         current_city="Lymhurst",
         available_silver=1000000,
         risk_profile="ALLOW_RED_ZONE",
+        has_premium=True,
         mount_type="T5_BOAR",
+        session_mode="CONTINUOUS_LOOP",
         pack_size=7
     )
     assert res["status"] == "SUCCESS"
@@ -127,3 +145,98 @@ def test_full_transport_plan_lymhurst():
     assert res["best_route_recommended"]["destination_city"] == "Caerleon"
     assert res["best_route_recommended"]["hearts_out"] == 11
     assert res["best_route_recommended"]["hearts_delta"] == 4
+    assert "Mercado Municipal de Lymhurst" in res["where_to_sell"]
+    assert res["recommended_cape"]["cape_name"] == "Capa de Lymhurst"
+    assert res["recommended_cape"]["alternative_cape"] is not None
+    assert res["recommended_cape"]["alternative_cape"]["cape_name"] == "Capa Herege"
+    assert "caerleon_direct_options" in res["recommended_cape"]
+    caerleon_capes = [c["cape_name"] for c in res["recommended_cape"]["caerleon_direct_options"]]
+    assert "Capa de Caerleon" in caerleon_capes
+    assert "Capa de Contrabandista" in caerleon_capes
+    assert "LOOP AUTOSSUSTENTÁVEL" in res["definitive_verdict"]
+    assert len(res["ranked_strategies"]) == 4
+
+
+def test_transport_plan_safe_route_royal_to_royal():
+    # Rota 100% segura Lymhurst -> Fort Sterling
+    res = calculate_faction_transport_plan(
+        current_city="Lymhurst",
+        available_silver=1000000,
+        risk_profile="SAFE_ONLY",
+        has_premium=True,
+        mount_type="T5_BOAR",
+        session_mode="CONTINUOUS_LOOP",
+        pack_size=7,
+        target_destination="Fort Sterling"
+    )
+    assert res["status"] == "SUCCESS"
+    assert res["best_route_recommended"]["destination_city"] == "Fort Sterling"
+    assert res["best_route_recommended"]["hearts_out"] == 9
+    assert "Mercado Municipal de Lymhurst" in res["where_to_sell"]
+
+    # Capa recomendada DEVE ser de Fort Sterling pois recebeu Corações da Montanha
+    # e em Albion Online o NPC NÃO transmuta entre cidades reais!
+    rec_cape = res["recommended_cape"]
+    assert rec_cape["cape_name"] == "Capa de Fort Sterling"
+    assert rec_cape["alternative_cape"]["cape_name"] == "Capa Morta-Viva"
+    assert rec_cape["transmutation_available"] is False
+    assert "não podem ser transmutados" in rec_cape["transmutation_note"]
+
+    # Estratégias e veredito em rota real
+    assert len(res["ranked_strategies"]) == 4
+    assert "LOOP DE RECOMPRA NO MERCADO" in res["definitive_verdict"]
+
+
+def test_cape_investment_audit_details():
+    res = calculate_faction_transport_plan(
+        current_city="Lymhurst",
+        available_silver=1000000,
+        risk_profile="ALLOW_RED_ZONE",
+        has_premium=True,
+        mount_type="T5_BOAR",
+        session_mode="CONTINUOUS_LOOP",
+        pack_size=7
+    )
+    assert res["status"] == "SUCCESS"
+    assert "cape_investment_audit" in res
+    assert "cape_investment_markdown" in res
+    audit = res["cape_investment_audit"]
+    assert audit is not None
+    assert "unit_materials" in audit
+    assert "batch_totals" in audit
+    assert "financial_comparison" in audit
+
+    # Valida componentes de insumos
+    unit_mats = audit["unit_materials"]
+    assert unit_mats["regular_cape_silver"] > 0
+    assert unit_mats["crest_or_ornament_silver"] > 0
+    assert unit_mats["runes_96_silver"] > 0
+    assert unit_mats["souls_96_silver"] > 0
+    assert unit_mats["total_unit_inputs_silver"] == (
+        unit_mats["regular_cape_silver"] +
+        unit_mats["crest_or_ornament_silver"] +
+        unit_mats["runes_96_silver"] +
+        unit_mats["souls_96_silver"] +
+        unit_mats["transmute_fee_silver"]
+    )
+
+    # Validação do lote de 11 capas (7->11)
+    batch = audit["batch_totals"]
+    assert batch["hearts_used"] == 11
+    assert batch["total_additional_investment_silver"] == 11 * unit_mats["total_unit_inputs_silver"]
+
+    # Comparativo financeiro e ROI
+    fin = audit["financial_comparison"]
+    assert "delta_extra_profit_silver" in fin
+    assert "roi_on_additional_investment_pct" in fin
+    assert "markdown_table" in audit
+    assert "Detalhamento do Investimento Adicional" in audit["markdown_table"]
+
+    # Verifica também que a Capa de Contrabandista possui seu audit detalhado nas opções de Caerleon
+    caerleon_options = res["recommended_cape"]["caerleon_direct_options"]
+    smuggler_opt = next(c for c in caerleon_options if c["cape_name"] == "Capa de Contrabandista")
+    assert "cape_investment_audit" in smuggler_opt
+    assert smuggler_opt["cape_investment_audit"]["requires_transmutation"] is False
+    assert smuggler_opt["cape_investment_audit"]["crest_name"] == "Ornamento de Contrabandista"
+
+

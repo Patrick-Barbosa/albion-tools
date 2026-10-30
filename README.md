@@ -34,8 +34,8 @@ Abra o seu terminal (Bash ou Zsh) e execute os comandos linha a linha:
 
 #### 1. Instalar pré-requisitos do sistema (se ainda não tiver)
 ```bash
-# Ubuntu / Debian / Pop!_OS:
-sudo apt update && sudo apt install -y python3 python3-venv python3-pip git
+# Ubuntu / Debian / Pop!_OS (Python 3.12 padrão):
+sudo apt update && sudo apt install -y python3 python3-venv python3.12-venv python3-pip git
 
 # Fedora:
 # sudo dnf install -y python3 python3-pip git
@@ -56,6 +56,10 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
+> [!TIP]
+> Caso receba o erro `ensurepip is not available`, instale o pacote correspondente à sua versão do Python (`sudo apt install -y python3.12-venv`), remova a pasta corrompida com `rm -rf .venv` e recrie com `python3 -m venv .venv`.
+
+
 #### 4. Atualizar o pip e instalar as dependências
 ```bash
 pip install --upgrade pip
@@ -73,30 +77,35 @@ pytest tests -v
 Você tem duas opções igualmente fáceis:
 
 - **Opção A (Via CLI do OpenCode — Recomendada):**
-  Com o `.venv` ativado na pasta do projeto, execute:
+  Na pasta do projeto, execute apontando para o Python do ambiente virtual:
   ```bash
-  opencode mcp add albion-market -- python -m src.albion_mcp
+  opencode mcp add albion-market -- .venv/bin/python -m src.albion_mcp
   ```
 
 - **Opção B (Automática via `opencode.json` do projeto):**
-  Este repositório já inclui o arquivo `opencode.json` pré-configurado na raiz:
+  Este repositório já inclui o arquivo `opencode.json` pré-configurado na raiz com as instruções de comportamento (`AGENTS.md`) e apontando para o executável do `.venv`:
   ```json
   {
     "$schema": "https://opencode.ai/config.json",
+    "instructions": [
+      "AGENTS.md"
+    ],
     "mcp": {
       "albion-market": {
         "type": "local",
-        "command": ["python", "-m", "src.albion_mcp"],
+        "command": [".venv/bin/python", "-m", "src.albion_mcp"],
         "enabled": true,
         "timeout": 30000
       }
     }
   }
   ```
-  Basta iniciar o OpenCode a partir desta pasta (com o `.venv` ativado):
+  Basta iniciar o OpenCode a partir desta pasta:
   ```bash
   opencode
   ```
+
+
 
 #### 7. Verificar se as ferramentas foram carregadas
 ```bash
@@ -160,6 +169,9 @@ pytest tests -v
   ```json
   {
     "$schema": "https://opencode.ai/config.json",
+    "instructions": [
+      "AGENTS.md"
+    ],
     "mcp": {
       "albion-market": {
         "type": "local",
@@ -282,9 +294,9 @@ O servidor é detectado automaticamente via `.agents/skills/` e pelas ferramenta
 
 ---
 
-## 🧙‍♂️ Suíte de Skills Antigravity (`.agents/skills/`)
+## 🧙‍♂️ Suíte de Skills Especializadas (`.opencode/skills/` & `.agents/skills/`)
 
-O ecossistema disponibiliza 6 Skills Especializadas com slash commands de primeira classe para agentes agênticos (Antigravity, Cursor e Claude):
+O ecossistema disponibiliza 6 Skills Especializadas estruturadas para descoberta nativa tanto no **OpenCode** quanto no **Antigravity, Cursor e Claude Desktop**. Além disso, o arquivo [AGENTS.md](AGENTS.md) atua como diretriz de inteligência primária do agente:
 
 | Skill | Slash Command | Descrição |
 |---|---|---|

@@ -55,7 +55,178 @@ CAPE_RECIPES = {
 from .calculator import calculate_quality_reroll_ev
 from .metadata import QUALITY_NAMES
 
-# Identificadores de itens de Capas de Facção por cidade
+# Mapeamento completo de todos os tipos de Capas por Coração de Recurso no Albion Online
+ALL_CAPES_CATALOG: Dict[str, Dict[str, Any]] = {
+    # ── Coração Sombrio (T1_FACTION_CAERLEON_TOKEN_1 / Caerleon) ─────
+    "CAPEITEM_FW_CAERLEON": {
+        "cape_id": "CAPEITEM_FW_CAERLEON",
+        "name_pt": "Capa de Caerleon",
+        "name_en": "Caerleon Cape",
+        "category": "ROYAL_FACTION",
+        "heart_id": "T1_FACTION_CAERLEON_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_UNDEAD",
+        "heart_name_pt": "Coração Sombrio",
+        "crest_prefix": "CREST_FW_CAERLEON",
+        "city": "Caerleon",
+        "default_price_t4_2": 175000,
+        "description": "Reinicia o tempo de recarga da habilidade Q."
+    },
+    "CAPEITEM_SMUGGLER": {
+        "cape_id": "CAPEITEM_SMUGGLER",
+        "name_pt": "Capa de Contrabandista",
+        "name_en": "Smuggler Cape",
+        "category": "SPECIAL_OUTLAW",
+        "heart_id": "T1_FACTION_CAERLEON_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_UNDEAD",
+        "heart_name_pt": "Coração Sombrio",
+        "crest_prefix": "CAPEITEM_SMUGGLER_BP",
+        "city": "Caerleon",
+        "default_price_t4_2": 240000,
+        "description": "Reduz o cooldown da poção em 90s ao usar consumível (Altíssima demanda PvP)."
+    },
+
+    # ── Coração Arbóreo (T1_FACTION_FOREST_TOKEN_1 / Lymhurst) ────────
+    "CAPEITEM_FW_LYMHURST": {
+        "cape_id": "CAPEITEM_FW_LYMHURST",
+        "name_pt": "Capa de Lymhurst",
+        "name_en": "Lymhurst Cape",
+        "category": "ROYAL_FACTION",
+        "heart_id": "T1_FACTION_FOREST_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_WOOD",
+        "heart_name_pt": "Coração Arbóreo",
+        "crest_prefix": "CREST_FW_LYMHURST",
+        "city": "Lymhurst",
+        "default_price_t4_2": 175000,
+        "description": "Restaura mana quando a energia cai abaixo de 40%."
+    },
+    "CAPEITEM_HERETIC": {
+        "cape_id": "CAPEITEM_HERETIC",
+        "name_pt": "Capa Herege",
+        "name_en": "Heretic Cape",
+        "category": "MOB_FACTION",
+        "heart_id": "T1_FACTION_FOREST_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_WOOD",
+        "heart_name_pt": "Coração Arbóreo",
+        "crest_prefix": "CREST_HERETIC",
+        "city": "Lymhurst",
+        "default_price_t4_2": 185000,
+        "description": "Cria armadilha enraizadora ao usar habilidade de bota."
+    },
+
+    # ── Coração da Montanha (T1_FACTION_MOUNTAIN_TOKEN_1 / Fort Sterling)
+    "CAPEITEM_FW_FORTSTERLING": {
+        "cape_id": "CAPEITEM_FW_FORTSTERLING",
+        "name_pt": "Capa de Fort Sterling",
+        "name_en": "Fort Sterling Cape",
+        "category": "ROYAL_FACTION",
+        "heart_id": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_MOUNTAIN",
+        "heart_name_pt": "Coração da Montanha",
+        "crest_prefix": "CREST_FW_FORTSTERLING",
+        "city": "Fort Sterling",
+        "default_price_t4_2": 160000,
+        "description": "Remove e imuniza contra efeitos de controle de grupo (CC cleanse)."
+    },
+    "CAPEITEM_UNDEAD": {
+        "cape_id": "CAPEITEM_UNDEAD",
+        "name_pt": "Capa Morta-Viva",
+        "name_en": "Undead Cape",
+        "category": "MOB_FACTION",
+        "heart_id": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_MOUNTAIN",
+        "heart_name_pt": "Coração da Montanha",
+        "crest_prefix": "CREST_UNDEAD",
+        "city": "Fort Sterling",
+        "default_price_t4_2": 260000,
+        "description": "Concede invisibilidade automática ao atingir vida crítica (<25%). Grande valor de mercado."
+    },
+
+    # ── Coração do Pântano (T1_FACTION_SWAMP_TOKEN_1 / Thetford) ────
+    "CAPEITEM_FW_THETFORD": {
+        "cape_id": "CAPEITEM_FW_THETFORD",
+        "name_pt": "Capa de Thetford",
+        "name_en": "Thetford Cape",
+        "category": "ROYAL_FACTION",
+        "heart_id": "T1_FACTION_SWAMP_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_SWAMP",
+        "heart_name_pt": "Coração do Pântano",
+        "crest_prefix": "CREST_FW_THETFORD",
+        "city": "Thetford",
+        "default_price_t4_2": 170000,
+        "description": "Dispara corrente de raio que atinge até 4 inimigos (Alto dano PvE/PvP)."
+    },
+    "CAPEITEM_MORGANA": {
+        "cape_id": "CAPEITEM_MORGANA",
+        "name_pt": "Capa de Morgana",
+        "name_en": "Morgana Cape",
+        "category": "MOB_FACTION",
+        "heart_id": "T1_FACTION_SWAMP_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_SWAMP",
+        "heart_name_pt": "Coração do Pântano",
+        "crest_prefix": "CREST_MORGANA",
+        "city": "Thetford",
+        "default_price_t4_2": 180000,
+        "description": "Aumenta drasticamente a velocidade de conjuração e ataque ao usar E."
+    },
+
+    # ── Coração de Pedra / Fera (T1_FACTION_STEPPE_TOKEN_1 / Bridgewatch)
+    "CAPEITEM_FW_BRIDGEWATCH": {
+        "cape_id": "CAPEITEM_FW_BRIDGEWATCH",
+        "name_pt": "Capa de Bridgewatch",
+        "name_en": "Bridgewatch Cape",
+        "category": "ROYAL_FACTION",
+        "heart_id": "T1_FACTION_STEPPE_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_BEAST",
+        "heart_name_pt": "Coração de Bridgewatch",
+        "crest_prefix": "CREST_FW_BRIDGEWATCH",
+        "city": "Bridgewatch",
+        "default_price_t4_2": 165000,
+        "description": "Evoca tempestade de areia que reduz dano e velocidade de ataque dos inimigos."
+    },
+    "CAPEITEM_DEMON": {
+        "cape_id": "CAPEITEM_DEMON",
+        "name_pt": "Capa Demoníaca",
+        "name_en": "Demon Cape",
+        "category": "MOB_FACTION",
+        "heart_id": "T1_FACTION_STEPPE_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_BEAST",
+        "heart_name_pt": "Coração de Bridgewatch",
+        "crest_prefix": "CREST_DEMON",
+        "city": "Bridgewatch",
+        "default_price_t4_2": 195000,
+        "description": "Cria poça de lava incandescente que causa dano contínuo devastador."
+    },
+
+    # ── Coração de Fera / Rocha (T1_FACTION_HIGHLAND_TOKEN_1 / Martlock)
+    "CAPEITEM_FW_MARTLOCK": {
+        "cape_id": "CAPEITEM_FW_MARTLOCK",
+        "name_pt": "Capa de Martlock",
+        "name_en": "Martlock Cape",
+        "category": "ROYAL_FACTION",
+        "heart_id": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_ROCK",
+        "heart_name_pt": "Coração de Martlock",
+        "crest_prefix": "CREST_FW_MARTLOCK",
+        "city": "Martlock",
+        "default_price_t4_2": 160000,
+        "description": "Concede escudo invulnerável temporário contra dano ao sofrer ataque em vida baixa."
+    },
+    "CAPEITEM_KEEPER": {
+        "cape_id": "CAPEITEM_KEEPER",
+        "name_pt": "Capa do Guardião",
+        "name_en": "Keeper Cape",
+        "category": "MOB_FACTION",
+        "heart_id": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "legacy_heart_id": "T4_HEART_ROCK",
+        "heart_name_pt": "Coração de Martlock",
+        "crest_prefix": "CREST_KEEPER",
+        "city": "Martlock",
+        "default_price_t4_2": 175000,
+        "description": "Concede bônus massivo de dano e cura ao receber dano abaixo de certo limiar."
+    }
+}
+
+# Compatibilidade reversa com mapeamento municipal
 FACTION_CAPE_IDS = {
     "Lymhurst": "CAPEITEM_FW_LYMHURST",
     "Fort Sterling": "CAPEITEM_FW_FORTSTERLING",
@@ -64,6 +235,120 @@ FACTION_CAPE_IDS = {
     "Martlock": "CAPEITEM_FW_MARTLOCK",
     "Caerleon": "CAPEITEM_FW_CAERLEON"
 }
+
+
+def resolve_cape_metadata(identifier: str) -> Dict[str, Any]:
+    """
+    Resolve qualquer identificador de capa para o metadado completo.
+    Suporta ID do item, nome da cidade, nome em PT-BR ou EN-US.
+    """
+    norm = identifier.strip().lower()
+    # 1. Chave exata ou cape_id
+    for k, v in ALL_CAPES_CATALOG.items():
+        if k.lower() == norm or v["cape_id"].lower() == norm:
+            return v
+
+    # 2. Cidade natal de facção real
+    for k, v in ALL_CAPES_CATALOG.items():
+        if v["category"] == "ROYAL_FACTION" and v["city"].lower() == norm:
+            return v
+
+    # 3. Apelidos e nomes parciais
+    aliases = {
+        "contrabandista": "CAPEITEM_SMUGGLER",
+        "smuggler": "CAPEITEM_SMUGGLER",
+        "herege": "CAPEITEM_HERETIC",
+        "heretico": "CAPEITEM_HERETIC",
+        "heretic": "CAPEITEM_HERETIC",
+        "morta-viva": "CAPEITEM_UNDEAD",
+        "morta viva": "CAPEITEM_UNDEAD",
+        "morto-vivo": "CAPEITEM_UNDEAD",
+        "morto vivo": "CAPEITEM_UNDEAD",
+        "undead": "CAPEITEM_UNDEAD",
+        "morgana": "CAPEITEM_MORGANA",
+        "demoniaca": "CAPEITEM_DEMON",
+        "demoníaca": "CAPEITEM_DEMON",
+        "demonio": "CAPEITEM_DEMON",
+        "demônio": "CAPEITEM_DEMON",
+        "demon": "CAPEITEM_DEMON",
+        "guardiao": "CAPEITEM_KEEPER",
+        "guardião": "CAPEITEM_KEEPER",
+        "keeper": "CAPEITEM_KEEPER",
+    }
+    for alias, cape_key in aliases.items():
+        if alias in norm:
+            return ALL_CAPES_CATALOG[cape_key]
+
+    for k, v in ALL_CAPES_CATALOG.items():
+        if v["name_pt"].lower() in norm or norm in v["name_pt"].lower() or v["name_en"].lower() in norm:
+            return v
+
+    valid_names = [v["name_pt"] for v in ALL_CAPES_CATALOG.values()]
+    raise ValueError(f"Capa ou facção inválida: '{identifier}'. Opções válidas: {valid_names}.")
+
+
+def get_eligible_capes_for_heart(heart_or_city: str) -> List[Dict[str, Any]]:
+    """
+    Retorna a lista de todas as capas que podem ser fabricadas a partir de um coração ou cidade.
+    Ex: Coração Sombrio -> [Capa de Caerleon, Capa de Contrabandista]
+        Coração Arbóreo -> [Capa de Lymhurst, Capa Herege]
+        Coração da Montanha -> [Capa de Fort Sterling, Capa Morta-Viva]
+    """
+    norm = heart_or_city.strip().lower()
+    heart_map = {
+        "caerleon": "T1_FACTION_CAERLEON_TOKEN_1",
+        "sombrio": "T1_FACTION_CAERLEON_TOKEN_1",
+        "shadowheart": "T1_FACTION_CAERLEON_TOKEN_1",
+        "undead": "T1_FACTION_CAERLEON_TOKEN_1",
+        "t4_heart_undead": "T1_FACTION_CAERLEON_TOKEN_1",
+        "t1_faction_caerleon_token_1": "T1_FACTION_CAERLEON_TOKEN_1",
+
+        "lymhurst": "T1_FACTION_FOREST_TOKEN_1",
+        "arboreo": "T1_FACTION_FOREST_TOKEN_1",
+        "arbóreo": "T1_FACTION_FOREST_TOKEN_1",
+        "arvore": "T1_FACTION_FOREST_TOKEN_1",
+        "árvore": "T1_FACTION_FOREST_TOKEN_1",
+        "treeheart": "T1_FACTION_FOREST_TOKEN_1",
+        "t4_heart_wood": "T1_FACTION_FOREST_TOKEN_1",
+        "t1_faction_forest_token_1": "T1_FACTION_FOREST_TOKEN_1",
+
+        "fort sterling": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "montanha": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "montanhoso": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "mountainheart": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "t4_heart_mountain": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "t1_faction_mountain_token_1": "T1_FACTION_MOUNTAIN_TOKEN_1",
+
+        "thetford": "T1_FACTION_SWAMP_TOKEN_1",
+        "pantano": "T1_FACTION_SWAMP_TOKEN_1",
+        "pântano": "T1_FACTION_SWAMP_TOKEN_1",
+        "vineheart": "T1_FACTION_SWAMP_TOKEN_1",
+        "swampheart": "T1_FACTION_SWAMP_TOKEN_1",
+        "t4_heart_swamp": "T1_FACTION_SWAMP_TOKEN_1",
+        "t1_faction_swamp_token_1": "T1_FACTION_SWAMP_TOKEN_1",
+
+        "bridgewatch": "T1_FACTION_STEPPE_TOKEN_1",
+        "estepes": "T1_FACTION_STEPPE_TOKEN_1",
+        "beastheart": "T1_FACTION_STEPPE_TOKEN_1",
+        "t4_heart_beast": "T1_FACTION_STEPPE_TOKEN_1",
+        "t1_faction_steppe_token_1": "T1_FACTION_STEPPE_TOKEN_1",
+
+        "martlock": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "rocha": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "pedra": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "rockheart": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "t4_heart_rock": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "t1_faction_highland_token_1": "T1_FACTION_HIGHLAND_TOKEN_1"
+    }
+    target_hid = None
+    for k, hid in heart_map.items():
+        if k in norm:
+            target_hid = hid
+            break
+    if not target_hid:
+        target_hid = "T1_FACTION_FOREST_TOKEN_1"
+
+    return [c for c in ALL_CAPES_CATALOG.values() if c["heart_id"] == target_hid or c.get("legacy_heart_id") == target_hid]
 
 
 def calculate_cape_crafting_cost(
@@ -75,23 +360,23 @@ def calculate_cape_crafting_cost(
     custom_prices: Optional[Dict[str, int]] = None
 ) -> Dict[str, Any]:
     """
-    Calcula o custo completo de confecção, encantamento e reroll de uma Capa de Facção.
+    Calcula o custo completo de confecção, encantamento e reroll de uma Capa.
+    Suporta todas as Capas Reais e Especiais (Heretic, Undead, Smuggler, Morgana, Demon, Keeper).
 
     Parâmetros:
-    - city_faction: Cidade da facção ('Lymhurst', 'Caerleon', etc.)
+    - city_faction: Nome da cidade ou identificador da capa ('Lymhurst', 'CAPEITEM_SMUGGLER', 'Capa Morta-Viva', etc.)
     - tier: Tier da capa (4 a 8)
     - enchantment: Nível de encantamento (0 a 3)
     - target_quality: 1 (Normal), 2 (Bom), 3 (Notável), 4 (Excelente), 5 (Obra-prima)
-    - heart_unit_cost: Custo unitário em prata do coração da facção
+    - heart_unit_cost: Custo unitário em prata do coração correspondente
     - custom_prices: Dicionário opcional de preços de insumos de mercado
     """
     if tier not in CAPE_RECIPES:
         raise ValueError(f"Tier de capa inválido: {tier}. Use de 4 a 8.")
-    if city_faction not in FACTION_CAPE_IDS:
-        raise ValueError(f"Facção inválida: {city_faction}. Use {list(FACTION_CAPE_IDS.keys())}.")
     if enchantment not in (0, 1, 2, 3):
         raise ValueError("Encantamento deve ser 0 (.0), 1 (.1), 2 (.2) ou 3 (.3).")
 
+    cape_meta = resolve_cape_metadata(city_faction)
     recipe = CAPE_RECIPES[tier]
     prices = custom_prices or {}
 
@@ -148,8 +433,12 @@ def calculate_cape_crafting_cost(
     total_production_cost = flat_craft_cost + enchant_cost + expected_reroll_cost
 
     return {
-        "city_faction": city_faction,
-        "cape_full_id": f"T{tier}_{FACTION_CAPE_IDS[city_faction]}" + (f"@{enchantment}" if enchantment > 0 else ""),
+        "city_faction": cape_meta["city"],
+        "cape_id": cape_meta["cape_id"],
+        "cape_name_pt": cape_meta["name_pt"],
+        "cape_name_en": cape_meta["name_en"],
+        "cape_category": cape_meta["category"],
+        "cape_full_id": f"T{tier}_{cape_meta['cape_id']}" + (f"@{enchantment}" if enchantment > 0 else ""),
         "tier": tier,
         "enchantment": enchantment,
         "target_quality": QUALITY_NAMES.get(target_quality, "Normal"),
@@ -178,8 +467,8 @@ def evaluate_cape_vs_raw_heart_profit(
     has_premium: bool = True
 ) -> Dict[str, Any]:
     """
-    Compara a rentabilidade de confeccionar e vender a Capa de Facção
-    contra a venda bruta dos corações sem esforço de produção.
+    Compara a rentabilidade de confeccionar e vender uma Capa específica
+    (Real, Mob ou Especial) contra a venda bruta dos corações.
     """
     craft_data = calculate_cape_crafting_cost(
         city_faction=city_faction,
@@ -205,7 +494,6 @@ def evaluate_cape_vs_raw_heart_profit(
     net_profit_cape = net_cape_revenue - craft_data["total_production_cost_silver"]
 
     # Valor gerado por cada coração consumido na confecção da capa
-    # (Receita da capa - custos de outros insumos) / corações
     net_value_per_heart_used = int((net_cape_revenue - non_heart_cost) / hearts_consumed) if hearts_consumed > 0 else 0
 
     # Lucro da venda bruta direta do coração no mercado
@@ -213,21 +501,25 @@ def evaluate_cape_vs_raw_heart_profit(
     delta_per_heart = net_value_per_heart_used - net_raw_heart_sale
 
     is_cape_better = (delta_per_heart > 0)
+    cape_name = craft_data["cape_name_pt"]
 
     if is_cape_better:
         recommendation = "CRAFT_AND_SELL_CAPE"
         verdict = (
-            f"Confeccionar a Capa T{tier}.{enchantment} agrega +{delta_per_heart:,} ⚗ de lucro "
+            f"Confeccionar {cape_name} T{tier}.{enchantment} agrega +{delta_per_heart:,} 🪙 de lucro "
             f"por coração consumido acima da venda do coração cru no mercado."
-        )
+        ).replace(",", ".")
     else:
         recommendation = "SELL_RAW_HEARTS"
         verdict = (
-            f"Vender os corações brutos é mais rentável (ou menos arriscado). "
-            f"A confecção da capa deixaria {abs(delta_per_heart):,} ⚗ a menos por coração."
-        )
+            f"Vender os corações brutos é mais rentável do que fazer {cape_name}. "
+            f"A confecção deixaria {abs(delta_per_heart):,} 🪙 a menos por coração."
+        ).replace(",", ".")
 
     return {
+        "cape_id": craft_data["cape_id"],
+        "cape_name_pt": cape_name,
+        "cape_category": craft_data["cape_category"],
         "recommendation": recommendation,
         "is_cape_better": is_cape_better,
         "verdict": verdict,
@@ -241,5 +533,77 @@ def evaluate_cape_vs_raw_heart_profit(
         "net_value_per_heart_in_cape": net_value_per_heart_used,
         "net_raw_heart_sale_benchmark": net_raw_heart_sale,
         "delta_profit_per_heart": delta_per_heart,
-        "roi_pct": round((net_profit_cape / craft_data["total_production_cost_silver"]) * 100, 1)
+        "roi_pct": round((net_profit_cape / craft_data["total_production_cost_silver"]) * 100, 1) if craft_data["total_production_cost_silver"] > 0 else 0.0
+    }
+
+
+def optimize_cape_crafting_for_heart(
+    heart_or_city: str,
+    tier: int = 4,
+    enchantment: int = 2,
+    target_quality: int = 1,
+    heart_market_price: int = 45000,
+    custom_cape_prices: Optional[Dict[str, int]] = None,
+    has_premium: bool = True
+) -> Dict[str, Any]:
+    """
+    Analisa TODAS as capas que consomem determinado coração (ex: Lymhurst vs Herege,
+    Fort Sterling vs Morta-Viva, Caerleon vs Contrabandista) e determina a opção de lucro máximo.
+    """
+    eligible = get_eligible_capes_for_heart(heart_or_city)
+    custom_prices = custom_cape_prices or {}
+
+    evaluated = []
+    for cape_info in eligible:
+        cape_key = cape_info["cape_id"]
+        sell_p = (
+            custom_prices.get(cape_key)
+            or custom_prices.get(cape_info["name_pt"])
+            or cape_info["default_price_t4_2"]
+        )
+
+        analysis = evaluate_cape_vs_raw_heart_profit(
+            city_faction=cape_key,
+            tier=tier,
+            enchantment=enchantment,
+            target_quality=target_quality,
+            heart_market_price=heart_market_price,
+            cape_market_sell_price=sell_p,
+            has_premium=has_premium
+        )
+        analysis["market_sell_price_used"] = sell_p
+        analysis["description"] = cape_info["description"]
+        evaluated.append(analysis)
+
+    evaluated.sort(key=lambda x: x["net_profit_cape"], reverse=True)
+    best = evaluated[0]
+    runner_up = evaluated[1] if len(evaluated) > 1 else None
+
+    delta_adv = (best["net_profit_cape"] - runner_up["net_profit_cape"]) if runner_up else 0
+
+    def _fmt(val: float) -> str:
+        return f"{int(val):,}".replace(",", ".")
+
+    if runner_up and delta_adv > 0:
+        verdict = (
+            f"👉 OTIMIZAÇÃO DE CAPA: Confeccionar a {best['cape_name_pt']} T{tier}.{enchantment} é a mais lucrativa! "
+            f"Ela gera {_fmt(best['net_profit_cape'])} 🪙 de lucro limpo ({_fmt(best['delta_profit_per_heart'])} 🪙 acima do coração bruto), "
+            f"superando a {runner_up['cape_name_pt']} em +{_fmt(delta_adv)} 🪙 de lucro líquido por capa."
+        )
+    else:
+        verdict = (
+            f"👉 OTIMIZAÇÃO DE CAPA: A melhor opção para este coração é a {best['cape_name_pt']} T{tier}.{enchantment}, "
+            f"gerando {_fmt(best['net_profit_cape'])} 🪙 de lucro líquido ({_fmt(best['delta_profit_per_heart'])} 🪙 de ganho por coração)."
+        )
+
+    return {
+        "heart_evaluated": heart_or_city,
+        "tier": tier,
+        "enchantment": enchantment,
+        "best_cape_name": best["cape_name_pt"],
+        "best_cape_id": best["cape_id"],
+        "best_cape_profit": best["net_profit_cape"],
+        "delta_silver_advantage": delta_adv,
+        "verdict": verdict,
+        "ranked_capes": evaluated
     }

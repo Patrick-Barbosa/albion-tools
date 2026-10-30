@@ -81,3 +81,90 @@ def test_evaluate_cape_vs_raw_heart_profit():
     assert res_bad["is_cape_better"] is False
     assert res_bad["recommendation"] == "SELL_RAW_HEARTS"
     assert res_bad["delta_profit_per_heart"] < 0
+
+
+def test_resolve_cape_metadata_all_types():
+    from src.albion_mcp.core.cape_crafting import resolve_cape_metadata
+
+    # Royal capes
+    assert resolve_cape_metadata("Lymhurst")["cape_id"] == "CAPEITEM_FW_LYMHURST"
+    assert resolve_cape_metadata("Caerleon")["cape_id"] == "CAPEITEM_FW_CAERLEON"
+    assert resolve_cape_metadata("Fort Sterling")["cape_id"] == "CAPEITEM_FW_FORTSTERLING"
+
+    # Mob and special capes
+    assert resolve_cape_metadata("Capa de Contrabandista")["cape_id"] == "CAPEITEM_SMUGGLER"
+    assert resolve_cape_metadata("smuggler")["cape_id"] == "CAPEITEM_SMUGGLER"
+    assert resolve_cape_metadata("Capa Herege")["cape_id"] == "CAPEITEM_HERETIC"
+    assert resolve_cape_metadata("heretic")["cape_id"] == "CAPEITEM_HERETIC"
+    assert resolve_cape_metadata("Capa Morta-Viva")["cape_id"] == "CAPEITEM_UNDEAD"
+    assert resolve_cape_metadata("undead")["cape_id"] == "CAPEITEM_UNDEAD"
+    assert resolve_cape_metadata("Capa de Morgana")["cape_id"] == "CAPEITEM_MORGANA"
+    assert resolve_cape_metadata("Capa Demoníaca")["cape_id"] == "CAPEITEM_DEMON"
+    assert resolve_cape_metadata("Capa do Guardião")["cape_id"] == "CAPEITEM_KEEPER"
+
+
+def test_get_eligible_capes_for_all_hearts():
+    from src.albion_mcp.core.cape_crafting import get_eligible_capes_for_heart
+
+    # Sombrio -> Caerleon + Contrabandista
+    undead_capes = [c["cape_id"] for c in get_eligible_capes_for_heart("Coração Sombrio")]
+    assert "CAPEITEM_FW_CAERLEON" in undead_capes
+    assert "CAPEITEM_SMUGGLER" in undead_capes
+
+    # Arbóreo -> Lymhurst + Herege
+    wood_capes = [c["cape_id"] for c in get_eligible_capes_for_heart("Coração Arbóreo")]
+    assert "CAPEITEM_FW_LYMHURST" in wood_capes
+    assert "CAPEITEM_HERETIC" in wood_capes
+
+    # Montanhoso -> Fort Sterling + Morta-Viva
+    mountain_capes = [c["cape_id"] for c in get_eligible_capes_for_heart("Coração da Montanha")]
+    assert "CAPEITEM_FW_FORTSTERLING" in mountain_capes
+    assert "CAPEITEM_UNDEAD" in mountain_capes
+
+    # Pântano -> Thetford + Morgana
+    swamp_capes = [c["cape_id"] for c in get_eligible_capes_for_heart("Thetford")]
+    assert "CAPEITEM_FW_THETFORD" in swamp_capes
+    assert "CAPEITEM_MORGANA" in swamp_capes
+
+    # Fera -> Bridgewatch + Demoníaca
+    beast_capes = [c["cape_id"] for c in get_eligible_capes_for_heart("Bridgewatch")]
+    assert "CAPEITEM_FW_BRIDGEWATCH" in beast_capes
+    assert "CAPEITEM_DEMON" in beast_capes
+
+    # Rocha -> Martlock + Guardião
+    rock_capes = [c["cape_id"] for c in get_eligible_capes_for_heart("Martlock")]
+    assert "CAPEITEM_FW_MARTLOCK" in rock_capes
+    assert "CAPEITEM_KEEPER" in rock_capes
+
+
+def test_optimize_cape_crafting_for_heart():
+    from src.albion_mcp.core.cape_crafting import optimize_cape_crafting_for_heart
+
+    # Coração Sombrio: Contrabandista (240k) vs Caerleon (175k)
+    res_caerleon = optimize_cape_crafting_for_heart(
+        heart_or_city="Coração Sombrio",
+        tier=4,
+        enchantment=2,
+        target_quality=1,
+        heart_market_price=62000,
+        has_premium=True
+    )
+    assert res_caerleon["best_cape_name"] == "Capa de Contrabandista"
+    assert res_caerleon["delta_silver_advantage"] > 0
+    assert len(res_caerleon["ranked_capes"]) == 2
+    assert "superando a Capa de Caerleon" in res_caerleon["verdict"]
+
+    # Coração da Montanha: Morta-Viva (260k) vs Fort Sterling (160k)
+    res_fs = optimize_cape_crafting_for_heart(
+        heart_or_city="Fort Sterling",
+        tier=4,
+        enchantment=2,
+        target_quality=1,
+        heart_market_price=46000,
+        has_premium=True
+    )
+    assert res_fs["best_cape_name"] == "Capa Morta-Viva"
+    assert res_fs["delta_silver_advantage"] > 0
+    assert len(res_fs["ranked_capes"]) == 2
+    assert "superando a Capa de Fort Sterling" in res_fs["verdict"]
+

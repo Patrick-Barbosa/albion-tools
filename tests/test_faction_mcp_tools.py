@@ -81,11 +81,14 @@ def test_albion_evaluate_heart_downstream_tool():
     )
     assert "recommendation" in res
     assert res["hearts_consumed"] == 1
+    assert "all_eligible_capes_ranked" in res
+    assert len(res["all_eligible_capes_ranked"]) == 2
+    assert "best_cape_recommendation" in res
+    assert res["best_cape_name"] in ("Capa de Lymhurst", "Capa Herege")
 
 
-@pytest.mark.asyncio
-async def test_albion_calculate_faction_transport_tool_async():
-    res = await albion_calculate_faction_transport(
+def test_albion_calculate_faction_transport_tool_async():
+    res = asyncio.run(albion_calculate_faction_transport(
         current_city="Lymhurst",
         available_silver=1000000,
         risk_profile="ALLOW_RED_ZONE",
@@ -93,7 +96,20 @@ async def test_albion_calculate_faction_transport_tool_async():
         mount_type="T5_BOAR",
         session_mode="CONTINUOUS_LOOP",
         pack_size=7
-    )
+    ))
     assert res["status"] == "SUCCESS"
     assert res["origin_city"] == "Lymhurst"
     assert res["best_route_recommended"]["destination_city"] == "Caerleon"
+    assert "Mercado Municipal de Lymhurst" in res["where_to_sell"]
+    assert res["recommended_cape"]["cape_name"] == "Capa de Lymhurst"
+    assert "LOOP AUTOSSUSTENTÁVEL" in res["definitive_verdict"]
+    assert "price_audit" in res
+    assert "cape_investment_audit" in res
+    assert "cape_investment_markdown" in res
+    assert "extrato_de_precos" in res
+    item_ids_audited = [x["item_id"] for x in res["extrato_de_precos"]]
+    assert "T4_CAPE" in item_ids_audited
+    assert "T4_CAPEITEM_SMUGGLER_BP" in item_ids_audited
+    assert "T4_RUNE" in item_ids_audited
+    assert "T4_SOUL" in item_ids_audited
+

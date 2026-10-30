@@ -152,6 +152,79 @@ class ItemMetadataManager:
                         }
                     })
 
+        # Capas de Facção Real, Mob e Especiais (T4..T8, .0..4)
+        cape_templates = [
+            ("CAPEITEM_FW_LYMHURST", "Capa de Lymhurst", "Lymhurst Cape", 4, 8),
+            ("CAPEITEM_FW_FORTSTERLING", "Capa de Fort Sterling", "Fort Sterling Cape", 4, 8),
+            ("CAPEITEM_FW_BRIDGEWATCH", "Capa de Bridgewatch", "Bridgewatch Cape", 4, 8),
+            ("CAPEITEM_FW_THETFORD", "Capa de Thetford", "Thetford Cape", 4, 8),
+            ("CAPEITEM_FW_MARTLOCK", "Capa de Martlock", "Martlock Cape", 4, 8),
+            ("CAPEITEM_FW_CAERLEON", "Capa de Caerleon", "Caerleon Cape", 4, 8),
+            ("CAPEITEM_SMUGGLER", "Capa de Contrabandista", "Smuggler Cape", 4, 8),
+            ("CAPEITEM_HERETIC", "Capa Herege", "Heretic Cape", 4, 8),
+            ("CAPEITEM_UNDEAD", "Capa Morta-Viva", "Undead Cape", 4, 8),
+            ("CAPEITEM_MORGANA", "Capa de Morgana", "Morgana Cape", 4, 8),
+            ("CAPEITEM_DEMON", "Capa Demoníaca", "Demon Cape", 4, 8),
+            ("CAPEITEM_KEEPER", "Capa do Guardião", "Keeper Cape", 4, 8),
+        ]
+        for base_id, pt_base, en_base, min_t, max_t in cape_templates:
+            for t in range(min_t, max_t + 1):
+                pt_aff = affixes_pt.get(t, "")
+                en_aff = affixes_en.get(t, "")
+                for enc in range(5):
+                    uname = f"T{t}_{base_id}" if enc == 0 else f"T{t}_{base_id}@{enc}"
+                    pt_name = f"{pt_base} {pt_aff}".strip() + (f" .{enc}" if enc > 0 else "")
+                    en_name = f"{en_aff} {en_base}".strip() + (f" .{enc}" if enc > 0 else "")
+                    catalog.append({
+                        "UniqueName": uname,
+                        "LocalizedNames": {
+                            "PT-BR": pt_name,
+                            "EN-US": en_name
+                        }
+                    })
+
+        # Brasões de Facção e Brasões Especiais
+        crest_templates = [
+            ("CREST_FW_LYMHURST", "Brasão de Lymhurst", "Lymhurst Crest"),
+            ("CREST_FW_FORTSTERLING", "Brasão de Fort Sterling", "Fort Sterling Crest"),
+            ("CREST_FW_BRIDGEWATCH", "Brasão de Bridgewatch", "Bridgewatch Crest"),
+            ("CREST_FW_THETFORD", "Brasão de Thetford", "Thetford Crest"),
+            ("CREST_FW_MARTLOCK", "Brasão de Martlock", "Martlock Crest"),
+            ("CREST_FW_CAERLEON", "Brasão de Caerleon", "Caerleon Crest"),
+            ("CAPEITEM_SMUGGLER_BP", "Brasão de Contrabandista", "Smuggler Crest"),
+            ("CREST_HERETIC", "Brasão Herege", "Heretic Crest"),
+            ("CREST_UNDEAD", "Brasão Morto-Vivo", "Undead Crest"),
+            ("CREST_MORGANA", "Brasão de Morgana", "Morgana Crest"),
+            ("CREST_DEMON", "Brasão Demoníaco", "Demon Crest"),
+            ("CREST_KEEPER", "Brasão do Guardião", "Keeper Crest"),
+        ]
+        for crest_id, pt_base, en_base in crest_templates:
+            for t in range(4, 9):
+                pt_aff = affixes_pt.get(t, "")
+                en_aff = affixes_en.get(t, "")
+                catalog.append({
+                    "UniqueName": f"T{t}_{crest_id}",
+                    "LocalizedNames": {
+                        "PT-BR": f"{pt_base} {pt_aff}".strip(),
+                        "EN-US": f"{en_aff} {en_base}".strip()
+                    }
+                })
+
+        # Corações de Recurso
+        resource_hearts = [
+            ("T4_HEART_WOOD", "Coração Arbóreo", "Tree Heart"),
+            ("T4_HEART_MOUNTAIN", "Coração da Montanha", "Mountain Heart"),
+            ("T4_HEART_BEAST", "Coração da Fera", "Beast Heart"),
+            ("T4_HEART_SWAMP", "Coração do Pântano", "Swamp Heart"),
+            ("T4_HEART_ROCK", "Coração da Rocha", "Rock Heart"),
+            ("T4_HEART_UNDEAD", "Coração Sombrio", "Shadowheart"),
+        ]
+        for hid, pt, en in resource_hearts:
+            catalog.append({
+                "UniqueName": hid,
+                "LocalizedNames": {"PT-BR": pt, "EN-US": en}
+            })
+
         # Tokens e Corações de Facção
         faction_tokens = [
             ("QUESTITEM_TOKEN_LYMHURST", "Coração da Árvore", "Tree Heart"),
