@@ -31,14 +31,15 @@ def item_details(item_id: str) -> Dict[str, Any]:
     """Ficha completa: nomes, tier, encantamento, slot, insumos de encantamento e ícone."""
     metadata_manager.ensure_data_loaded()
 
+    base_id = item_id.split("@")[0]
+    if base_id not in metadata_manager.item_names:
+        return {"error": f"Item '{item_id}' não encontrado no catálogo.", "item_id": item_id}
+
     name_pt = metadata_manager.get_item_name(item_id)
     name_en = metadata_manager.get_item_name_en(item_id)
     tier = metadata_manager.get_tier(item_id)
     enchantment = metadata_manager.get_enchantment_level(item_id)
     materials = metadata_manager.get_enchantment_cost(item_id)
-
-    if name_pt == item_id and name_en == item_id:
-        return {"error": f"Item '{item_id}' não encontrado no catálogo.", "item_id": item_id}
 
     return {
         "item_id": item_id,

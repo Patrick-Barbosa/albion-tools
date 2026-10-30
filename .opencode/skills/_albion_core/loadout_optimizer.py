@@ -148,7 +148,7 @@ BOOTS_CATALOG = {
     "NONE": {"name": "Sem Passiva de Bota", "bonus_pct": 0.0, "cost_silver": 0},
 }
 
-# Mapeamentos consolidados para interoperabilidade universal com polars_analytics e anti_hallucination
+# Mapeamentos consolidados para interoperabilidade com o solver de carga e as travas anti-alucinação
 MOUNTS_LIST = [
     {"id": "HORSE_T4", "name": "Cavalo com Bolsa T4", "tier": "T4", "capacity_kg": 250, "est_cost": 15000, "is_passive": False},
     {"id": "HORSE_T5", "name": "Cavalo com Bolsa T5", "tier": "T5", "capacity_kg": 400, "est_cost": 25000, "is_passive": False},

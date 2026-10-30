@@ -1,313 +1,201 @@
-# ⚔️ Albion Online — Market Intelligence MCP Server
+# ⚔️ Albion Online — Market Intelligence Skills
 
-Servidor **MCP (Model Context Protocol)** de alta performance projetado para conectar ferramentas agênticas de IA (**OpenCode**, Antigravity, Claude Desktop, Cursor e agentes autônomos) ao ecossistema econômico do **Albion Online**.
+Seis **skills de agente** para o [OpenCode](https://opencode.ai) que transformam o assistente em um copiloto econômico do **Albion Online**: arbitragem entre cidades, sniper do Mercado Negro, refino industrial, otimização de builds, análise macro (Pareto/ouro) e um wizard de investimentos.
 
-O MCP opera com **Core em NATS Firehose (tempo real) e AODP REST API (batching inteligente e proteção de rate limits)**, cálculos fiscais oficiais (4% premium / 8% sem premium) e suporte analítico **100% opcional ao Databricks Unity Catalog**.
-
----
-
-## 🚀 Arquitetura & Destaques
-
-- **⚡ Core em NATS Firehose (Tempo Real)**: Escuta o broker oficial da comunidade (`nats://public:thenewalbiondata@nats.albion-online-data.com:4222`), mantendo buffer em memória para ordens do Mercado Negro (*Black Market*) e Cidades Reais com **consumo ZERO de requisições HTTP**.
-- **🛡️ Proteção Rigorosa contra Limites Baixos da API AODP**:
-  - Limites monitorados: **180 req/min** e **300 req/5min**.
-  - **Batching automático**: Agrupa até 50 itens por chamada GET respeitando o limite de 4096 caracteres na URL.
-  - **Cache em memória com TTL**: 120s para cotações correntes, 30 min para histórico diário.
-  - Rate Limiter ativo (Token Bucket) e backoff automático em caso de HTTP 429.
-- **🪙 Motor Econômico Oficial ([BUSINESS_RULES.md](BUSINESS_RULES.md))**:
-  - Impostos: 4% com Premium, 8% sem Premium, 2.5% de Setup Fee.
-  - Simulação de encantamento de itens (.0 → .1/.2/.3) respeitando múltiplos de 96 runas/almas/relíquias por slot.
-  - Simulação de refino em capitais com bônus (40% RRR / 53.9% foco) e nutrição de estações.
-  - Cascata de insumos e otimização de kits de transporte (Montarias, Bolsas, Tortas de Porco).
-- **☁️ Databricks 100% Opcional**: Conecta à tabela Gold (`main.gold.history_features`) via Statement Execution API se configurado no `.env`; caso contrário, o MCP opera normalmente sem dependências rígidas.
-- **📁 Legado Preservado**: Todo o código original de dashboards anteriores (FastAPI e Streamlit) está arquivado na pasta `old/`.
+> **Zero dependências.** Tudo roda com o **Python 3.10+ puro** — sem `pip install`, sem venv, sem servidor MCP, sem NATS. A única fonte de dados é a API pública do **Albion Online Data Project (AODP)**.
 
 ---
 
-## 🤖 Guia de Instalação para OpenCode (Comando por Comando)
+## 🚀 Instalação em 3 passos
 
-O [OpenCode](https://opencode.ai) possui suporte nativo ao Model Context Protocol (MCP). Siga o passo a passo exato para o seu sistema operacional:
-
-### 🐧 Instalação no Linux (Ubuntu / Debian / Fedora / Arch)
-
-Abra o seu terminal (Bash ou Zsh) e execute os comandos linha a linha:
-
-#### 1. Instalar pré-requisitos do sistema (se ainda não tiver)
 ```bash
-# Ubuntu / Debian / Pop!_OS (Python 3.12 padrão):
-sudo apt update && sudo apt install -y python3 python3-venv python3.12-venv python3-pip git
-
-# Fedora:
-# sudo dnf install -y python3 python3-pip git
-
-# Arch Linux:
-# sudo pacman -S python python-pip git
-```
-
-#### 2. Clonar o repositório e acessar a pasta
-```bash
-git clone https://github.com/Patrick-Barbosa/albion-tools.git
-cd albion-tools
-```
-
-#### 3. Criar e ativar o ambiente virtual (`.venv`)
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-> [!TIP]
-> Caso receba o erro `ensurepip is not available`, instale o pacote correspondente à sua versão do Python (`sudo apt install -y python3.12-venv`), remova a pasta corrompida com `rm -rf .venv` e recrie com `python3 -m venv .venv`.
-
-
-#### 4. Atualizar o pip e instalar as dependências
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-#### 5. Executar os testes para validar a instalação
-```bash
-pytest tests -v
-```
-*(Todos os testes devem passar com sucesso).*
-
-#### 6. Registrar o MCP no OpenCode
-
-Você tem duas opções igualmente fáceis:
-
-- **Opção A (Via CLI do OpenCode — Recomendada):**
-  Na pasta do projeto, execute apontando para o Python do ambiente virtual:
-  ```bash
-  opencode mcp add albion-market -- .venv/bin/python -m src.albion_mcp
-  ```
-
-- **Opção B (Automática via `opencode.json` do projeto):**
-  Este repositório já inclui o arquivo `opencode.json` pré-configurado na raiz com as instruções de comportamento (`AGENTS.md`) e apontando para o executável do `.venv`:
-  ```json
-  {
-    "$schema": "https://opencode.ai/config.json",
-    "instructions": [
-      "AGENTS.md"
-    ],
-    "mcp": {
-      "albion-market": {
-        "type": "local",
-        "command": [".venv/bin/python", "-m", "src.albion_mcp"],
-        "enabled": true,
-        "timeout": 30000
-      }
-    }
-  }
-  ```
-  Basta iniciar o OpenCode a partir desta pasta:
-  ```bash
-  opencode
-  ```
-
-
-
-#### 7. Verificar se as ferramentas foram carregadas
-```bash
-opencode mcp list
-```
-*(O `albion-market` aparecerá listado e ativo).*
-
----
-
-### 🪟 Instalação no Windows (PowerShell ou Prompt de Comando)
-
-#### Pré-requisitos no Windows:
-1. **Python 3.10+**: Baixe pelo site oficial [python.org](https://www.python.org/) ou via Microsoft Store. **IMPORTANTE:** Durante a instalação, marque a caixa **"Add python.exe to PATH"**.
-2. **Git**: Baixe em [git-scm.com](https://git-scm.com/).
-
----
-
-#### No Windows PowerShell:
-
-Execute os comandos abaixo no terminal do PowerShell:
-
-#### 1. Clonar o repositório e acessar a pasta
-```powershell
-git clone https://github.com/Patrick-Barbosa/albion-tools.git
-cd albion-tools
-```
-
-#### 2. Criar o ambiente virtual (`.venv`)
-```powershell
-python -m venv .venv
-```
-
-#### 3. Habilitar execução de scripts e ativar o ambiente virtual
-Caso o PowerShell bloqueie a execução de scripts, libere para a sessão atual e ative:
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
-```
-*(Você verá o prefixo `(.venv)` no início da linha de comando).*
-
-#### 4. Atualizar o pip e instalar as dependências
-```powershell
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-#### 5. Executar os testes para validar
-```powershell
-pytest tests -v
-```
-
-#### 6. Registrar o MCP no OpenCode
-
-- **Opção A (Via CLI do OpenCode — Recomendada):**
-  ```powershell
-  opencode mcp add albion-market -- .\.venv\Scripts\python.exe -m src.albion_mcp
-  ```
-
-- **Opção B (Configuração Global no Windows):**
-  Se preferir que o MCP fique acessível em qualquer pasta no OpenCode, edite `%USERPROFILE%\.config\opencode\opencode.json`:
-  ```json
-  {
-    "$schema": "https://opencode.ai/config.json",
-    "instructions": [
-      "AGENTS.md"
-    ],
-    "mcp": {
-      "albion-market": {
-        "type": "local",
-        "command": ["C:\\caminho\\completo\\albion-tools\\.venv\\Scripts\\python.exe", "-m", "src.albion_mcp"],
-        "cwd": "C:\\caminho\\completo\\albion-tools",
-        "enabled": true,
-        "timeout": 30000
-      }
-    }
-  }
-  ```
-
-#### 7. Verificar status
-```powershell
-opencode mcp list
-```
-
----
-
-#### No Prompt de Comando (CMD Tradicional):
-
-Se preferir o `cmd.exe`:
-
-```cmd
-:: 1. Clonar e entrar na pasta
+# 1. Clone o repositório
 git clone https://github.com/Patrick-Barbosa/albion-tools.git
 cd albion-tools
 
-:: 2. Criar e ativar ambiente virtual
-python -m venv .venv
-.venv\Scripts\activate.bat
+# 2. Instale as skills no OpenCode (global)
+python3 install.py
 
-:: 3. Instalar dependências
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+# 3. Pronto. Abra o OpenCode e pergunte sobre o mercado.
+```
 
-:: 4. Validar
-pytest tests -v
+O instalador copia as 6 skills + o núcleo compartilhado para `~/.config/opencode/skills/`.
 
-:: 5. Conectar no OpenCode
-opencode mcp add albion-market -- .venv\Scripts\python.exe -m src.albion_mcp
+### Outros destinos
 
-:: 6. Listar servidores
-opencode mcp list
+```bash
+python3 install.py --list                  # lista as skills disponíveis
+python3 install.py --target ./minhas-skills  # pasta específica
+python3 install.py --agents                # instala em .agents/skills (Antigravity/Cursor)
+python3 install.py --force                 # sobrescreve instalações existentes
+```
+
+> [!NOTE]
+> Este repositório já funciona **in-place**: se você abrir o OpenCode na raiz do projeto, as skills em `.opencode/skills/` são detectadas automaticamente.
+
+---
+
+## 🧩 As 6 skills
+
+| Skill | Para que serve | CLI principal |
+| :--- | :--- | :--- |
+| **`albion-arbitrage-copilot`** | Arbitragem entre capitais, transporte de facção (corações), rotas seguras vs. Zona Vermelha, travas anti-fantasma e breakeven fiscal. | `scan_arbitrage.py`, `calculate_hearts.py` |
+| **`albion-black-market-sniper`** | Cruza Buy Orders do Black Market de Caerleon com o menor sell order das capitais e calcula a margem líquida. | `snipe_black_market.py` |
+| **`albion-refining-specialist`** | Refino na capital de bônus (40% RRR / 53.9% com Foco), cascata de sobras e kit de transporte. | `calculate_refining.py` |
+| **`albion-build-optimizer`** | Menor custo por slot para um Tier Equivalente (4.3, 5.2, 6.1 vs 7.0) + reroll de qualidade. | `optimize_loadout.py` |
+| **`albion-market-analyst`** | Curva de Pareto 80/20 de prata diária, histórico de preço/volume e cotação do ouro. | `analyze_pareto.py` |
+| **`albion-investment-wizard`** | Auditoria de frescor/fantasma, carteira com alocação inteira de orçamento e simulação de encantamento. | `run_wizard.py`, `live_market_audit.py`, `optimize_build.py` |
+
+Cada skill tem um `SKILL.md` com o fluxo de trabalho, as fórmulas e as regras de resposta ao jogador.
+
+---
+
+## 💻 Exemplos de uso (CLI)
+
+Os scripts podem ser executados diretamente — útil para testar ou automatizar.
+
+```bash
+# Arbitragem: Thetford -> Martlock, Premium, ROI mínimo 15%, só rotas seguras
+python3 .opencode/skills/albion-arbitrage-copilot/scripts/scan_arbitrage.py \
+  --origin Thetford --destination Martlock --premium --min-roi 15 --safe-only
+
+# Transporte de facção: fardo médio (7 corações) em Lymhurst
+python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+  --city Lymhurst --silver 1000000 --mount T5_BOAR --risk SAFE_ONLY --pack 7 --premium
+
+# Black Market: margem mínima 20% e cotações de até 24h
+python3 .opencode/skills/albion-black-market-sniper/scripts/snipe_black_market.py \
+  --items T4_BAG,T5_BAG,T6_BAG --premium --min-margin 20 --max-age 86400
+
+# Refino: 1 barra T5 em Thetford com Foco (53.9% RRR)
+python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py \
+  --resource ORE --tier 5 --focus --premium
+
+# Cascata: 5M de orçamento em tábuas T6
+python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py \
+  --resource WOOD --tier 6 --focus --premium --cascade --budget 5000000
+
+# Build T7 equivalente em Lymhurst
+python3 .opencode/skills/albion-build-optimizer/scripts/optimize_loadout.py \
+  --city Lymhurst --tier 7 \
+  --items "Machado de Guerra" "Casaco de Mercenário" "Capuz de Caçador" "Botas de Soldado"
+
+# Pareto dos recursos refinados
+python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py \
+  --category "Recursos Refinados" --top 20
+
+# Cotação do ouro
+python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py --gold
+
+# Carteira: 5M, Lymhurst -> Black Market
+python3 .opencode/skills/albion-investment-wizard/scripts/run_wizard.py \
+  --budget 5000000 --city Lymhurst --dest "Black Market" --premium --min-roi 15
+
+# Auditoria de frescor/fantasma
+python3 .opencode/skills/albion-investment-wizard/scripts/live_market_audit.py \
+  --city Lymhurst --items T4_BAG,T5_BAG
+```
+
+Todos os CLIs aceitam `--help` e a maioria aceita `--json` para saída estruturada.
+
+---
+
+## 📐 Regras econômicas embutidas
+
+| Regra | Valor |
+| :--- | :--- |
+| **Setup Fee** (criar/editar ordem) | **2,5%** não reembolsável |
+| **Taxa de venda** | **4%** com Premium · **8%** sem Premium |
+| **Venda direta** (Buy Order / Black Market) | Apenas a taxa de venda (sem setup fee) |
+| **RRR de refino** | **40%** na capital bônus · **53,9%** com Foco |
+| **Tier Equivalente** | `tier base + encantamento` (cada `.1` = +100 IP) |
+| **Capacidade de carga** | `(montaria + bolsa + 50) × (1 + torta%) × (1 + bota%)` |
+
+O detalhamento completo (fórmulas, tabelas de tiers, logística, capas de facção) está em [`BUSINESS_RULES.md`](BUSINESS_RULES.md).
+
+---
+
+## 🔌 Fonte de dados e limites
+
+A AODP (`https://west.albion-online-data.com`, com variantes `europe` e `asia`) expõe:
+
+- `stats/prices` — menor sell order e maior buy order por item/cidade/qualidade;
+- `stats/history` — histórico de transações (preço médio e volume);
+- `stats/gold` — cotação do ouro.
+
+O cliente em `.opencode/skills/_albion_core/http.py` usa **somente `urllib`** e aplica:
+
+- **batching** de até 50 itens por requisição;
+- **cache TTL** de 120s para cotações e 30min para histórico/ouro;
+- **rate limiter** de 175 req/min e 290 req/5min (margem sobre o limite oficial);
+- **backoff** automático em HTTP 429;
+- compressão `gzip/deflate` (exigida pela AODP).
+
+> [!WARNING]
+> Limites oficiais da AODP: **180 requisições por minuto** e **300 a cada 5 minutos**, por IP. Varreduras grandes devem usar `--max-items` ou listas explícitas de itens.
+>
+> A base é alimentada por jogadores com o *Albion Data Client* ativo. Cotações podem ter **horas de idade** — sempre confira a idade antes de comprar. Os scripts expõem `quote_age_seconds`/`freshness` para isso.
+
+---
+
+## 🗂️ Estrutura do repositório
+
+```text
+.
+├── .opencode/skills/
+│   ├── _albion_core/          # núcleo compartilhado (stdlib only)
+│   │   ├── http.py            # cliente AODP + cache + rate limit
+│   │   ├── market.py          # cotações, histórico, ouro
+│   │   ├── economics.py       # impostos, encantamento, arbitragem
+│   │   ├── refining.py        # refino e cascata
+│   │   ├── pareto.py          # curva 80/20
+│   │   ├── builds.py          # tier equivalente
+│   │   ├── anti_phantom.py    # breakeven, fantasma, knapsack, reroll, carga
+│   │   ├── hearts.py          # transporte de facção e capas
+│   │   ├── calculator.py      # fórmulas fiscais
+│   │   ├── metadata.py        # catálogo PT-BR/EN
+│   │   ├── loadout_optimizer.py
+│   │   ├── faction_transport.py
+│   │   ├── cape_crafting.py
+│   │   └── data/items.json    # catálogo local (~847 itens)
+│   ├── albion-arbitrage-copilot/
+│   ├── albion-black-market-sniper/
+│   ├── albion-build-optimizer/
+│   ├── albion-investment-wizard/
+│   ├── albion-market-analyst/
+│   └── albion-refining-specialist/
+├── tests/                     # suíte offline (sem rede)
+├── install.py                 # instalador das skills
+├── AGENTS.md                  # diretrizes do agente
+├── BUSINESS_RULES.md          # spec de domínio
+└── opencode.json
 ```
 
 ---
 
-### 💬 Como usar no Chat do OpenCode
+## 🧪 Testes
 
-Após conectar o MCP, abra o chat do OpenCode e pergunte naturalmente em português ou inglês:
+A suíte é **100% offline** (nenhuma chamada de rede) e cobre fórmulas fiscais, catálogo, rotas de facção, capas, carga, anti-fantasma, rate limiter e o bootstrap dos CLIs.
 
-- *"Qual o preço atual de T4_BAG em Thetford, Caerleon e Fort Sterling?"*
-- *"Simule o refino de 1000 barras de ferro T4 em Fort Sterling com e sem foco."*
-- *"Encontre as melhores oportunidades de arbitragem entre Lymhurst e Caerleon."*
-- *"Otimize uma build de Arco T6 equivalente gastando o mínimo de prata possível."*
-- *"Mostre os itens da Curva de Pareto 80/20 em Martlock."*
-- *"Verifique o status da quota da API da AODP."*
-
----
-
-## 🔌 Conectando em Outros Agentes e Clientes MCP
-
-### No Claude Desktop (`claude_desktop_config.json`)
-```json
-{
-  "mcpServers": {
-    "albion-market": {
-      "command": "python",
-      "args": ["-m", "src.albion_mcp"],
-      "cwd": "/caminho/para/albion-tools"
-    }
-  }
-}
+```bash
+# requer apenas pytest
+python3 -m pytest tests -v
 ```
 
-### No Cursor (`.cursor/mcp.json`)
-```json
-{
-  "mcpServers": {
-    "albion-market": {
-      "command": "python",
-      "args": ["-m", "src.albion_mcp"]
-    }
-  }
-}
-```
-
-### No Antigravity / Gemini CLI
-O servidor é detectado automaticamente via `.agents/skills/` e pelas ferramentas MCP declaradas em `src/albion_mcp/server.py`.
+`pytest.ini` já configura `pythonpath = .opencode/skills`, então os testes importam `from _albion_core import ...` sem instalação.
 
 ---
 
-## 📋 Catálogo de Ferramentas MCP (22 Tools)
+## ❓ Perguntas frequentes
 
-| Categoria | Ferramenta | Descrição | Fonte Primária |
-|---|---|---|---|
-| **Itens & Metadados** | `albion_search_items` | Busca itens em PT-BR/EN por Tier (T4..T8), encantamento (.0..4) e categoria. | Metadados locais |
-| | `albion_get_item_details` | Ficha técnica completa, slot do item e insumos de encantamento (múltiplos de 96). | Metadados locais |
-| **Mercado ao Vivo** | `albion_get_current_prices` | Cotações atuais de compra e venda em lote. Aplica batching e cache TTL. | AODP REST API |
-| | `albion_nats_get_live_orders` | Ordens em tempo real transmitidas pelo NATS (< 60s) com ZERO consumo de HTTP. | NATS Stream |
-| | `albion_get_gold_prices` | Histórico recente de preço do ouro em prata. | AODP REST API |
-| | `albion_get_api_quota_status` | Relatório de saúde do rate limiter e chamadas restantes no minuto. | Rate Limiter |
-| **Histórico & Pareto** | `albion_get_price_history` | Histórico consolidado de preços e volumes diários por praça. | AODP REST API |
-| | `albion_get_market_pareto` | Curva de Pareto 80/20 dos itens mais movimentados em prata diária. | Polars Engine |
-| **Economia & Cálculos** | `albion_calculate_tax_and_fees` | Cálculo exato de custo efetivo, receita líquida e ROI (4% / 8% / 2.5%). | Regras Fiscais |
-| | `albion_simulate_enchantment` | Simula encantamento na Artifact Foundry cruzando custo de insumos e receita líquida. | Engine Econômica |
-| | `albion_calculate_refining` | Viabilidade de refino de recurso na capital com bônus (40% RRR / 53.9% Foco). | Polars Engine |
-| | `albion_calculate_cascade_refining` | Simulação de refino em cascata até o tier alvo com otimização de carga e montaria. | Polars Engine |
-| | `albion_find_arbitrage_opportunities` | Oportunidades de arbitragem entre Cidades Reais e para o Black Market. | Engine Econômica |
-| **Builds & Equipamentos** | `albion_optimize_budget_build` | Identifica a combinação mais barata (ex: 4.3, 5.2, 6.1 vs 7.0) para Tier Equivalente alvo. | Engine de Otimização |
-| **Anti-Alucinação (Zero-Error)** | `albion_calculate_breakeven_price` | Álgebra reversa exata para preço mínimo de venda e tolerância a renovações. | Engine Determinística |
-| | `albion_audit_quote_freshness_and_phantom` | Auditoria estatística de idade e detecção de ordens fantasma / manipulações. | SQLite / Estatística |
-| | `albion_allocate_portfolio_budget` | Knapsack inteiro de alocação de orçamento sem frações e com setup fee reservada. | Otimizador Inteiro |
-| | `albion_simulate_quality_reroll` | Valor esperado (EV) e pior caso (95% confiança) para rerolls na Repair Station. | Modelo Estocástico |
-| | `albion_calculate_exact_loadout_capacity` | Física exata de carga in-game com diagnóstico de sobrecarga (`SAFE_SPRINT`, etc.). | Motor de Carga |
-| | `albion_calculate_transmutation_cost` | Comparativo financeiro de taxa de transmutação do sistema vs compra direta. | Transmutador Municipal |
-| **Databricks (Opcional)** | `albion_databricks_status` | Verifica se o Unity Catalog está configurado no ambiente. | Databricks Client |
-| | `albion_databricks_query_gold` | Consulta features pré-agregadas da tabela `main.gold.history_features`. | Databricks Client |
+**Preciso de Premium para usar as skills?**
+Não. As skills funcionam com ou sem Premium — mas a taxa muda (4% vs 8%) e o refino com Foco exige Premium. Sempre informe seu status.
 
----
+**As skills funcionam em qualquer região?**
+Sim: `--region americas` (padrão), `europe` ou `asia`.
 
-## 🧙‍♂️ Suíte de Skills Especializadas (`.opencode/skills/` & `.agents/skills/`)
+**Por que a cotação está velha?**
+A AODP depende de jogadores com o *Albion Data Client*. Abra o mercado no jogo com o client ativo para atualizar os dados. Os scripts mostram a idade da cotação e classificam o risco.
 
-O ecossistema disponibiliza 6 Skills Especializadas estruturadas para descoberta nativa tanto no **OpenCode** quanto no **Antigravity, Cursor e Claude Desktop**. Além disso, o arquivo [AGENTS.md](AGENTS.md) atua como diretriz de inteligência primária do agente:
-
-| Skill | Slash Command | Descrição |
-|---|---|---|
-| **`albion-investment-wizard`** | `/albion-investment-wizard` | Consultoria financeira de mercado, profiling de capital (500k a 50M+), triagem in-game e carteiras vivas. |
-| **`albion-refining-specialist`** | `/albion-refining-specialist` | Refino industrial nas 5 capitais bônus (40% RRR / 53.9% foco), sobras em cascata e dimensionamento de carga. |
-| **`albion-arbitrage-copilot`** | `/albion-arbitrage-copilot` | Rotas de transporte seguras (Zonas Azuis/Amarelas), filtros anti-ordens fantasmas e cálculo de breakeven. |
-| **`albion-black-market-sniper`** | `/albion-black-market-sniper` | Monitoramento via NATS streaming do Black Market de Caerleon, venda direta e segurança em Red Zones. |
-| **`albion-build-optimizer`** | `/albion-build-optimizer` | Resolução do menor custo por slot para atingir Tier Equivalente (ex: 4.3, 5.2, 6.1 vs 7.0) e reroll de qualidade. |
-| **`albion-market-analyst`** | `/albion-market-analyst` | Curva de Pareto 80/20, volume em prata diária, liquidez e monitoramento do índice do Ouro (Gold). |
-
----
-
-## 📜 Aviso Legal
-Ferramenta comunitária não oficial construída com dados do [Albion Online Data Project](https://www.albion-online-data.com/). Não afiliada à Sandbox Interactive GmbH.
+**O que aconteceu com o servidor MCP?**
+Foi removido na migração para skills-only. O núcleo de cálculo é o mesmo, agora sem `httpx`, `polars`, `nats-py`, `pydantic` ou `mcp`.

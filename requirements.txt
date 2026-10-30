@@ -1,8 +1,4 @@
-# Albion Online Market Intelligence MCP Server
-mcp>=1.26.0
-nats-py>=2.12.0
-httpx>=0.28.0
-pydantic>=2.10.0
-polars>=1.0.0
-python-dotenv>=1.0.0
+# O núcleo das skills usa apenas a biblioteca padrão do Python 3.10+.
+# Nenhuma dependência é necessária para usar as skills.
+# Apenas para rodar a suíte de testes:
 pytest>=8.0.0

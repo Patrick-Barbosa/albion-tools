@@ -96,6 +96,32 @@ O scanner já devolve `roi_pct`, `unit_profit` e `is_safe_route` por oportunidad
 
 ---
 
+## ❤️ Transporte de Facção (Corações)
+
+O transporte de facção é a outra face da logística: entrega no **Contrabandista** (mapa aberto) e retorno obrigatório à cidade natal. **O jogador nunca entra em Caerleon nem na capital de destino.**
+
+```bash
+# Fardo médio (7 corações), rota segura, Premium
+python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+  --city Lymhurst --silver 1000000 --mount T5_BOAR --risk SAFE_ONLY --pack 7 --premium
+
+# Permitindo Caerleon (Zona Vermelha / Full Loot)
+python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+  --city Lymhurst --silver 5000000 --mount T6_OX --risk ALLOW_RED_ZONE --pack 15 --premium
+
+# Sobrescrever cotações (quando o jogador informa os preços do jogo)
+python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+  --city Lymhurst --silver 1000000 --pack 7 --premium \
+  --origin-heart-price 34000 --shadowheart-price 46500 --cape-price 65000
+```
+
+A saída traz: ranking de estratégias (venda paciente, loop de recompra, venda direta, manufatura de capas), financeiro por viagem e prata/hora, protocolo operacional, `price_statement_markdown` e `cape_investment_markdown`.
+
+> [!IMPORTANT]
+> **Transmutação:** o NPC municipal só converte **Corações Sombrios** (Caerleon) em corações da cidade natal (+5.780 🪙). **Não existe transmutação entre capitais reais** — corações de outra capital só servem para capas daquela cidade (ex: Fort Sterling / Morta-Viva) ou venda no mercado local.
+
+---
+
 ## 📋 Como responder ao jogador
 
 1. Liste as oportunidades em tabela: **item, cidade de compra, preço, cidade de venda, preço, lucro/unidade, ROI**.

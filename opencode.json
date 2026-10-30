@@ -1,28 +1,4 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "instructions": [
-    "AGENTS.md"
-  ],
-  "mcp": {
-    "albion-market": {
-      "type": "local",
-      "command": [
-        ".venv/bin/python",
-        "-m",
-        "src.albion_mcp"
-      ],
-      "enabled": true,
-      "timeout": 30000
-    },
-    "servers": {
-      "albion-market": {
-        "type": "local",
-        "command": [
-          ".venv/bin/python",
-          "-m",
-          "src.albion_mcp"
-        ]
-      }
-    }
-  }
+  "instructions": ["AGENTS.md"]
 }
