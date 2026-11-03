@@ -248,3 +248,11 @@ A AODP depende de jogadores com o *Albion Data Client*. Abra o mercado no jogo c
 
 **O que aconteceu com o servidor MCP?**
 Foi removido na migração para skills-only. O núcleo de cálculo é o mesmo, agora sem `httpx`, `polars`, `nats-py`, `pydantic` ou `mcp`.
+
+---
+
+## 📄 Licença
+
+Distribuído sob a licença **MIT**. Veja [LICENSE](LICENSE) para o texto completo.
+
+Você pode usar, copiar, modificar e redistribuir as skills livremente, inclusive comercialmente, desde que preserve o aviso de copyright.
