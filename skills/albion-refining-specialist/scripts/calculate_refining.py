@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simulador de refino industrial e cascata de sobras — Albion Online.
+Simulador de refino industrial e cascata de sobras · Albion Online.
 
 Exemplo:
     python3 calculate_refining.py --resource ORE --tier 5 --premium
@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -68,7 +68,7 @@ def main() -> int:
 
     if args.cascade:
         print("=" * 68)
-        print(f"🏭 CASCATA DE REFINO — {result['target_tier']} em {result['refining_city']}")
+        print(f"🏭 CASCATA DE REFINO · {result['target_tier']} em {result['refining_city']}")
         print("=" * 68)
         print(f"Orçamento:        {_money(result['budget_silver'])} 🪙")
         print(f"Unidades:         {_money(result['units_produced'])}")
@@ -84,7 +84,7 @@ def main() -> int:
     else:
         econ = result["economics"]
         print("=" * 68)
-        print(f"🏭 REFINO {result['tier']} — {result['specialized_city']}")
+        print(f"🏭 REFINO {result['tier']} · {result['specialized_city']}")
         print("=" * 68)
         raw = result["raw_material"]
         print(f"Insumo bruto:     {raw['quantity']}x {raw['name']} @ {_money(raw['price'])} 🪙 ({raw['price_city']})")

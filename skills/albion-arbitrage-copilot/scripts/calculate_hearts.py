@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Transporte de Facção / Corações — Albion Online.
+Transporte de Facção / Corações · Albion Online.
 
 Calcula o ciclo completo de faction smuggling: recompensa por fardo, rota
 (Contrabandista no mapa aberto e retorno à origem), lucro por viagem, prata/hora,
@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -71,7 +71,7 @@ def main() -> int:
     financials = best["financials"]
 
     print("=" * 78)
-    print("❤️ TRANSPORTE DE FACÇÃO — ALBION ONLINE")
+    print("❤️ TRANSPORTE DE FACÇÃO · ALBION ONLINE")
     print("=" * 78)
     print(
         f"Origem: {plan['origin_city']} | Fardo: {plan['pack_spec']['hearts_in']} corações "

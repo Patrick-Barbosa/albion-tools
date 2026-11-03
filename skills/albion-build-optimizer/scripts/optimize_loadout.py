@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Otimizador de custo de build por Tier Equivalente — Albion Online.
+Otimizador de custo de build por Tier Equivalente · Albion Online.
 
 Exemplo:
     python3 optimize_loadout.py --city Lymhurst --tier 7 \
@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -60,7 +60,7 @@ def main() -> int:
 
     summary = result["summary"]
     print("=" * 74)
-    print(f"🛡️ BUILD T{args.tier} EQUIVALENTE — {args.city}")
+    print(f"🛡️ BUILD T{args.tier} EQUIVALENTE · {args.city}")
     print(
         f"Otimizado: {summary['total_optimized_cost']:,} 🪙 | "
         f"T7 puro: {summary['total_flat_cost']:,} 🪙 | "
@@ -72,7 +72,7 @@ def main() -> int:
         rec = piece["recommended"]
         print(f"\n[{piece['slot_type']}] {piece['base_name_pt']}")
         print(
-            f"  ✅ {rec['tier_enchant']} {rec['name_pt']} — {rec['price']:,} 🪙".replace(",", ".")
+            f"  ✅ {rec['tier_enchant']} {rec['name_pt']} · {rec['price']:,} 🪙".replace(",", ".")
             + (f" (economia de {rec['savings_vs_flat']:,} 🪙 vs flat)".replace(",", ".") if rec["savings_vs_flat"] else "")
         )
         for option in piece["all_equivalent_options"]:

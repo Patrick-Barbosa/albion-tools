@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -51,7 +51,7 @@ def main() -> int:
 
     summary = result["summary"]
     print("=" * 70)
-    print(f"🛡️ BUILD T{args.tier} EQUIVALENTE — {args.city}")
+    print(f"🛡️ BUILD T{args.tier} EQUIVALENTE · {args.city}")
     print(
         f"Otimizado: {summary['total_optimized_cost']:,} 🪙 | "
         f"Flat: {summary['total_flat_cost']:,} 🪙 | "
@@ -62,7 +62,7 @@ def main() -> int:
     for piece in result["build_pieces"]:
         rec = piece["recommended"]
         print(f"\n[{piece['slot_type']}] {piece['base_name_pt']}")
-        print(f"  ✅ {rec['tier_enchant']} {rec['name_pt']} — {rec['price']:,} 🪙".replace(",", "."))
+        print(f"  ✅ {rec['tier_enchant']} {rec['name_pt']} · {rec['price']:,} 🪙".replace(",", "."))
         for option in piece["all_equivalent_options"]:
             mark = "→" if option["item_id"] == rec["item_id"] else " "
             price = f"{option['price']:,}".replace(",", ".") if option["price"] else "sem ordem"

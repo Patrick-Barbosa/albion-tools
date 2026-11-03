@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Analista macroeconômico: Curva de Pareto 80/20, histórico e ouro — Albion Online.
+Analista macroeconômico: Curva de Pareto 80/20, histórico e ouro · Albion Online.
 
 Exemplos:
     python3 analyze_pareto.py --category "Recursos Refinados" --top 20
@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -73,7 +73,7 @@ def main() -> int:
     if "gold" in output:
         gold = output["gold"]
         print("=" * 60)
-        print("🪙 OURO — ALBION ONLINE")
+        print("🪙 OURO · ALBION ONLINE")
         print("=" * 60)
         if gold["count"]:
             print(f"Última cotação: {_money(gold['latest_price'])} 🪙 por ouro")
@@ -98,7 +98,7 @@ def main() -> int:
             return 1
         universe = data["universe"]
         print("=" * 78)
-        print("📊 CURVA DE PARETO 80/20 — PRATA DIÁRIA")
+        print("📊 CURVA DE PARETO 80/20 · PRATA DIÁRIA")
         print("=" * 78)
         print(
             f"Universo: {universe['category'] or universe['tier'] or 'personalizado'} | "

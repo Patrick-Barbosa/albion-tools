@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Sniper do Mercado Negro de Caerleon — Albion Online.
+Sniper do Mercado Negro de Caerleon · Albion Online.
 
 Cruza as Buy Orders do Black Market com o menor sell order das capitais reais
 e calcula a margem líquida (venda direta: apenas 4%/8%, sem setup fee).
@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -117,7 +117,7 @@ def main() -> int:
         return 0
 
     print("=" * 70)
-    print("🕶️ BLACK MARKET SNIPER — CAERLEON")
+    print("🕶️ BLACK MARKET SNIPER · CAERLEON")
     print(f"Itens: {len(item_ids)} | Margem mínima: {args.min_margin}% | Premium: {'sim' if args.premium else 'não'}")
     print("=" * 70)
 

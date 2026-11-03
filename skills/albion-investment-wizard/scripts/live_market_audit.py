@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Auditoria de frescor e ordens fantasmas — Albion Online.
+Auditoria de frescor e ordens fantasmas · Albion Online.
 
 Cruza cada cotação com a média histórica real (7 dias) e classifica o risco
 de ordem fantasma, além de aplicar o teto seguro de +15% para bids.
@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -47,7 +47,7 @@ def main() -> int:
         return 0
 
     print("=" * 80)
-    print(f"🔍 AUDITORIA DE COTAÇÕES — {args.city}")
+    print(f"🔍 AUDITORIA DE COTAÇÕES · {args.city}")
     print("=" * 80)
     print(f"{'Item':<32}{'Cotação':>12}{'Média 7d':>12}{'Desvio':>9}{'Status':>12}")
     print("-" * 80)

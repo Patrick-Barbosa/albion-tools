@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Scanner de Arbitragem Intercidades — Albion Online.
+Scanner de Arbitragem Intercidades · Albion Online.
 
 Compara o menor sell order das capitais de origem com o melhor destino de venda
 (capital real ou Black Market), já descontando impostos e setup fee.
@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -74,7 +74,7 @@ def main() -> int:
         return 0
 
     print("=" * 68)
-    print("🚚 ARBITRAGEM INTERCIDADES — ALBION ONLINE")
+    print("🚚 ARBITRAGEM INTERCIDADES · ALBION ONLINE")
     print(f"Origem(ns): {', '.join(sources)}")
     print(f"Destino(s): {', '.join(targets)}")
     print(f"Itens: {len(items)} | ROI mínimo: {args.min_roi}% | Premium: {'sim' if args.premium else 'não'}")

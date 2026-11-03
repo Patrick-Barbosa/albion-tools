@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Wizard de Investimentos — Albion Online.
+Wizard de Investimentos · Albion Online.
 
 Varre um universo de itens, encontra arbitragens acima do ROI mínimo e aloca o
 orçamento em uma carteira inteira (knapsack), reservando o setup fee.
@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 # Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
-# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+# No repositório, o núcleo fica na raiz de skills (fonte de verdade).
 for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
     if (_base / "_albion_core").is_dir():
         sys.path.insert(0, str(_base))
@@ -109,7 +109,7 @@ def main() -> int:
         return 0
 
     print("=" * 70)
-    print("🧙 WIZARD DE INVESTIMENTOS — ALBION ONLINE")
+    print("🧙 WIZARD DE INVESTIMENTOS · ALBION ONLINE")
     print("=" * 70)
     print(
         f"Orçamento: {_money(args.budget)} 🪙 | Origem: {args.city} | "
