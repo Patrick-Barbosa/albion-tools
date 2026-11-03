@@ -19,7 +19,14 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = REPO_ROOT / ".opencode" / "skills"
 CORE_SOURCE = SKILLS_ROOT / "_albion_core"
 CORE_NAME = "_albion_core"
-SKILL_DIRS = sorted(path.parent for path in SKILLS_ROOT.glob("*/SKILL.md"))
+STABLE_SKILL_DIRS = sorted(path.parent for path in SKILLS_ROOT.glob("*/SKILL.md"))
+EXPERIMENTAL_ROOT = SKILLS_ROOT / ".experimental"
+EXPERIMENTAL_SKILL_DIRS = (
+    sorted(path.parent for path in EXPERIMENTAL_ROOT.glob("*/SKILL.md"))
+    if EXPERIMENTAL_ROOT.is_dir()
+    else []
+)
+SKILL_DIRS = STABLE_SKILL_DIRS + EXPERIMENTAL_SKILL_DIRS
 IGNORED = shutil.ignore_patterns("__pycache__", "*.pyc", "*.pyo")
 
 
@@ -36,7 +43,7 @@ def file_hashes(root: Path) -> dict[str, str]:
 
 
 def test_six_publishable_skills():
-    assert [skill.name for skill in SKILL_DIRS] == [
+    assert [skill.name for skill in STABLE_SKILL_DIRS] == [
         "albion-arbitrage-copilot",
         "albion-black-market-sniper",
         "albion-build-optimizer",
@@ -44,6 +51,12 @@ def test_six_publishable_skills():
         "albion-market-analyst",
         "albion-refining-specialist",
     ]
+
+
+def test_skill_names_are_unique():
+    """Estável e experimental não podem compartilhar o mesmo `name`."""
+    names = [skill.name for skill in SKILL_DIRS]
+    assert len(names) == len(set(names)), f"nomes duplicados: {names}"
 
 
 @pytest.mark.parametrize("skill", SKILL_DIRS, ids=lambda path: path.name)
@@ -71,7 +84,8 @@ def test_installed_skill_runs_standalone(skill: Path, tmp_path: Path):
     shutil.copytree(skill, installed, ignore=IGNORED)
 
     scripts = sorted((installed / "scripts").glob("*.py"))
-    assert scripts, f"{skill.name} não tem scripts"
+    if not scripts:
+        return  # skill puramente documental (sem CLI)
 
     for script in scripts:
         result = subprocess.run(

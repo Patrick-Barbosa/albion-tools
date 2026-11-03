@@ -55,6 +55,23 @@ python3 install.py --force                   # sobrescreve instalações existen
 
 ---
 
+## 🏷️ Versionamento e canais
+
+`npx skills@latest` é a versão do **CLI**, não da skill. A versão de uma skill é o **commit/tag do Git**:
+
+| Canal | Comando |
+| :--- | :--- |
+| Estável (branch default) | `npx skills add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist` |
+| Pinado (tag) | `npx skills add Patrick-Barbosa/albion-tools#v1.2.0 --skill=albion-refining-specialist` |
+| Experimental (branch) | `npx skills add Patrick-Barbosa/albion-tools#next --skill=albion-refining-specialist` |
+| Experimental (skill separada) | `npx skills add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist-next` |
+
+`npx skills check` avisa quando há atualização e `npx skills update` atualiza seguindo o ref instalado. O fluxo completo (tags SemVer, promoção de experimental, `metadata.internal`, depreciação e lockfile) está em [`VERSIONING.md`](VERSIONING.md).
+
+> `#v1.2.0` e `#next` são exemplos de canais — substitua pelas suas tags/branches reais. O comando sem `#ref` usa a **branch default do GitHub**, então garanta que ela contém o commit publicado.
+
+---
+
 ## 🧩 As 6 skills
 
 | Skill | Para que serve | CLI principal |
@@ -192,6 +209,7 @@ O cliente em `.opencode/skills/_albion_core/http.py` usa **somente `urllib`** e 
 ├── tests/                     # suíte offline (sem rede)
 ├── install.py                 # instalador local alternativo
 ├── AGENTS.md                  # diretrizes do agente
+├── VERSIONING.md              # canais, tags e promoção de experimental
 ├── BUSINESS_RULES.md          # spec de domínio
 └── opencode.json
 ```

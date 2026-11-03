@@ -28,16 +28,24 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = REPO_ROOT / ".opencode" / "skills"
 CORE_NAME = "_albion_core"
 CORE_SOURCE = SKILLS_ROOT / CORE_NAME
+EXPERIMENTAL_DIR = ".experimental"
 IGNORE = shutil.ignore_patterns("__pycache__", "*.pyc", "*.pyo")
 
 
 def skill_dirs() -> list[Path]:
-    """Skills publicáveis: pastas com SKILL.md (o núcleo fica de fora)."""
-    return sorted(
+    """Skills publicáveis: pastas com SKILL.md (estáveis + experimentais)."""
+    stable = [
         path.parent
         for path in SKILLS_ROOT.glob("*/SKILL.md")
         if path.parent.name != CORE_NAME
+    ]
+    experimental_root = SKILLS_ROOT / EXPERIMENTAL_DIR
+    experimental = (
+        [path.parent for path in experimental_root.glob("*/SKILL.md")]
+        if experimental_root.is_dir()
+        else []
     )
+    return sorted(stable + experimental)
 
 
 def file_hashes(root: Path) -> dict[str, str]:
@@ -90,6 +98,12 @@ def main() -> int:
         return 1
 
     available = {skill.name: skill for skill in skill_dirs()}
+    names = [skill.name for skill in skill_dirs()]
+    duplicates = sorted({name for name in names if names.count(name) > 1})
+    if duplicates:
+        print(f"❌ Nome duplicado entre skills: {', '.join(duplicates)}", file=sys.stderr)
+        print("   Estável e experimental precisam de nomes distintos.", file=sys.stderr)
+        return 1
     if args.skills:
         unknown = sorted(set(args.skills) - available.keys())
         if unknown:

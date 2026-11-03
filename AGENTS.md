@@ -112,6 +112,7 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
 - **Instalar skills (local)**: `python3 install.py` (global em `~/.config/opencode/skills`) ou `python3 install.py --target ./destino`
 - **Listar skills**: `python3 install.py --list`
 - **Vendorizar o núcleo**: `python3 tools/sync_core.py` (obrigatório após editar `_albion_core`; `--check` só verifica)
+- **Versionar/publicar**: tags `vX.Y.Z` na branch default; fluxo completo em [VERSIONING.md](VERSIONING.md). Experimental: branch `#next` ou `.opencode/skills/.experimental/<nome>/` (nome distinto; `metadata.internal: true` oculta do `--list`)
 - **Testes**: `pytest tests -v` (offline, sem rede; `pytest.ini` já aponta `pythonpath = .opencode/skills`)
 - **Smoke manual**: `python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py --resource ORE --tier 5 --premium`
 - **Configuração do OpenCode**: [opencode.json](opencode.json)
@@ -134,7 +135,7 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
   - `data/items.json`: catálogo local (~847 itens).
 - **`.opencode/skills/<skill>/`** — `SKILL.md` + `scripts/` + **`_albion_core/` vendorizado** de cada personalidade. A cópia existe porque `npx skills add --skill=<nome>` copia **apenas a pasta da skill**; nunca edite a cópia, edite a fonte e rode `tools/sync_core.py`.
 - **`skills.sh.json`** — declara `./.opencode/skills` como container para o CLI do skills.sh descobrir as 6 skills.
-- **`tools/sync_core.py`** — replica o núcleo para as 6 skills (`--check` detecta deriva; a suíte também).
+- **`tools/sync_core.py`** — replica o núcleo para as 6 skills estáveis e para as experimentais em `.opencode/skills/.experimental/` (`--check` detecta deriva; a suíte também).
 - **`install.py`** — copia as 6 skills autocontidas para o destino escolhido.
 - **`tests/`** — suíte offline (sem rede) de fórmulas, catálogo, CLIs e empacotamento.
 
