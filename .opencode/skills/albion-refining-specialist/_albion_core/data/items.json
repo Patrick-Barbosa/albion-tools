@@ -1,0 +1,5931 @@
+[
+  {
+    "UniqueName": "T4_BAG",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Adepto",
+      "EN-US": "Adept's Bag"
+    }
+  },
+  {
+    "UniqueName": "T4_BAG@1",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Adepto .1",
+      "EN-US": "Adept's Bag .1"
+    }
+  },
+  {
+    "UniqueName": "T4_BAG@2",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Adepto .2",
+      "EN-US": "Adept's Bag .2"
+    }
+  },
+  {
+    "UniqueName": "T4_BAG@3",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Adepto .3",
+      "EN-US": "Adept's Bag .3"
+    }
+  },
+  {
+    "UniqueName": "T4_BAG@4",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Adepto .4",
+      "EN-US": "Adept's Bag .4"
+    }
+  },
+  {
+    "UniqueName": "T5_BAG",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Perito",
+      "EN-US": "Expert's Bag"
+    }
+  },
+  {
+    "UniqueName": "T5_BAG@1",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Perito .1",
+      "EN-US": "Expert's Bag .1"
+    }
+  },
+  {
+    "UniqueName": "T5_BAG@2",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Perito .2",
+      "EN-US": "Expert's Bag .2"
+    }
+  },
+  {
+    "UniqueName": "T5_BAG@3",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Perito .3",
+      "EN-US": "Expert's Bag .3"
+    }
+  },
+  {
+    "UniqueName": "T5_BAG@4",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Perito .4",
+      "EN-US": "Expert's Bag .4"
+    }
+  },
+  {
+    "UniqueName": "T6_BAG",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Mestre",
+      "EN-US": "Master's Bag"
+    }
+  },
+  {
+    "UniqueName": "T6_BAG@1",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Mestre .1",
+      "EN-US": "Master's Bag .1"
+    }
+  },
+  {
+    "UniqueName": "T6_BAG@2",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Mestre .2",
+      "EN-US": "Master's Bag .2"
+    }
+  },
+  {
+    "UniqueName": "T6_BAG@3",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Mestre .3",
+      "EN-US": "Master's Bag .3"
+    }
+  },
+  {
+    "UniqueName": "T6_BAG@4",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Mestre .4",
+      "EN-US": "Master's Bag .4"
+    }
+  },
+  {
+    "UniqueName": "T7_BAG",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Grão-Mestre",
+      "EN-US": "Grandmaster's Bag"
+    }
+  },
+  {
+    "UniqueName": "T7_BAG@1",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Bag .1"
+    }
+  },
+  {
+    "UniqueName": "T7_BAG@2",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Bag .2"
+    }
+  },
+  {
+    "UniqueName": "T7_BAG@3",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Bag .3"
+    }
+  },
+  {
+    "UniqueName": "T7_BAG@4",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Bag .4"
+    }
+  },
+  {
+    "UniqueName": "T8_BAG",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Ancião",
+      "EN-US": "Elder's Bag"
+    }
+  },
+  {
+    "UniqueName": "T8_BAG@1",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Ancião .1",
+      "EN-US": "Elder's Bag .1"
+    }
+  },
+  {
+    "UniqueName": "T8_BAG@2",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Ancião .2",
+      "EN-US": "Elder's Bag .2"
+    }
+  },
+  {
+    "UniqueName": "T8_BAG@3",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Ancião .3",
+      "EN-US": "Elder's Bag .3"
+    }
+  },
+  {
+    "UniqueName": "T8_BAG@4",
+    "LocalizedNames": {
+      "PT-BR": "Bolsa do Ancião .4",
+      "EN-US": "Elder's Bag .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPE",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Adepto",
+      "EN-US": "Adept's Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPE@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Adepto .1",
+      "EN-US": "Adept's Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPE@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Adepto .2",
+      "EN-US": "Adept's Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPE@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Adepto .3",
+      "EN-US": "Adept's Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPE@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Adepto .4",
+      "EN-US": "Adept's Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPE",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Perito",
+      "EN-US": "Expert's Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPE@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Perito .1",
+      "EN-US": "Expert's Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPE@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Perito .2",
+      "EN-US": "Expert's Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPE@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Perito .3",
+      "EN-US": "Expert's Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPE@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Perito .4",
+      "EN-US": "Expert's Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPE",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Mestre",
+      "EN-US": "Master's Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPE@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Mestre .1",
+      "EN-US": "Master's Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPE@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Mestre .2",
+      "EN-US": "Master's Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPE@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Mestre .3",
+      "EN-US": "Master's Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPE@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Mestre .4",
+      "EN-US": "Master's Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPE",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Grão-Mestre",
+      "EN-US": "Grandmaster's Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPE@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPE@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPE@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPE@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPE",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Ancião",
+      "EN-US": "Elder's Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPE@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Ancião .1",
+      "EN-US": "Elder's Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPE@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Ancião .2",
+      "EN-US": "Elder's Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPE@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Ancião .3",
+      "EN-US": "Elder's Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPE@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Ancião .4",
+      "EN-US": "Elder's Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Adepto",
+      "EN-US": "Adept's Battleaxe"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Adepto .1",
+      "EN-US": "Adept's Battleaxe .1"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Adepto .2",
+      "EN-US": "Adept's Battleaxe .2"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Adepto .3",
+      "EN-US": "Adept's Battleaxe .3"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Adepto .4",
+      "EN-US": "Adept's Battleaxe .4"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Perito",
+      "EN-US": "Expert's Battleaxe"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Perito .1",
+      "EN-US": "Expert's Battleaxe .1"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Perito .2",
+      "EN-US": "Expert's Battleaxe .2"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Perito .3",
+      "EN-US": "Expert's Battleaxe .3"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Perito .4",
+      "EN-US": "Expert's Battleaxe .4"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Mestre",
+      "EN-US": "Master's Battleaxe"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Mestre .1",
+      "EN-US": "Master's Battleaxe .1"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Mestre .2",
+      "EN-US": "Master's Battleaxe .2"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Mestre .3",
+      "EN-US": "Master's Battleaxe .3"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Mestre .4",
+      "EN-US": "Master's Battleaxe .4"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Grão-Mestre",
+      "EN-US": "Grandmaster's Battleaxe"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Battleaxe .1"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Battleaxe .2"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Battleaxe .3"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Battleaxe .4"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Ancião",
+      "EN-US": "Elder's Battleaxe"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Ancião .1",
+      "EN-US": "Elder's Battleaxe .1"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Ancião .2",
+      "EN-US": "Elder's Battleaxe .2"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Ancião .3",
+      "EN-US": "Elder's Battleaxe .3"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Machado de Guerra do Ancião .4",
+      "EN-US": "Elder's Battleaxe .4"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Adepto",
+      "EN-US": "Adept's Greataxe"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Adepto .1",
+      "EN-US": "Adept's Greataxe .1"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Adepto .2",
+      "EN-US": "Adept's Greataxe .2"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Adepto .3",
+      "EN-US": "Adept's Greataxe .3"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Adepto .4",
+      "EN-US": "Adept's Greataxe .4"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Perito",
+      "EN-US": "Expert's Greataxe"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Perito .1",
+      "EN-US": "Expert's Greataxe .1"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Perito .2",
+      "EN-US": "Expert's Greataxe .2"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Perito .3",
+      "EN-US": "Expert's Greataxe .3"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Perito .4",
+      "EN-US": "Expert's Greataxe .4"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Mestre",
+      "EN-US": "Master's Greataxe"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Mestre .1",
+      "EN-US": "Master's Greataxe .1"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Mestre .2",
+      "EN-US": "Master's Greataxe .2"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Mestre .3",
+      "EN-US": "Master's Greataxe .3"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Mestre .4",
+      "EN-US": "Master's Greataxe .4"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Grão-Mestre",
+      "EN-US": "Grandmaster's Greataxe"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Greataxe .1"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Greataxe .2"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Greataxe .3"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Greataxe .4"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_AXE",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Ancião",
+      "EN-US": "Elder's Greataxe"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_AXE@1",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Ancião .1",
+      "EN-US": "Elder's Greataxe .1"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_AXE@2",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Ancião .2",
+      "EN-US": "Elder's Greataxe .2"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_AXE@3",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Ancião .3",
+      "EN-US": "Elder's Greataxe .3"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_AXE@4",
+    "LocalizedNames": {
+      "PT-BR": "Grande Machado do Ancião .4",
+      "EN-US": "Elder's Greataxe .4"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_SWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Adepto",
+      "EN-US": "Adept's Broadsword"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_SWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Adepto .1",
+      "EN-US": "Adept's Broadsword .1"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_SWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Adepto .2",
+      "EN-US": "Adept's Broadsword .2"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_SWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Adepto .3",
+      "EN-US": "Adept's Broadsword .3"
+    }
+  },
+  {
+    "UniqueName": "T4_MAIN_SWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Adepto .4",
+      "EN-US": "Adept's Broadsword .4"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_SWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Perito",
+      "EN-US": "Expert's Broadsword"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_SWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Perito .1",
+      "EN-US": "Expert's Broadsword .1"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_SWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Perito .2",
+      "EN-US": "Expert's Broadsword .2"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_SWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Perito .3",
+      "EN-US": "Expert's Broadsword .3"
+    }
+  },
+  {
+    "UniqueName": "T5_MAIN_SWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Perito .4",
+      "EN-US": "Expert's Broadsword .4"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_SWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Mestre",
+      "EN-US": "Master's Broadsword"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_SWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Mestre .1",
+      "EN-US": "Master's Broadsword .1"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_SWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Mestre .2",
+      "EN-US": "Master's Broadsword .2"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_SWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Mestre .3",
+      "EN-US": "Master's Broadsword .3"
+    }
+  },
+  {
+    "UniqueName": "T6_MAIN_SWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Mestre .4",
+      "EN-US": "Master's Broadsword .4"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_SWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Grão-Mestre",
+      "EN-US": "Grandmaster's Broadsword"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_SWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Broadsword .1"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_SWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Broadsword .2"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_SWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Broadsword .3"
+    }
+  },
+  {
+    "UniqueName": "T7_MAIN_SWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Broadsword .4"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_SWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Ancião",
+      "EN-US": "Elder's Broadsword"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_SWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Ancião .1",
+      "EN-US": "Elder's Broadsword .1"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_SWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Ancião .2",
+      "EN-US": "Elder's Broadsword .2"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_SWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Ancião .3",
+      "EN-US": "Elder's Broadsword .3"
+    }
+  },
+  {
+    "UniqueName": "T8_MAIN_SWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espada Larga do Ancião .4",
+      "EN-US": "Elder's Broadsword .4"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_DUALSWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Adepto",
+      "EN-US": "Adept's Dual Swords"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_DUALSWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Adepto .1",
+      "EN-US": "Adept's Dual Swords .1"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_DUALSWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Adepto .2",
+      "EN-US": "Adept's Dual Swords .2"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_DUALSWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Adepto .3",
+      "EN-US": "Adept's Dual Swords .3"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_DUALSWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Adepto .4",
+      "EN-US": "Adept's Dual Swords .4"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_DUALSWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Perito",
+      "EN-US": "Expert's Dual Swords"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_DUALSWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Perito .1",
+      "EN-US": "Expert's Dual Swords .1"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_DUALSWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Perito .2",
+      "EN-US": "Expert's Dual Swords .2"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_DUALSWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Perito .3",
+      "EN-US": "Expert's Dual Swords .3"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_DUALSWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Perito .4",
+      "EN-US": "Expert's Dual Swords .4"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_DUALSWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Mestre",
+      "EN-US": "Master's Dual Swords"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_DUALSWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Mestre .1",
+      "EN-US": "Master's Dual Swords .1"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_DUALSWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Mestre .2",
+      "EN-US": "Master's Dual Swords .2"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_DUALSWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Mestre .3",
+      "EN-US": "Master's Dual Swords .3"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_DUALSWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Mestre .4",
+      "EN-US": "Master's Dual Swords .4"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_DUALSWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Grão-Mestre",
+      "EN-US": "Grandmaster's Dual Swords"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_DUALSWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Dual Swords .1"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_DUALSWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Dual Swords .2"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_DUALSWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Dual Swords .3"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_DUALSWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Dual Swords .4"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_DUALSWORD",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Ancião",
+      "EN-US": "Elder's Dual Swords"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_DUALSWORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Ancião .1",
+      "EN-US": "Elder's Dual Swords .1"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_DUALSWORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Ancião .2",
+      "EN-US": "Elder's Dual Swords .2"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_DUALSWORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Ancião .3",
+      "EN-US": "Elder's Dual Swords .3"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_DUALSWORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Espadas Duplas do Ancião .4",
+      "EN-US": "Elder's Dual Swords .4"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_BOW",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Adepto",
+      "EN-US": "Adept's Bow"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_BOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Adepto .1",
+      "EN-US": "Adept's Bow .1"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_BOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Adepto .2",
+      "EN-US": "Adept's Bow .2"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_BOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Adepto .3",
+      "EN-US": "Adept's Bow .3"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_BOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Adepto .4",
+      "EN-US": "Adept's Bow .4"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_BOW",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Perito",
+      "EN-US": "Expert's Bow"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_BOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Perito .1",
+      "EN-US": "Expert's Bow .1"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_BOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Perito .2",
+      "EN-US": "Expert's Bow .2"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_BOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Perito .3",
+      "EN-US": "Expert's Bow .3"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_BOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Perito .4",
+      "EN-US": "Expert's Bow .4"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_BOW",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Mestre",
+      "EN-US": "Master's Bow"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_BOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Mestre .1",
+      "EN-US": "Master's Bow .1"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_BOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Mestre .2",
+      "EN-US": "Master's Bow .2"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_BOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Mestre .3",
+      "EN-US": "Master's Bow .3"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_BOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Mestre .4",
+      "EN-US": "Master's Bow .4"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_BOW",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Grão-Mestre",
+      "EN-US": "Grandmaster's Bow"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_BOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Bow .1"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_BOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Bow .2"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_BOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Bow .3"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_BOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Bow .4"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_BOW",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Ancião",
+      "EN-US": "Elder's Bow"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_BOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Ancião .1",
+      "EN-US": "Elder's Bow .1"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_BOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Ancião .2",
+      "EN-US": "Elder's Bow .2"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_BOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Ancião .3",
+      "EN-US": "Elder's Bow .3"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_BOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Arco Curvo do Ancião .4",
+      "EN-US": "Elder's Bow .4"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_CROSSBOW",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Adepto",
+      "EN-US": "Adept's Crossbow"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_CROSSBOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Adepto .1",
+      "EN-US": "Adept's Crossbow .1"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_CROSSBOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Adepto .2",
+      "EN-US": "Adept's Crossbow .2"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_CROSSBOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Adepto .3",
+      "EN-US": "Adept's Crossbow .3"
+    }
+  },
+  {
+    "UniqueName": "T4_2H_CROSSBOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Adepto .4",
+      "EN-US": "Adept's Crossbow .4"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_CROSSBOW",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Perito",
+      "EN-US": "Expert's Crossbow"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_CROSSBOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Perito .1",
+      "EN-US": "Expert's Crossbow .1"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_CROSSBOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Perito .2",
+      "EN-US": "Expert's Crossbow .2"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_CROSSBOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Perito .3",
+      "EN-US": "Expert's Crossbow .3"
+    }
+  },
+  {
+    "UniqueName": "T5_2H_CROSSBOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Perito .4",
+      "EN-US": "Expert's Crossbow .4"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_CROSSBOW",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Mestre",
+      "EN-US": "Master's Crossbow"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_CROSSBOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Mestre .1",
+      "EN-US": "Master's Crossbow .1"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_CROSSBOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Mestre .2",
+      "EN-US": "Master's Crossbow .2"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_CROSSBOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Mestre .3",
+      "EN-US": "Master's Crossbow .3"
+    }
+  },
+  {
+    "UniqueName": "T6_2H_CROSSBOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Mestre .4",
+      "EN-US": "Master's Crossbow .4"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_CROSSBOW",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Grão-Mestre",
+      "EN-US": "Grandmaster's Crossbow"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_CROSSBOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Crossbow .1"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_CROSSBOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Crossbow .2"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_CROSSBOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Crossbow .3"
+    }
+  },
+  {
+    "UniqueName": "T7_2H_CROSSBOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Crossbow .4"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_CROSSBOW",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Ancião",
+      "EN-US": "Elder's Crossbow"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_CROSSBOW@1",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Ancião .1",
+      "EN-US": "Elder's Crossbow .1"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_CROSSBOW@2",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Ancião .2",
+      "EN-US": "Elder's Crossbow .2"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_CROSSBOW@3",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Ancião .3",
+      "EN-US": "Elder's Crossbow .3"
+    }
+  },
+  {
+    "UniqueName": "T8_2H_CROSSBOW@4",
+    "LocalizedNames": {
+      "PT-BR": "Besta Pesada do Ancião .4",
+      "EN-US": "Elder's Crossbow .4"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Adepto",
+      "EN-US": "Adept's Assassin Hood"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Adepto .1",
+      "EN-US": "Adept's Assassin Hood .1"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Adepto .2",
+      "EN-US": "Adept's Assassin Hood .2"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Adepto .3",
+      "EN-US": "Adept's Assassin Hood .3"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Adepto .4",
+      "EN-US": "Adept's Assassin Hood .4"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Perito",
+      "EN-US": "Expert's Assassin Hood"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Perito .1",
+      "EN-US": "Expert's Assassin Hood .1"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Perito .2",
+      "EN-US": "Expert's Assassin Hood .2"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Perito .3",
+      "EN-US": "Expert's Assassin Hood .3"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Perito .4",
+      "EN-US": "Expert's Assassin Hood .4"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Mestre",
+      "EN-US": "Master's Assassin Hood"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Mestre .1",
+      "EN-US": "Master's Assassin Hood .1"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Mestre .2",
+      "EN-US": "Master's Assassin Hood .2"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Mestre .3",
+      "EN-US": "Master's Assassin Hood .3"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Mestre .4",
+      "EN-US": "Master's Assassin Hood .4"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Grão-Mestre",
+      "EN-US": "Grandmaster's Assassin Hood"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Assassin Hood .1"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Assassin Hood .2"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Assassin Hood .3"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Assassin Hood .4"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Ancião",
+      "EN-US": "Elder's Assassin Hood"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Ancião .1",
+      "EN-US": "Elder's Assassin Hood .1"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Ancião .2",
+      "EN-US": "Elder's Assassin Hood .2"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Ancião .3",
+      "EN-US": "Elder's Assassin Hood .3"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Capuz de Assassino do Ancião .4",
+      "EN-US": "Elder's Assassin Hood .4"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_LEATHER_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Adepto",
+      "EN-US": "Adept's Mercenary Jacket"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_LEATHER_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Adepto .1",
+      "EN-US": "Adept's Mercenary Jacket .1"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_LEATHER_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Adepto .2",
+      "EN-US": "Adept's Mercenary Jacket .2"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_LEATHER_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Adepto .3",
+      "EN-US": "Adept's Mercenary Jacket .3"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_LEATHER_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Adepto .4",
+      "EN-US": "Adept's Mercenary Jacket .4"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_LEATHER_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Perito",
+      "EN-US": "Expert's Mercenary Jacket"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_LEATHER_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Perito .1",
+      "EN-US": "Expert's Mercenary Jacket .1"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_LEATHER_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Perito .2",
+      "EN-US": "Expert's Mercenary Jacket .2"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_LEATHER_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Perito .3",
+      "EN-US": "Expert's Mercenary Jacket .3"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_LEATHER_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Perito .4",
+      "EN-US": "Expert's Mercenary Jacket .4"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_LEATHER_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Mestre",
+      "EN-US": "Master's Mercenary Jacket"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_LEATHER_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Mestre .1",
+      "EN-US": "Master's Mercenary Jacket .1"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_LEATHER_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Mestre .2",
+      "EN-US": "Master's Mercenary Jacket .2"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_LEATHER_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Mestre .3",
+      "EN-US": "Master's Mercenary Jacket .3"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_LEATHER_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Mestre .4",
+      "EN-US": "Master's Mercenary Jacket .4"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_LEATHER_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Grão-Mestre",
+      "EN-US": "Grandmaster's Mercenary Jacket"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_LEATHER_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Mercenary Jacket .1"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_LEATHER_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Mercenary Jacket .2"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_LEATHER_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Mercenary Jacket .3"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_LEATHER_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Mercenary Jacket .4"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_LEATHER_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Ancião",
+      "EN-US": "Elder's Mercenary Jacket"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_LEATHER_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Ancião .1",
+      "EN-US": "Elder's Mercenary Jacket .1"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_LEATHER_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Ancião .2",
+      "EN-US": "Elder's Mercenary Jacket .2"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_LEATHER_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Ancião .3",
+      "EN-US": "Elder's Mercenary Jacket .3"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_LEATHER_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Casaco de Mercenário do Ancião .4",
+      "EN-US": "Elder's Mercenary Jacket .4"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Adepto",
+      "EN-US": "Adept's Soldier Helmet"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Adepto .1",
+      "EN-US": "Adept's Soldier Helmet .1"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Adepto .2",
+      "EN-US": "Adept's Soldier Helmet .2"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Adepto .3",
+      "EN-US": "Adept's Soldier Helmet .3"
+    }
+  },
+  {
+    "UniqueName": "T4_HEAD_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Adepto .4",
+      "EN-US": "Adept's Soldier Helmet .4"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Perito",
+      "EN-US": "Expert's Soldier Helmet"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Perito .1",
+      "EN-US": "Expert's Soldier Helmet .1"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Perito .2",
+      "EN-US": "Expert's Soldier Helmet .2"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Perito .3",
+      "EN-US": "Expert's Soldier Helmet .3"
+    }
+  },
+  {
+    "UniqueName": "T5_HEAD_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Perito .4",
+      "EN-US": "Expert's Soldier Helmet .4"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Mestre",
+      "EN-US": "Master's Soldier Helmet"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Mestre .1",
+      "EN-US": "Master's Soldier Helmet .1"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Mestre .2",
+      "EN-US": "Master's Soldier Helmet .2"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Mestre .3",
+      "EN-US": "Master's Soldier Helmet .3"
+    }
+  },
+  {
+    "UniqueName": "T6_HEAD_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Mestre .4",
+      "EN-US": "Master's Soldier Helmet .4"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Grão-Mestre",
+      "EN-US": "Grandmaster's Soldier Helmet"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Soldier Helmet .1"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Soldier Helmet .2"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Soldier Helmet .3"
+    }
+  },
+  {
+    "UniqueName": "T7_HEAD_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Soldier Helmet .4"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Ancião",
+      "EN-US": "Elder's Soldier Helmet"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Ancião .1",
+      "EN-US": "Elder's Soldier Helmet .1"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Ancião .2",
+      "EN-US": "Elder's Soldier Helmet .2"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Ancião .3",
+      "EN-US": "Elder's Soldier Helmet .3"
+    }
+  },
+  {
+    "UniqueName": "T8_HEAD_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Elmo de Soldado do Ancião .4",
+      "EN-US": "Elder's Soldier Helmet .4"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Adepto",
+      "EN-US": "Adept's Soldier Armor"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Adepto .1",
+      "EN-US": "Adept's Soldier Armor .1"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Adepto .2",
+      "EN-US": "Adept's Soldier Armor .2"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Adepto .3",
+      "EN-US": "Adept's Soldier Armor .3"
+    }
+  },
+  {
+    "UniqueName": "T4_ARMOR_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Adepto .4",
+      "EN-US": "Adept's Soldier Armor .4"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Perito",
+      "EN-US": "Expert's Soldier Armor"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Perito .1",
+      "EN-US": "Expert's Soldier Armor .1"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Perito .2",
+      "EN-US": "Expert's Soldier Armor .2"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Perito .3",
+      "EN-US": "Expert's Soldier Armor .3"
+    }
+  },
+  {
+    "UniqueName": "T5_ARMOR_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Perito .4",
+      "EN-US": "Expert's Soldier Armor .4"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Mestre",
+      "EN-US": "Master's Soldier Armor"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Mestre .1",
+      "EN-US": "Master's Soldier Armor .1"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Mestre .2",
+      "EN-US": "Master's Soldier Armor .2"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Mestre .3",
+      "EN-US": "Master's Soldier Armor .3"
+    }
+  },
+  {
+    "UniqueName": "T6_ARMOR_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Mestre .4",
+      "EN-US": "Master's Soldier Armor .4"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Grão-Mestre",
+      "EN-US": "Grandmaster's Soldier Armor"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Soldier Armor .1"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Soldier Armor .2"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Soldier Armor .3"
+    }
+  },
+  {
+    "UniqueName": "T7_ARMOR_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Soldier Armor .4"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Ancião",
+      "EN-US": "Elder's Soldier Armor"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Ancião .1",
+      "EN-US": "Elder's Soldier Armor .1"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Ancião .2",
+      "EN-US": "Elder's Soldier Armor .2"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Ancião .3",
+      "EN-US": "Elder's Soldier Armor .3"
+    }
+  },
+  {
+    "UniqueName": "T8_ARMOR_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Armadura de Soldado do Ancião .4",
+      "EN-US": "Elder's Soldier Armor .4"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Adepto",
+      "EN-US": "Adept's Soldier Boots"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Adepto .1",
+      "EN-US": "Adept's Soldier Boots .1"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Adepto .2",
+      "EN-US": "Adept's Soldier Boots .2"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Adepto .3",
+      "EN-US": "Adept's Soldier Boots .3"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Adepto .4",
+      "EN-US": "Adept's Soldier Boots .4"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Perito",
+      "EN-US": "Expert's Soldier Boots"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Perito .1",
+      "EN-US": "Expert's Soldier Boots .1"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Perito .2",
+      "EN-US": "Expert's Soldier Boots .2"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Perito .3",
+      "EN-US": "Expert's Soldier Boots .3"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Perito .4",
+      "EN-US": "Expert's Soldier Boots .4"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Mestre",
+      "EN-US": "Master's Soldier Boots"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Mestre .1",
+      "EN-US": "Master's Soldier Boots .1"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Mestre .2",
+      "EN-US": "Master's Soldier Boots .2"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Mestre .3",
+      "EN-US": "Master's Soldier Boots .3"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Mestre .4",
+      "EN-US": "Master's Soldier Boots .4"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Grão-Mestre",
+      "EN-US": "Grandmaster's Soldier Boots"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Soldier Boots .1"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Soldier Boots .2"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Soldier Boots .3"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Soldier Boots .4"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_PLATE_SET1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Ancião",
+      "EN-US": "Elder's Soldier Boots"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_PLATE_SET1@1",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Ancião .1",
+      "EN-US": "Elder's Soldier Boots .1"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_PLATE_SET1@2",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Ancião .2",
+      "EN-US": "Elder's Soldier Boots .2"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_PLATE_SET1@3",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Ancião .3",
+      "EN-US": "Elder's Soldier Boots .3"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_PLATE_SET1@4",
+    "LocalizedNames": {
+      "PT-BR": "Botas de Soldado do Ancião .4",
+      "EN-US": "Elder's Soldier Boots .4"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Adepto",
+      "EN-US": "Adept's Assassin Shoes"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Adepto .1",
+      "EN-US": "Adept's Assassin Shoes .1"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Adepto .2",
+      "EN-US": "Adept's Assassin Shoes .2"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Adepto .3",
+      "EN-US": "Adept's Assassin Shoes .3"
+    }
+  },
+  {
+    "UniqueName": "T4_SHOES_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Adepto .4",
+      "EN-US": "Adept's Assassin Shoes .4"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Perito",
+      "EN-US": "Expert's Assassin Shoes"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Perito .1",
+      "EN-US": "Expert's Assassin Shoes .1"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Perito .2",
+      "EN-US": "Expert's Assassin Shoes .2"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Perito .3",
+      "EN-US": "Expert's Assassin Shoes .3"
+    }
+  },
+  {
+    "UniqueName": "T5_SHOES_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Perito .4",
+      "EN-US": "Expert's Assassin Shoes .4"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Mestre",
+      "EN-US": "Master's Assassin Shoes"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Mestre .1",
+      "EN-US": "Master's Assassin Shoes .1"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Mestre .2",
+      "EN-US": "Master's Assassin Shoes .2"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Mestre .3",
+      "EN-US": "Master's Assassin Shoes .3"
+    }
+  },
+  {
+    "UniqueName": "T6_SHOES_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Mestre .4",
+      "EN-US": "Master's Assassin Shoes .4"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Grão-Mestre",
+      "EN-US": "Grandmaster's Assassin Shoes"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Assassin Shoes .1"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Assassin Shoes .2"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Assassin Shoes .3"
+    }
+  },
+  {
+    "UniqueName": "T7_SHOES_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Assassin Shoes .4"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_LEATHER_SET3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Ancião",
+      "EN-US": "Elder's Assassin Shoes"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_LEATHER_SET3@1",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Ancião .1",
+      "EN-US": "Elder's Assassin Shoes .1"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_LEATHER_SET3@2",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Ancião .2",
+      "EN-US": "Elder's Assassin Shoes .2"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_LEATHER_SET3@3",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Ancião .3",
+      "EN-US": "Elder's Assassin Shoes .3"
+    }
+  },
+  {
+    "UniqueName": "T8_SHOES_LEATHER_SET3@4",
+    "LocalizedNames": {
+      "PT-BR": "Sapatos de Assassino do Ancião .4",
+      "EN-US": "Elder's Assassin Shoes .4"
+    }
+  },
+  {
+    "UniqueName": "T4_METALBAR",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Adepto",
+      "EN-US": "Adept's Metal Bar"
+    }
+  },
+  {
+    "UniqueName": "T4_METALBAR@1",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Adepto .1",
+      "EN-US": "Adept's Metal Bar .1"
+    }
+  },
+  {
+    "UniqueName": "T4_METALBAR@2",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Adepto .2",
+      "EN-US": "Adept's Metal Bar .2"
+    }
+  },
+  {
+    "UniqueName": "T4_METALBAR@3",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Adepto .3",
+      "EN-US": "Adept's Metal Bar .3"
+    }
+  },
+  {
+    "UniqueName": "T4_METALBAR@4",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Adepto .4",
+      "EN-US": "Adept's Metal Bar .4"
+    }
+  },
+  {
+    "UniqueName": "T5_METALBAR",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Perito",
+      "EN-US": "Expert's Metal Bar"
+    }
+  },
+  {
+    "UniqueName": "T5_METALBAR@1",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Perito .1",
+      "EN-US": "Expert's Metal Bar .1"
+    }
+  },
+  {
+    "UniqueName": "T5_METALBAR@2",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Perito .2",
+      "EN-US": "Expert's Metal Bar .2"
+    }
+  },
+  {
+    "UniqueName": "T5_METALBAR@3",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Perito .3",
+      "EN-US": "Expert's Metal Bar .3"
+    }
+  },
+  {
+    "UniqueName": "T5_METALBAR@4",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Perito .4",
+      "EN-US": "Expert's Metal Bar .4"
+    }
+  },
+  {
+    "UniqueName": "T6_METALBAR",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Mestre",
+      "EN-US": "Master's Metal Bar"
+    }
+  },
+  {
+    "UniqueName": "T6_METALBAR@1",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Mestre .1",
+      "EN-US": "Master's Metal Bar .1"
+    }
+  },
+  {
+    "UniqueName": "T6_METALBAR@2",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Mestre .2",
+      "EN-US": "Master's Metal Bar .2"
+    }
+  },
+  {
+    "UniqueName": "T6_METALBAR@3",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Mestre .3",
+      "EN-US": "Master's Metal Bar .3"
+    }
+  },
+  {
+    "UniqueName": "T6_METALBAR@4",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Mestre .4",
+      "EN-US": "Master's Metal Bar .4"
+    }
+  },
+  {
+    "UniqueName": "T7_METALBAR",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Grão-Mestre",
+      "EN-US": "Grandmaster's Metal Bar"
+    }
+  },
+  {
+    "UniqueName": "T7_METALBAR@1",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Metal Bar .1"
+    }
+  },
+  {
+    "UniqueName": "T7_METALBAR@2",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Metal Bar .2"
+    }
+  },
+  {
+    "UniqueName": "T7_METALBAR@3",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Metal Bar .3"
+    }
+  },
+  {
+    "UniqueName": "T7_METALBAR@4",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Metal Bar .4"
+    }
+  },
+  {
+    "UniqueName": "T8_METALBAR",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Ancião",
+      "EN-US": "Elder's Metal Bar"
+    }
+  },
+  {
+    "UniqueName": "T8_METALBAR@1",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Ancião .1",
+      "EN-US": "Elder's Metal Bar .1"
+    }
+  },
+  {
+    "UniqueName": "T8_METALBAR@2",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Ancião .2",
+      "EN-US": "Elder's Metal Bar .2"
+    }
+  },
+  {
+    "UniqueName": "T8_METALBAR@3",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Ancião .3",
+      "EN-US": "Elder's Metal Bar .3"
+    }
+  },
+  {
+    "UniqueName": "T8_METALBAR@4",
+    "LocalizedNames": {
+      "PT-BR": "Barra de Metal do Ancião .4",
+      "EN-US": "Elder's Metal Bar .4"
+    }
+  },
+  {
+    "UniqueName": "T4_PLANKS",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Adepto",
+      "EN-US": "Adept's Planks"
+    }
+  },
+  {
+    "UniqueName": "T4_PLANKS@1",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Adepto .1",
+      "EN-US": "Adept's Planks .1"
+    }
+  },
+  {
+    "UniqueName": "T4_PLANKS@2",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Adepto .2",
+      "EN-US": "Adept's Planks .2"
+    }
+  },
+  {
+    "UniqueName": "T4_PLANKS@3",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Adepto .3",
+      "EN-US": "Adept's Planks .3"
+    }
+  },
+  {
+    "UniqueName": "T4_PLANKS@4",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Adepto .4",
+      "EN-US": "Adept's Planks .4"
+    }
+  },
+  {
+    "UniqueName": "T5_PLANKS",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Perito",
+      "EN-US": "Expert's Planks"
+    }
+  },
+  {
+    "UniqueName": "T5_PLANKS@1",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Perito .1",
+      "EN-US": "Expert's Planks .1"
+    }
+  },
+  {
+    "UniqueName": "T5_PLANKS@2",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Perito .2",
+      "EN-US": "Expert's Planks .2"
+    }
+  },
+  {
+    "UniqueName": "T5_PLANKS@3",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Perito .3",
+      "EN-US": "Expert's Planks .3"
+    }
+  },
+  {
+    "UniqueName": "T5_PLANKS@4",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Perito .4",
+      "EN-US": "Expert's Planks .4"
+    }
+  },
+  {
+    "UniqueName": "T6_PLANKS",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Mestre",
+      "EN-US": "Master's Planks"
+    }
+  },
+  {
+    "UniqueName": "T6_PLANKS@1",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Mestre .1",
+      "EN-US": "Master's Planks .1"
+    }
+  },
+  {
+    "UniqueName": "T6_PLANKS@2",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Mestre .2",
+      "EN-US": "Master's Planks .2"
+    }
+  },
+  {
+    "UniqueName": "T6_PLANKS@3",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Mestre .3",
+      "EN-US": "Master's Planks .3"
+    }
+  },
+  {
+    "UniqueName": "T6_PLANKS@4",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Mestre .4",
+      "EN-US": "Master's Planks .4"
+    }
+  },
+  {
+    "UniqueName": "T7_PLANKS",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Grão-Mestre",
+      "EN-US": "Grandmaster's Planks"
+    }
+  },
+  {
+    "UniqueName": "T7_PLANKS@1",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Planks .1"
+    }
+  },
+  {
+    "UniqueName": "T7_PLANKS@2",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Planks .2"
+    }
+  },
+  {
+    "UniqueName": "T7_PLANKS@3",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Planks .3"
+    }
+  },
+  {
+    "UniqueName": "T7_PLANKS@4",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Planks .4"
+    }
+  },
+  {
+    "UniqueName": "T8_PLANKS",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Ancião",
+      "EN-US": "Elder's Planks"
+    }
+  },
+  {
+    "UniqueName": "T8_PLANKS@1",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Ancião .1",
+      "EN-US": "Elder's Planks .1"
+    }
+  },
+  {
+    "UniqueName": "T8_PLANKS@2",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Ancião .2",
+      "EN-US": "Elder's Planks .2"
+    }
+  },
+  {
+    "UniqueName": "T8_PLANKS@3",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Ancião .3",
+      "EN-US": "Elder's Planks .3"
+    }
+  },
+  {
+    "UniqueName": "T8_PLANKS@4",
+    "LocalizedNames": {
+      "PT-BR": "Tábuas de Madeira do Ancião .4",
+      "EN-US": "Elder's Planks .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CLOTH",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Adepto",
+      "EN-US": "Adept's Cloth"
+    }
+  },
+  {
+    "UniqueName": "T4_CLOTH@1",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Adepto .1",
+      "EN-US": "Adept's Cloth .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CLOTH@2",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Adepto .2",
+      "EN-US": "Adept's Cloth .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CLOTH@3",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Adepto .3",
+      "EN-US": "Adept's Cloth .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CLOTH@4",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Adepto .4",
+      "EN-US": "Adept's Cloth .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CLOTH",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Perito",
+      "EN-US": "Expert's Cloth"
+    }
+  },
+  {
+    "UniqueName": "T5_CLOTH@1",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Perito .1",
+      "EN-US": "Expert's Cloth .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CLOTH@2",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Perito .2",
+      "EN-US": "Expert's Cloth .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CLOTH@3",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Perito .3",
+      "EN-US": "Expert's Cloth .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CLOTH@4",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Perito .4",
+      "EN-US": "Expert's Cloth .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CLOTH",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Mestre",
+      "EN-US": "Master's Cloth"
+    }
+  },
+  {
+    "UniqueName": "T6_CLOTH@1",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Mestre .1",
+      "EN-US": "Master's Cloth .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CLOTH@2",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Mestre .2",
+      "EN-US": "Master's Cloth .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CLOTH@3",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Mestre .3",
+      "EN-US": "Master's Cloth .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CLOTH@4",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Mestre .4",
+      "EN-US": "Master's Cloth .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CLOTH",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Grão-Mestre",
+      "EN-US": "Grandmaster's Cloth"
+    }
+  },
+  {
+    "UniqueName": "T7_CLOTH@1",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Cloth .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CLOTH@2",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Cloth .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CLOTH@3",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Cloth .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CLOTH@4",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Cloth .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CLOTH",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Ancião",
+      "EN-US": "Elder's Cloth"
+    }
+  },
+  {
+    "UniqueName": "T8_CLOTH@1",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Ancião .1",
+      "EN-US": "Elder's Cloth .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CLOTH@2",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Ancião .2",
+      "EN-US": "Elder's Cloth .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CLOTH@3",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Ancião .3",
+      "EN-US": "Elder's Cloth .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CLOTH@4",
+    "LocalizedNames": {
+      "PT-BR": "Tecido do Ancião .4",
+      "EN-US": "Elder's Cloth .4"
+    }
+  },
+  {
+    "UniqueName": "T4_LEATHER",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Adepto",
+      "EN-US": "Adept's Leather"
+    }
+  },
+  {
+    "UniqueName": "T4_LEATHER@1",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Adepto .1",
+      "EN-US": "Adept's Leather .1"
+    }
+  },
+  {
+    "UniqueName": "T4_LEATHER@2",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Adepto .2",
+      "EN-US": "Adept's Leather .2"
+    }
+  },
+  {
+    "UniqueName": "T4_LEATHER@3",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Adepto .3",
+      "EN-US": "Adept's Leather .3"
+    }
+  },
+  {
+    "UniqueName": "T4_LEATHER@4",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Adepto .4",
+      "EN-US": "Adept's Leather .4"
+    }
+  },
+  {
+    "UniqueName": "T5_LEATHER",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Perito",
+      "EN-US": "Expert's Leather"
+    }
+  },
+  {
+    "UniqueName": "T5_LEATHER@1",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Perito .1",
+      "EN-US": "Expert's Leather .1"
+    }
+  },
+  {
+    "UniqueName": "T5_LEATHER@2",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Perito .2",
+      "EN-US": "Expert's Leather .2"
+    }
+  },
+  {
+    "UniqueName": "T5_LEATHER@3",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Perito .3",
+      "EN-US": "Expert's Leather .3"
+    }
+  },
+  {
+    "UniqueName": "T5_LEATHER@4",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Perito .4",
+      "EN-US": "Expert's Leather .4"
+    }
+  },
+  {
+    "UniqueName": "T6_LEATHER",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Mestre",
+      "EN-US": "Master's Leather"
+    }
+  },
+  {
+    "UniqueName": "T6_LEATHER@1",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Mestre .1",
+      "EN-US": "Master's Leather .1"
+    }
+  },
+  {
+    "UniqueName": "T6_LEATHER@2",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Mestre .2",
+      "EN-US": "Master's Leather .2"
+    }
+  },
+  {
+    "UniqueName": "T6_LEATHER@3",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Mestre .3",
+      "EN-US": "Master's Leather .3"
+    }
+  },
+  {
+    "UniqueName": "T6_LEATHER@4",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Mestre .4",
+      "EN-US": "Master's Leather .4"
+    }
+  },
+  {
+    "UniqueName": "T7_LEATHER",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Grão-Mestre",
+      "EN-US": "Grandmaster's Leather"
+    }
+  },
+  {
+    "UniqueName": "T7_LEATHER@1",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Leather .1"
+    }
+  },
+  {
+    "UniqueName": "T7_LEATHER@2",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Leather .2"
+    }
+  },
+  {
+    "UniqueName": "T7_LEATHER@3",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Leather .3"
+    }
+  },
+  {
+    "UniqueName": "T7_LEATHER@4",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Leather .4"
+    }
+  },
+  {
+    "UniqueName": "T8_LEATHER",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Ancião",
+      "EN-US": "Elder's Leather"
+    }
+  },
+  {
+    "UniqueName": "T8_LEATHER@1",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Ancião .1",
+      "EN-US": "Elder's Leather .1"
+    }
+  },
+  {
+    "UniqueName": "T8_LEATHER@2",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Ancião .2",
+      "EN-US": "Elder's Leather .2"
+    }
+  },
+  {
+    "UniqueName": "T8_LEATHER@3",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Ancião .3",
+      "EN-US": "Elder's Leather .3"
+    }
+  },
+  {
+    "UniqueName": "T8_LEATHER@4",
+    "LocalizedNames": {
+      "PT-BR": "Couro do Ancião .4",
+      "EN-US": "Elder's Leather .4"
+    }
+  },
+  {
+    "UniqueName": "T4_STONEBLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Adepto",
+      "EN-US": "Adept's Stone Block"
+    }
+  },
+  {
+    "UniqueName": "T4_STONEBLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Adepto .1",
+      "EN-US": "Adept's Stone Block .1"
+    }
+  },
+  {
+    "UniqueName": "T4_STONEBLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Adepto .2",
+      "EN-US": "Adept's Stone Block .2"
+    }
+  },
+  {
+    "UniqueName": "T4_STONEBLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Adepto .3",
+      "EN-US": "Adept's Stone Block .3"
+    }
+  },
+  {
+    "UniqueName": "T4_STONEBLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Adepto .4",
+      "EN-US": "Adept's Stone Block .4"
+    }
+  },
+  {
+    "UniqueName": "T5_STONEBLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Perito",
+      "EN-US": "Expert's Stone Block"
+    }
+  },
+  {
+    "UniqueName": "T5_STONEBLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Perito .1",
+      "EN-US": "Expert's Stone Block .1"
+    }
+  },
+  {
+    "UniqueName": "T5_STONEBLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Perito .2",
+      "EN-US": "Expert's Stone Block .2"
+    }
+  },
+  {
+    "UniqueName": "T5_STONEBLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Perito .3",
+      "EN-US": "Expert's Stone Block .3"
+    }
+  },
+  {
+    "UniqueName": "T5_STONEBLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Perito .4",
+      "EN-US": "Expert's Stone Block .4"
+    }
+  },
+  {
+    "UniqueName": "T6_STONEBLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Mestre",
+      "EN-US": "Master's Stone Block"
+    }
+  },
+  {
+    "UniqueName": "T6_STONEBLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Mestre .1",
+      "EN-US": "Master's Stone Block .1"
+    }
+  },
+  {
+    "UniqueName": "T6_STONEBLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Mestre .2",
+      "EN-US": "Master's Stone Block .2"
+    }
+  },
+  {
+    "UniqueName": "T6_STONEBLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Mestre .3",
+      "EN-US": "Master's Stone Block .3"
+    }
+  },
+  {
+    "UniqueName": "T6_STONEBLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Mestre .4",
+      "EN-US": "Master's Stone Block .4"
+    }
+  },
+  {
+    "UniqueName": "T7_STONEBLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Grão-Mestre",
+      "EN-US": "Grandmaster's Stone Block"
+    }
+  },
+  {
+    "UniqueName": "T7_STONEBLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Stone Block .1"
+    }
+  },
+  {
+    "UniqueName": "T7_STONEBLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Stone Block .2"
+    }
+  },
+  {
+    "UniqueName": "T7_STONEBLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Stone Block .3"
+    }
+  },
+  {
+    "UniqueName": "T7_STONEBLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Stone Block .4"
+    }
+  },
+  {
+    "UniqueName": "T8_STONEBLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Ancião",
+      "EN-US": "Elder's Stone Block"
+    }
+  },
+  {
+    "UniqueName": "T8_STONEBLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Ancião .1",
+      "EN-US": "Elder's Stone Block .1"
+    }
+  },
+  {
+    "UniqueName": "T8_STONEBLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Ancião .2",
+      "EN-US": "Elder's Stone Block .2"
+    }
+  },
+  {
+    "UniqueName": "T8_STONEBLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Ancião .3",
+      "EN-US": "Elder's Stone Block .3"
+    }
+  },
+  {
+    "UniqueName": "T8_STONEBLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Bloco de Pedra do Ancião .4",
+      "EN-US": "Elder's Stone Block .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Adepto",
+      "EN-US": "Adept's Lymhurst Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_LYMHURST@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Adepto .1",
+      "EN-US": "Adept's Lymhurst Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_LYMHURST@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Adepto .2",
+      "EN-US": "Adept's Lymhurst Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_LYMHURST@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Adepto .3",
+      "EN-US": "Adept's Lymhurst Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_LYMHURST@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Adepto .4",
+      "EN-US": "Adept's Lymhurst Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Perito",
+      "EN-US": "Expert's Lymhurst Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_LYMHURST@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Perito .1",
+      "EN-US": "Expert's Lymhurst Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_LYMHURST@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Perito .2",
+      "EN-US": "Expert's Lymhurst Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_LYMHURST@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Perito .3",
+      "EN-US": "Expert's Lymhurst Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_LYMHURST@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Perito .4",
+      "EN-US": "Expert's Lymhurst Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Mestre",
+      "EN-US": "Master's Lymhurst Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_LYMHURST@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Mestre .1",
+      "EN-US": "Master's Lymhurst Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_LYMHURST@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Mestre .2",
+      "EN-US": "Master's Lymhurst Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_LYMHURST@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Mestre .3",
+      "EN-US": "Master's Lymhurst Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_LYMHURST@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Mestre .4",
+      "EN-US": "Master's Lymhurst Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Grão-Mestre",
+      "EN-US": "Grandmaster's Lymhurst Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_LYMHURST@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Lymhurst Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_LYMHURST@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Lymhurst Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_LYMHURST@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Lymhurst Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_LYMHURST@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Lymhurst Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Ancião",
+      "EN-US": "Elder's Lymhurst Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_LYMHURST@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Ancião .1",
+      "EN-US": "Elder's Lymhurst Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_LYMHURST@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Ancião .2",
+      "EN-US": "Elder's Lymhurst Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_LYMHURST@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Ancião .3",
+      "EN-US": "Elder's Lymhurst Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_LYMHURST@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Lymhurst do Ancião .4",
+      "EN-US": "Elder's Lymhurst Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Adepto",
+      "EN-US": "Adept's Fort Sterling Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_FORTSTERLING@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Adepto .1",
+      "EN-US": "Adept's Fort Sterling Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_FORTSTERLING@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Adepto .2",
+      "EN-US": "Adept's Fort Sterling Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_FORTSTERLING@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Adepto .3",
+      "EN-US": "Adept's Fort Sterling Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_FORTSTERLING@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Adepto .4",
+      "EN-US": "Adept's Fort Sterling Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Perito",
+      "EN-US": "Expert's Fort Sterling Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_FORTSTERLING@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Perito .1",
+      "EN-US": "Expert's Fort Sterling Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_FORTSTERLING@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Perito .2",
+      "EN-US": "Expert's Fort Sterling Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_FORTSTERLING@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Perito .3",
+      "EN-US": "Expert's Fort Sterling Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_FORTSTERLING@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Perito .4",
+      "EN-US": "Expert's Fort Sterling Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Mestre",
+      "EN-US": "Master's Fort Sterling Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_FORTSTERLING@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Mestre .1",
+      "EN-US": "Master's Fort Sterling Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_FORTSTERLING@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Mestre .2",
+      "EN-US": "Master's Fort Sterling Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_FORTSTERLING@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Mestre .3",
+      "EN-US": "Master's Fort Sterling Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_FORTSTERLING@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Mestre .4",
+      "EN-US": "Master's Fort Sterling Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Grão-Mestre",
+      "EN-US": "Grandmaster's Fort Sterling Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_FORTSTERLING@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Fort Sterling Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_FORTSTERLING@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Fort Sterling Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_FORTSTERLING@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Fort Sterling Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_FORTSTERLING@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Fort Sterling Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Ancião",
+      "EN-US": "Elder's Fort Sterling Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_FORTSTERLING@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Ancião .1",
+      "EN-US": "Elder's Fort Sterling Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_FORTSTERLING@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Ancião .2",
+      "EN-US": "Elder's Fort Sterling Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_FORTSTERLING@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Ancião .3",
+      "EN-US": "Elder's Fort Sterling Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_FORTSTERLING@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Fort Sterling do Ancião .4",
+      "EN-US": "Elder's Fort Sterling Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Adepto",
+      "EN-US": "Adept's Bridgewatch Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_BRIDGEWATCH@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Adepto .1",
+      "EN-US": "Adept's Bridgewatch Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_BRIDGEWATCH@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Adepto .2",
+      "EN-US": "Adept's Bridgewatch Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_BRIDGEWATCH@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Adepto .3",
+      "EN-US": "Adept's Bridgewatch Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_BRIDGEWATCH@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Adepto .4",
+      "EN-US": "Adept's Bridgewatch Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Perito",
+      "EN-US": "Expert's Bridgewatch Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_BRIDGEWATCH@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Perito .1",
+      "EN-US": "Expert's Bridgewatch Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_BRIDGEWATCH@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Perito .2",
+      "EN-US": "Expert's Bridgewatch Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_BRIDGEWATCH@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Perito .3",
+      "EN-US": "Expert's Bridgewatch Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_BRIDGEWATCH@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Perito .4",
+      "EN-US": "Expert's Bridgewatch Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Mestre",
+      "EN-US": "Master's Bridgewatch Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_BRIDGEWATCH@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Mestre .1",
+      "EN-US": "Master's Bridgewatch Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_BRIDGEWATCH@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Mestre .2",
+      "EN-US": "Master's Bridgewatch Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_BRIDGEWATCH@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Mestre .3",
+      "EN-US": "Master's Bridgewatch Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_BRIDGEWATCH@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Mestre .4",
+      "EN-US": "Master's Bridgewatch Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Grão-Mestre",
+      "EN-US": "Grandmaster's Bridgewatch Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_BRIDGEWATCH@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Bridgewatch Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_BRIDGEWATCH@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Bridgewatch Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_BRIDGEWATCH@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Bridgewatch Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_BRIDGEWATCH@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Bridgewatch Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Ancião",
+      "EN-US": "Elder's Bridgewatch Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_BRIDGEWATCH@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Ancião .1",
+      "EN-US": "Elder's Bridgewatch Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_BRIDGEWATCH@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Ancião .2",
+      "EN-US": "Elder's Bridgewatch Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_BRIDGEWATCH@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Ancião .3",
+      "EN-US": "Elder's Bridgewatch Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_BRIDGEWATCH@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Bridgewatch do Ancião .4",
+      "EN-US": "Elder's Bridgewatch Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Adepto",
+      "EN-US": "Adept's Thetford Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_THETFORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Adepto .1",
+      "EN-US": "Adept's Thetford Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_THETFORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Adepto .2",
+      "EN-US": "Adept's Thetford Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_THETFORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Adepto .3",
+      "EN-US": "Adept's Thetford Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_THETFORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Adepto .4",
+      "EN-US": "Adept's Thetford Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Perito",
+      "EN-US": "Expert's Thetford Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_THETFORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Perito .1",
+      "EN-US": "Expert's Thetford Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_THETFORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Perito .2",
+      "EN-US": "Expert's Thetford Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_THETFORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Perito .3",
+      "EN-US": "Expert's Thetford Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_THETFORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Perito .4",
+      "EN-US": "Expert's Thetford Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Mestre",
+      "EN-US": "Master's Thetford Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_THETFORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Mestre .1",
+      "EN-US": "Master's Thetford Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_THETFORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Mestre .2",
+      "EN-US": "Master's Thetford Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_THETFORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Mestre .3",
+      "EN-US": "Master's Thetford Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_THETFORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Mestre .4",
+      "EN-US": "Master's Thetford Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Grão-Mestre",
+      "EN-US": "Grandmaster's Thetford Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_THETFORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Thetford Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_THETFORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Thetford Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_THETFORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Thetford Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_THETFORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Thetford Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Ancião",
+      "EN-US": "Elder's Thetford Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_THETFORD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Ancião .1",
+      "EN-US": "Elder's Thetford Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_THETFORD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Ancião .2",
+      "EN-US": "Elder's Thetford Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_THETFORD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Ancião .3",
+      "EN-US": "Elder's Thetford Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_THETFORD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Thetford do Ancião .4",
+      "EN-US": "Elder's Thetford Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Adepto",
+      "EN-US": "Adept's Martlock Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_MARTLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Adepto .1",
+      "EN-US": "Adept's Martlock Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_MARTLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Adepto .2",
+      "EN-US": "Adept's Martlock Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_MARTLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Adepto .3",
+      "EN-US": "Adept's Martlock Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_MARTLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Adepto .4",
+      "EN-US": "Adept's Martlock Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Perito",
+      "EN-US": "Expert's Martlock Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_MARTLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Perito .1",
+      "EN-US": "Expert's Martlock Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_MARTLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Perito .2",
+      "EN-US": "Expert's Martlock Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_MARTLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Perito .3",
+      "EN-US": "Expert's Martlock Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_MARTLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Perito .4",
+      "EN-US": "Expert's Martlock Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Mestre",
+      "EN-US": "Master's Martlock Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_MARTLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Mestre .1",
+      "EN-US": "Master's Martlock Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_MARTLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Mestre .2",
+      "EN-US": "Master's Martlock Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_MARTLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Mestre .3",
+      "EN-US": "Master's Martlock Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_MARTLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Mestre .4",
+      "EN-US": "Master's Martlock Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Grão-Mestre",
+      "EN-US": "Grandmaster's Martlock Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_MARTLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Martlock Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_MARTLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Martlock Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_MARTLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Martlock Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_MARTLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Martlock Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Ancião",
+      "EN-US": "Elder's Martlock Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_MARTLOCK@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Ancião .1",
+      "EN-US": "Elder's Martlock Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_MARTLOCK@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Ancião .2",
+      "EN-US": "Elder's Martlock Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_MARTLOCK@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Ancião .3",
+      "EN-US": "Elder's Martlock Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_MARTLOCK@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Martlock do Ancião .4",
+      "EN-US": "Elder's Martlock Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Adepto",
+      "EN-US": "Adept's Caerleon Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_CAERLEON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Adepto .1",
+      "EN-US": "Adept's Caerleon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_CAERLEON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Adepto .2",
+      "EN-US": "Adept's Caerleon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_CAERLEON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Adepto .3",
+      "EN-US": "Adept's Caerleon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_FW_CAERLEON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Adepto .4",
+      "EN-US": "Adept's Caerleon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Perito",
+      "EN-US": "Expert's Caerleon Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_CAERLEON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Perito .1",
+      "EN-US": "Expert's Caerleon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_CAERLEON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Perito .2",
+      "EN-US": "Expert's Caerleon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_CAERLEON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Perito .3",
+      "EN-US": "Expert's Caerleon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_FW_CAERLEON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Perito .4",
+      "EN-US": "Expert's Caerleon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Mestre",
+      "EN-US": "Master's Caerleon Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_CAERLEON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Mestre .1",
+      "EN-US": "Master's Caerleon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_CAERLEON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Mestre .2",
+      "EN-US": "Master's Caerleon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_CAERLEON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Mestre .3",
+      "EN-US": "Master's Caerleon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_FW_CAERLEON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Mestre .4",
+      "EN-US": "Master's Caerleon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Grão-Mestre",
+      "EN-US": "Grandmaster's Caerleon Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_CAERLEON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Caerleon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_CAERLEON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Caerleon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_CAERLEON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Caerleon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_FW_CAERLEON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Caerleon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Ancião",
+      "EN-US": "Elder's Caerleon Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_CAERLEON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Ancião .1",
+      "EN-US": "Elder's Caerleon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_CAERLEON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Ancião .2",
+      "EN-US": "Elder's Caerleon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_CAERLEON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Ancião .3",
+      "EN-US": "Elder's Caerleon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_FW_CAERLEON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Caerleon do Ancião .4",
+      "EN-US": "Elder's Caerleon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_SMUGGLER",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Adepto",
+      "EN-US": "Adept's Smuggler Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_SMUGGLER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Adepto .1",
+      "EN-US": "Adept's Smuggler Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_SMUGGLER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Adepto .2",
+      "EN-US": "Adept's Smuggler Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_SMUGGLER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Adepto .3",
+      "EN-US": "Adept's Smuggler Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_SMUGGLER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Adepto .4",
+      "EN-US": "Adept's Smuggler Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_SMUGGLER",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Perito",
+      "EN-US": "Expert's Smuggler Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_SMUGGLER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Perito .1",
+      "EN-US": "Expert's Smuggler Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_SMUGGLER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Perito .2",
+      "EN-US": "Expert's Smuggler Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_SMUGGLER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Perito .3",
+      "EN-US": "Expert's Smuggler Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_SMUGGLER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Perito .4",
+      "EN-US": "Expert's Smuggler Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_SMUGGLER",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Mestre",
+      "EN-US": "Master's Smuggler Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_SMUGGLER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Mestre .1",
+      "EN-US": "Master's Smuggler Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_SMUGGLER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Mestre .2",
+      "EN-US": "Master's Smuggler Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_SMUGGLER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Mestre .3",
+      "EN-US": "Master's Smuggler Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_SMUGGLER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Mestre .4",
+      "EN-US": "Master's Smuggler Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_SMUGGLER",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Grão-Mestre",
+      "EN-US": "Grandmaster's Smuggler Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_SMUGGLER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Smuggler Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_SMUGGLER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Smuggler Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_SMUGGLER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Smuggler Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_SMUGGLER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Smuggler Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_SMUGGLER",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Ancião",
+      "EN-US": "Elder's Smuggler Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_SMUGGLER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Ancião .1",
+      "EN-US": "Elder's Smuggler Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_SMUGGLER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Ancião .2",
+      "EN-US": "Elder's Smuggler Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_SMUGGLER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Ancião .3",
+      "EN-US": "Elder's Smuggler Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_SMUGGLER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Contrabandista do Ancião .4",
+      "EN-US": "Elder's Smuggler Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Adepto",
+      "EN-US": "Adept's Heretic Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_HERETIC@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Adepto .1",
+      "EN-US": "Adept's Heretic Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_HERETIC@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Adepto .2",
+      "EN-US": "Adept's Heretic Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_HERETIC@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Adepto .3",
+      "EN-US": "Adept's Heretic Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_HERETIC@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Adepto .4",
+      "EN-US": "Adept's Heretic Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Perito",
+      "EN-US": "Expert's Heretic Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_HERETIC@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Perito .1",
+      "EN-US": "Expert's Heretic Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_HERETIC@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Perito .2",
+      "EN-US": "Expert's Heretic Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_HERETIC@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Perito .3",
+      "EN-US": "Expert's Heretic Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_HERETIC@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Perito .4",
+      "EN-US": "Expert's Heretic Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Mestre",
+      "EN-US": "Master's Heretic Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_HERETIC@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Mestre .1",
+      "EN-US": "Master's Heretic Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_HERETIC@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Mestre .2",
+      "EN-US": "Master's Heretic Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_HERETIC@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Mestre .3",
+      "EN-US": "Master's Heretic Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_HERETIC@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Mestre .4",
+      "EN-US": "Master's Heretic Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Grão-Mestre",
+      "EN-US": "Grandmaster's Heretic Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_HERETIC@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Heretic Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_HERETIC@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Heretic Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_HERETIC@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Heretic Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_HERETIC@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Heretic Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Ancião",
+      "EN-US": "Elder's Heretic Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_HERETIC@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Ancião .1",
+      "EN-US": "Elder's Heretic Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_HERETIC@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Ancião .2",
+      "EN-US": "Elder's Heretic Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_HERETIC@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Ancião .3",
+      "EN-US": "Elder's Heretic Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_HERETIC@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Herege do Ancião .4",
+      "EN-US": "Elder's Heretic Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Adepto",
+      "EN-US": "Adept's Undead Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_UNDEAD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Adepto .1",
+      "EN-US": "Adept's Undead Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_UNDEAD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Adepto .2",
+      "EN-US": "Adept's Undead Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_UNDEAD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Adepto .3",
+      "EN-US": "Adept's Undead Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_UNDEAD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Adepto .4",
+      "EN-US": "Adept's Undead Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Perito",
+      "EN-US": "Expert's Undead Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_UNDEAD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Perito .1",
+      "EN-US": "Expert's Undead Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_UNDEAD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Perito .2",
+      "EN-US": "Expert's Undead Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_UNDEAD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Perito .3",
+      "EN-US": "Expert's Undead Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_UNDEAD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Perito .4",
+      "EN-US": "Expert's Undead Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Mestre",
+      "EN-US": "Master's Undead Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_UNDEAD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Mestre .1",
+      "EN-US": "Master's Undead Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_UNDEAD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Mestre .2",
+      "EN-US": "Master's Undead Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_UNDEAD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Mestre .3",
+      "EN-US": "Master's Undead Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_UNDEAD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Mestre .4",
+      "EN-US": "Master's Undead Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Grão-Mestre",
+      "EN-US": "Grandmaster's Undead Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_UNDEAD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Undead Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_UNDEAD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Undead Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_UNDEAD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Undead Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_UNDEAD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Undead Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Ancião",
+      "EN-US": "Elder's Undead Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_UNDEAD@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Ancião .1",
+      "EN-US": "Elder's Undead Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_UNDEAD@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Ancião .2",
+      "EN-US": "Elder's Undead Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_UNDEAD@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Ancião .3",
+      "EN-US": "Elder's Undead Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_UNDEAD@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Morta-Viva do Ancião .4",
+      "EN-US": "Elder's Undead Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Adepto",
+      "EN-US": "Adept's Morgana Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_MORGANA@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Adepto .1",
+      "EN-US": "Adept's Morgana Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_MORGANA@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Adepto .2",
+      "EN-US": "Adept's Morgana Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_MORGANA@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Adepto .3",
+      "EN-US": "Adept's Morgana Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_MORGANA@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Adepto .4",
+      "EN-US": "Adept's Morgana Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Perito",
+      "EN-US": "Expert's Morgana Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_MORGANA@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Perito .1",
+      "EN-US": "Expert's Morgana Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_MORGANA@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Perito .2",
+      "EN-US": "Expert's Morgana Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_MORGANA@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Perito .3",
+      "EN-US": "Expert's Morgana Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_MORGANA@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Perito .4",
+      "EN-US": "Expert's Morgana Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Mestre",
+      "EN-US": "Master's Morgana Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_MORGANA@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Mestre .1",
+      "EN-US": "Master's Morgana Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_MORGANA@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Mestre .2",
+      "EN-US": "Master's Morgana Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_MORGANA@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Mestre .3",
+      "EN-US": "Master's Morgana Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_MORGANA@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Mestre .4",
+      "EN-US": "Master's Morgana Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Grão-Mestre",
+      "EN-US": "Grandmaster's Morgana Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_MORGANA@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Morgana Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_MORGANA@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Morgana Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_MORGANA@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Morgana Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_MORGANA@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Morgana Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Ancião",
+      "EN-US": "Elder's Morgana Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_MORGANA@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Ancião .1",
+      "EN-US": "Elder's Morgana Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_MORGANA@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Ancião .2",
+      "EN-US": "Elder's Morgana Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_MORGANA@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Ancião .3",
+      "EN-US": "Elder's Morgana Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_MORGANA@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa de Morgana do Ancião .4",
+      "EN-US": "Elder's Morgana Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Adepto",
+      "EN-US": "Adept's Demon Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_DEMON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Adepto .1",
+      "EN-US": "Adept's Demon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_DEMON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Adepto .2",
+      "EN-US": "Adept's Demon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_DEMON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Adepto .3",
+      "EN-US": "Adept's Demon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_DEMON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Adepto .4",
+      "EN-US": "Adept's Demon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Perito",
+      "EN-US": "Expert's Demon Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_DEMON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Perito .1",
+      "EN-US": "Expert's Demon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_DEMON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Perito .2",
+      "EN-US": "Expert's Demon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_DEMON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Perito .3",
+      "EN-US": "Expert's Demon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_DEMON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Perito .4",
+      "EN-US": "Expert's Demon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Mestre",
+      "EN-US": "Master's Demon Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_DEMON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Mestre .1",
+      "EN-US": "Master's Demon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_DEMON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Mestre .2",
+      "EN-US": "Master's Demon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_DEMON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Mestre .3",
+      "EN-US": "Master's Demon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_DEMON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Mestre .4",
+      "EN-US": "Master's Demon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Grão-Mestre",
+      "EN-US": "Grandmaster's Demon Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_DEMON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Demon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_DEMON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Demon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_DEMON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Demon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_DEMON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Demon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Ancião",
+      "EN-US": "Elder's Demon Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_DEMON@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Ancião .1",
+      "EN-US": "Elder's Demon Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_DEMON@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Ancião .2",
+      "EN-US": "Elder's Demon Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_DEMON@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Ancião .3",
+      "EN-US": "Elder's Demon Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_DEMON@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa Demoníaca do Ancião .4",
+      "EN-US": "Elder's Demon Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Adepto",
+      "EN-US": "Adept's Keeper Cape"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_KEEPER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Adepto .1",
+      "EN-US": "Adept's Keeper Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_KEEPER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Adepto .2",
+      "EN-US": "Adept's Keeper Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_KEEPER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Adepto .3",
+      "EN-US": "Adept's Keeper Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_KEEPER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Adepto .4",
+      "EN-US": "Adept's Keeper Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Perito",
+      "EN-US": "Expert's Keeper Cape"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_KEEPER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Perito .1",
+      "EN-US": "Expert's Keeper Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_KEEPER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Perito .2",
+      "EN-US": "Expert's Keeper Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_KEEPER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Perito .3",
+      "EN-US": "Expert's Keeper Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_KEEPER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Perito .4",
+      "EN-US": "Expert's Keeper Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Mestre",
+      "EN-US": "Master's Keeper Cape"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_KEEPER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Mestre .1",
+      "EN-US": "Master's Keeper Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_KEEPER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Mestre .2",
+      "EN-US": "Master's Keeper Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_KEEPER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Mestre .3",
+      "EN-US": "Master's Keeper Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_KEEPER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Mestre .4",
+      "EN-US": "Master's Keeper Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Grão-Mestre",
+      "EN-US": "Grandmaster's Keeper Cape"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_KEEPER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Grão-Mestre .1",
+      "EN-US": "Grandmaster's Keeper Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_KEEPER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Grão-Mestre .2",
+      "EN-US": "Grandmaster's Keeper Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_KEEPER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Grão-Mestre .3",
+      "EN-US": "Grandmaster's Keeper Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_KEEPER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Grão-Mestre .4",
+      "EN-US": "Grandmaster's Keeper Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Ancião",
+      "EN-US": "Elder's Keeper Cape"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_KEEPER@1",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Ancião .1",
+      "EN-US": "Elder's Keeper Cape .1"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_KEEPER@2",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Ancião .2",
+      "EN-US": "Elder's Keeper Cape .2"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_KEEPER@3",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Ancião .3",
+      "EN-US": "Elder's Keeper Cape .3"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_KEEPER@4",
+    "LocalizedNames": {
+      "PT-BR": "Capa do Guardião do Ancião .4",
+      "EN-US": "Elder's Keeper Cape .4"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Lymhurst do Adepto",
+      "EN-US": "Adept's Lymhurst Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Lymhurst do Perito",
+      "EN-US": "Expert's Lymhurst Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Lymhurst do Mestre",
+      "EN-US": "Master's Lymhurst Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Lymhurst do Grão-Mestre",
+      "EN-US": "Grandmaster's Lymhurst Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_FW_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Lymhurst do Ancião",
+      "EN-US": "Elder's Lymhurst Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Fort Sterling do Adepto",
+      "EN-US": "Adept's Fort Sterling Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Fort Sterling do Perito",
+      "EN-US": "Expert's Fort Sterling Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Fort Sterling do Mestre",
+      "EN-US": "Master's Fort Sterling Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Fort Sterling do Grão-Mestre",
+      "EN-US": "Grandmaster's Fort Sterling Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_FW_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Fort Sterling do Ancião",
+      "EN-US": "Elder's Fort Sterling Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Bridgewatch do Adepto",
+      "EN-US": "Adept's Bridgewatch Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Bridgewatch do Perito",
+      "EN-US": "Expert's Bridgewatch Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Bridgewatch do Mestre",
+      "EN-US": "Master's Bridgewatch Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Bridgewatch do Grão-Mestre",
+      "EN-US": "Grandmaster's Bridgewatch Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_FW_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Bridgewatch do Ancião",
+      "EN-US": "Elder's Bridgewatch Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Thetford do Adepto",
+      "EN-US": "Adept's Thetford Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Thetford do Perito",
+      "EN-US": "Expert's Thetford Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Thetford do Mestre",
+      "EN-US": "Master's Thetford Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Thetford do Grão-Mestre",
+      "EN-US": "Grandmaster's Thetford Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_FW_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Thetford do Ancião",
+      "EN-US": "Elder's Thetford Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Martlock do Adepto",
+      "EN-US": "Adept's Martlock Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Martlock do Perito",
+      "EN-US": "Expert's Martlock Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Martlock do Mestre",
+      "EN-US": "Master's Martlock Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Martlock do Grão-Mestre",
+      "EN-US": "Grandmaster's Martlock Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_FW_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Martlock do Ancião",
+      "EN-US": "Elder's Martlock Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Caerleon do Adepto",
+      "EN-US": "Adept's Caerleon Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Caerleon do Perito",
+      "EN-US": "Expert's Caerleon Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Caerleon do Mestre",
+      "EN-US": "Master's Caerleon Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Caerleon do Grão-Mestre",
+      "EN-US": "Grandmaster's Caerleon Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_FW_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Caerleon do Ancião",
+      "EN-US": "Elder's Caerleon Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CAPEITEM_SMUGGLER_BP",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Contrabandista do Adepto",
+      "EN-US": "Adept's Smuggler Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CAPEITEM_SMUGGLER_BP",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Contrabandista do Perito",
+      "EN-US": "Expert's Smuggler Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CAPEITEM_SMUGGLER_BP",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Contrabandista do Mestre",
+      "EN-US": "Master's Smuggler Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CAPEITEM_SMUGGLER_BP",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Contrabandista do Grão-Mestre",
+      "EN-US": "Grandmaster's Smuggler Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CAPEITEM_SMUGGLER_BP",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Contrabandista do Ancião",
+      "EN-US": "Elder's Smuggler Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Herege do Adepto",
+      "EN-US": "Adept's Heretic Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Herege do Perito",
+      "EN-US": "Expert's Heretic Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Herege do Mestre",
+      "EN-US": "Master's Heretic Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Herege do Grão-Mestre",
+      "EN-US": "Grandmaster's Heretic Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_HERETIC",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Herege do Ancião",
+      "EN-US": "Elder's Heretic Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Morto-Vivo do Adepto",
+      "EN-US": "Adept's Undead Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Morto-Vivo do Perito",
+      "EN-US": "Expert's Undead Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Morto-Vivo do Mestre",
+      "EN-US": "Master's Undead Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Morto-Vivo do Grão-Mestre",
+      "EN-US": "Grandmaster's Undead Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Morto-Vivo do Ancião",
+      "EN-US": "Elder's Undead Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Morgana do Adepto",
+      "EN-US": "Adept's Morgana Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Morgana do Perito",
+      "EN-US": "Expert's Morgana Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Morgana do Mestre",
+      "EN-US": "Master's Morgana Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Morgana do Grão-Mestre",
+      "EN-US": "Grandmaster's Morgana Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_MORGANA",
+    "LocalizedNames": {
+      "PT-BR": "Brasão de Morgana do Ancião",
+      "EN-US": "Elder's Morgana Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Demoníaco do Adepto",
+      "EN-US": "Adept's Demon Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Demoníaco do Perito",
+      "EN-US": "Expert's Demon Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Demoníaco do Mestre",
+      "EN-US": "Master's Demon Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Demoníaco do Grão-Mestre",
+      "EN-US": "Grandmaster's Demon Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_DEMON",
+    "LocalizedNames": {
+      "PT-BR": "Brasão Demoníaco do Ancião",
+      "EN-US": "Elder's Demon Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_CREST_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Brasão do Guardião do Adepto",
+      "EN-US": "Adept's Keeper Crest"
+    }
+  },
+  {
+    "UniqueName": "T5_CREST_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Brasão do Guardião do Perito",
+      "EN-US": "Expert's Keeper Crest"
+    }
+  },
+  {
+    "UniqueName": "T6_CREST_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Brasão do Guardião do Mestre",
+      "EN-US": "Master's Keeper Crest"
+    }
+  },
+  {
+    "UniqueName": "T7_CREST_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Brasão do Guardião do Grão-Mestre",
+      "EN-US": "Grandmaster's Keeper Crest"
+    }
+  },
+  {
+    "UniqueName": "T8_CREST_KEEPER",
+    "LocalizedNames": {
+      "PT-BR": "Brasão do Guardião do Ancião",
+      "EN-US": "Elder's Keeper Crest"
+    }
+  },
+  {
+    "UniqueName": "T4_HEART_WOOD",
+    "LocalizedNames": {
+      "PT-BR": "Coração Arbóreo",
+      "EN-US": "Tree Heart"
+    }
+  },
+  {
+    "UniqueName": "T4_HEART_MOUNTAIN",
+    "LocalizedNames": {
+      "PT-BR": "Coração da Montanha",
+      "EN-US": "Mountain Heart"
+    }
+  },
+  {
+    "UniqueName": "T4_HEART_BEAST",
+    "LocalizedNames": {
+      "PT-BR": "Coração da Fera",
+      "EN-US": "Beast Heart"
+    }
+  },
+  {
+    "UniqueName": "T4_HEART_SWAMP",
+    "LocalizedNames": {
+      "PT-BR": "Coração do Pântano",
+      "EN-US": "Swamp Heart"
+    }
+  },
+  {
+    "UniqueName": "T4_HEART_ROCK",
+    "LocalizedNames": {
+      "PT-BR": "Coração da Rocha",
+      "EN-US": "Rock Heart"
+    }
+  },
+  {
+    "UniqueName": "T4_HEART_UNDEAD",
+    "LocalizedNames": {
+      "PT-BR": "Coração Sombrio",
+      "EN-US": "Shadowheart"
+    }
+  },
+  {
+    "UniqueName": "QUESTITEM_TOKEN_LYMHURST",
+    "LocalizedNames": {
+      "PT-BR": "Coração da Árvore",
+      "EN-US": "Tree Heart"
+    }
+  },
+  {
+    "UniqueName": "QUESTITEM_TOKEN_BRIDGEWATCH",
+    "LocalizedNames": {
+      "PT-BR": "Coração do Deserto",
+      "EN-US": "Mountain Heart"
+    }
+  },
+  {
+    "UniqueName": "QUESTITEM_TOKEN_FORTSTERLING",
+    "LocalizedNames": {
+      "PT-BR": "Coração da Montanha",
+      "EN-US": "Rock Heart"
+    }
+  },
+  {
+    "UniqueName": "QUESTITEM_TOKEN_MARTLOCK",
+    "LocalizedNames": {
+      "PT-BR": "Coração da Rocha",
+      "EN-US": "Vine Heart"
+    }
+  },
+  {
+    "UniqueName": "QUESTITEM_TOKEN_THETFORD",
+    "LocalizedNames": {
+      "PT-BR": "Coração do Pântano",
+      "EN-US": "Swamp Heart"
+    }
+  },
+  {
+    "UniqueName": "QUESTITEM_TOKEN_CAERLEON",
+    "LocalizedNames": {
+      "PT-BR": "Coração Sombrio",
+      "EN-US": "Shadowheart"
+    }
+  }
+]

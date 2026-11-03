@@ -15,7 +15,12 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+# Skill instalada via `npx skills add`: o núcleo viaja dentro da própria skill.
+# No repositório, o núcleo fica na raiz de .opencode/skills (fonte de verdade).
+for _base in (Path(__file__).resolve().parents[2], Path(__file__).resolve().parents[1]):
+    if (_base / "_albion_core").is_dir():
+        sys.path.insert(0, str(_base))
+        break
 
 from _albion_core import market
 from _albion_core.calculator import calculate_instant_sell_proceeds

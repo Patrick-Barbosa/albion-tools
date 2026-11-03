@@ -54,19 +54,22 @@ graph TD
 
 ## 🛠️ Comandos
 
+> Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
+> `.opencode/skills/albion-black-market-sniper/` no repositório ou `.agents/skills/albion-black-market-sniper/` após `npx skills add`.
+
 ```bash
 # Sniping básico (Premium, margem mínima 20%)
-python3 .opencode/skills/albion-black-market-sniper/scripts/snipe_black_market.py \
+python3 scripts/snipe_black_market.py \
   --items T4_BAG,T5_BAG,T6_BAG --premium --min-margin 20
 
 # Itens de combate, aceitando cotações de até 24h
-python3 .opencode/skills/albion-black-market-sniper/scripts/snipe_black_market.py \
+python3 scripts/snipe_black_market.py \
   --items T5_MAIN_SWORD,T6_MAIN_AXE,T5_ARMOR_PLATE_SET1 \
   --premium --min-margin 15 --max-age 86400
 
 # Varredura ampla por categoria (via núcleo)
 python3 - <<'EOF'
-import sys; sys.path.insert(0, ".opencode/skills")
+import sys; sys.path.insert(0, ".")
 from _albion_core import economics, items
 universe = items.resolve_universe(category="Armas", limit=60)
 res = economics.find_arbitrage(universe, target_cities=["Black Market"], min_roi_pct=20, has_premium=True)

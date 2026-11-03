@@ -68,22 +68,25 @@ graph TD
 
 ## 🛠️ Comandos
 
+> Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
+> `.opencode/skills/albion-arbitrage-copilot/` no repositório ou `.agents/skills/albion-arbitrage-copilot/` após `npx skills add`.
+
 ```bash
 # 1. Escanear arbitragem (rotas seguras, Premium ativo)
-python3 .opencode/skills/albion-arbitrage-copilot/scripts/scan_arbitrage.py \
+python3 scripts/scan_arbitrage.py \
   --origin Thetford --destination Martlock --premium --min-roi 15 --safe-only
 
 # 2. Universo amplo, incluindo Black Market
-python3 .opencode/skills/albion-arbitrage-copilot/scripts/scan_arbitrage.py \
+python3 scripts/scan_arbitrage.py \
   --premium --min-roi 20
 
-# 3. Auditar uma cotação suspeita (média histórica 7d + teto de bid)
-python3 .opencode/skills/albion-investment-wizard/scripts/live_market_audit.py \
+# 3. Auditar uma cotação suspeita (requer a skill albion-investment-wizard instalada)
+python3 ../albion-investment-wizard/scripts/live_market_audit.py \
   --city Martlock --items T4_BAG
 
 # 4. Breakeven e peso de carga (via núcleo compartilhado)
 python3 - <<'EOF'
-import sys; sys.path.insert(0, ".opencode/skills")
+import sys; sys.path.insert(0, ".")
 from _albion_core import anti_phantom
 print(anti_phantom.calculate_breakeven_price(buy_price=4000, has_premium=True))
 print(anti_phantom.calculate_exact_loadout_capacity(
@@ -102,15 +105,15 @@ O transporte de facção é a outra face da logística: entrega no **Contrabandi
 
 ```bash
 # Fardo médio (7 corações), rota segura, Premium
-python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+python3 scripts/calculate_hearts.py \
   --city Lymhurst --silver 1000000 --mount T5_BOAR --risk SAFE_ONLY --pack 7 --premium
 
 # Permitindo Caerleon (Zona Vermelha / Full Loot)
-python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+python3 scripts/calculate_hearts.py \
   --city Lymhurst --silver 5000000 --mount T6_OX --risk ALLOW_RED_ZONE --pack 15 --premium
 
 # Sobrescrever cotações (quando o jogador informa os preços do jogo)
-python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+python3 scripts/calculate_hearts.py \
   --city Lymhurst --silver 1000000 --pack 7 --premium \
   --origin-heart-price 34000 --shadowheart-price 46500 --cape-price 65000
 ```

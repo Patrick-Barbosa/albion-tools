@@ -62,23 +62,26 @@ graph TD
 
 ## 🛠️ Comandos
 
+> Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
+> `.opencode/skills/albion-build-optimizer/` no repositório ou `.agents/skills/albion-build-optimizer/` após `npx skills add`.
+
 ```bash
 # Otimizar build T7 equivalente em Lymhurst
-python3 .opencode/skills/albion-build-optimizer/scripts/optimize_loadout.py \
+python3 scripts/optimize_loadout.py \
   --city Lymhurst --tier 7 \
   --items "Machado de Guerra" "Casaco de Mercenário" "Capuz de Caçador" "Botas de Soldado"
 
 # Usar média histórica de 7 dias em vez do preço ao vivo
-python3 .opencode/skills/albion-build-optimizer/scripts/optimize_loadout.py \
+python3 scripts/optimize_loadout.py \
   --city Martlock --tier 6 --price-mode history --items "Espadão" "Peitoral de Soldado"
 
 # Simular reroll de qualidade (Q1 -> Q4) de um item
-python3 .opencode/skills/albion-build-optimizer/scripts/optimize_loadout.py \
+python3 scripts/optimize_loadout.py \
   --reroll --item-id T6_MAIN_SWORD --current-quality 1 --target-quality 4
 
 # Detalhes técnicos de um item (slot e insumos de encantamento)
 python3 - <<'EOF'
-import sys; sys.path.insert(0, ".opencode/skills")
+import sys; sys.path.insert(0, ".")
 from _albion_core import items
 print(items.item_details("T6_ARMOR_LEATHER_SET1"))
 EOF

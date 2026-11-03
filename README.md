@@ -1,12 +1,34 @@
 # ⚔️ Albion Online — Market Intelligence Skills
 
+[![skills.sh](https://skills.sh/b/Patrick-Barbosa/albion-tools)](https://skills.sh/Patrick-Barbosa/albion-tools)
+
 Seis **skills de agente** para o [OpenCode](https://opencode.ai) que transformam o assistente em um copiloto econômico do **Albion Online**: arbitragem entre cidades, sniper do Mercado Negro, refino industrial, otimização de builds, análise macro (Pareto/ouro) e um wizard de investimentos.
 
 > **Zero dependências.** Tudo roda com o **Python 3.10+ puro** — sem `pip install`, sem venv, sem servidor MCP, sem NATS. A única fonte de dados é a API pública do **Albion Online Data Project (AODP)**.
 
 ---
 
-## 🚀 Instalação em 3 passos
+## 🚀 Instalação
+
+### Via `npx skills` (recomendado)
+
+```bash
+# Uma skill específica
+npx skills@latest add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist
+
+# Todas as 6 de uma vez
+npx skills@latest add Patrick-Barbosa/albion-tools --skill='*'
+
+# Instalação global (~/.agents/skills) em vez de .agents/skills do projeto
+npx skills@latest add Patrick-Barbosa/albion-tools --skill='*' -g
+```
+
+O CLI detecta o OpenCode, copia a skill para `.agents/skills/` (projeto) ou `~/.agents/skills/` (global) e registra a origem em `skills-lock.json` — depois é só rodar `npx skills update` para atualizar. Outros agentes (Claude Code, Cursor, Codex…) funcionam com `-a <agente>`.
+
+> [!NOTE]
+> **Cada skill é autocontida.** Ela leva a própria cópia de `_albion_core/` e do catálogo de itens, então `--skill=<nome>` funciona sozinho, sem instalar nada além daquela pasta.
+
+### Local (clone do repositório)
 
 ```bash
 # 1. Clone o repositório
@@ -19,15 +41,13 @@ python3 install.py
 # 3. Pronto. Abra o OpenCode e pergunte sobre o mercado.
 ```
 
-O instalador copia as 6 skills + o núcleo compartilhado para `~/.config/opencode/skills/`.
-
 ### Outros destinos
 
 ```bash
-python3 install.py --list                  # lista as skills disponíveis
+python3 install.py --list                    # lista as skills disponíveis
 python3 install.py --target ./minhas-skills  # pasta específica
-python3 install.py --agents                # instala em .agents/skills (Antigravity/Cursor)
-python3 install.py --force                 # sobrescreve instalações existentes
+python3 install.py --agents                  # instala em .agents/skills (Antigravity/Cursor)
+python3 install.py --force                   # sobrescreve instalações existentes
 ```
 
 > [!NOTE]
@@ -52,7 +72,7 @@ Cada skill tem um `SKILL.md` com o fluxo de trabalho, as fórmulas e as regras d
 
 ## 💻 Exemplos de uso (CLI)
 
-Os scripts podem ser executados diretamente — útil para testar ou automatizar.
+Os scripts podem ser executados diretamente — útil para testar ou automatizar. Os caminhos abaixo assumem a raiz do repositório; numa skill instalada via `npx`, troque `.opencode/skills/` por `.agents/skills/` (ou `~/.config/opencode/skills/` no modo global).
 
 ```bash
 # Arbitragem: Thetford -> Martlock, Premium, ROI mínimo 15%, só rotas seguras
@@ -143,7 +163,7 @@ O cliente em `.opencode/skills/_albion_core/http.py` usa **somente `urllib`** e 
 ```text
 .
 ├── .opencode/skills/
-│   ├── _albion_core/          # núcleo compartilhado (stdlib only)
+│   ├── _albion_core/          # fonte de verdade do núcleo (stdlib only)
 │   │   ├── http.py            # cliente AODP + cache + rate limit
 │   │   ├── market.py          # cotações, histórico, ouro
 │   │   ├── economics.py       # impostos, encantamento, arbitragem
@@ -159,13 +179,18 @@ O cliente em `.opencode/skills/_albion_core/http.py` usa **somente `urllib`** e 
 │   │   ├── cape_crafting.py
 │   │   └── data/items.json    # catálogo local (~847 itens)
 │   ├── albion-arbitrage-copilot/
+│   │   ├── SKILL.md
+│   │   ├── scripts/
+│   │   └── _albion_core/      # cópia vendorizada (gerada, não editar)
 │   ├── albion-black-market-sniper/
 │   ├── albion-build-optimizer/
 │   ├── albion-investment-wizard/
 │   ├── albion-market-analyst/
 │   └── albion-refining-specialist/
+├── tools/sync_core.py         # replica o núcleo para as 6 skills
+├── skills.sh.json             # descoberta de skills pelo CLI do skills.sh
 ├── tests/                     # suíte offline (sem rede)
-├── install.py                 # instalador das skills
+├── install.py                 # instalador local alternativo
 ├── AGENTS.md                  # diretrizes do agente
 ├── BUSINESS_RULES.md          # spec de domínio
 └── opencode.json
@@ -184,6 +209,9 @@ python3 -m pytest tests -v
 
 `pytest.ini` já configura `pythonpath = .opencode/skills`, então os testes importam `from _albion_core import ...` sem instalação.
 
+> [!IMPORTANT]
+> Ao alterar qualquer módulo de `.opencode/skills/_albion_core/`, rode `python3 tools/sync_core.py` para replicar a mudança nas 6 skills. A suíte falha se alguma cópia vendorizada divergir.
+
 ---
 
 ## ❓ Perguntas frequentes
@@ -193,6 +221,9 @@ Não. As skills funcionam com ou sem Premium — mas a taxa muda (4% vs 8%) e o 
 
 **As skills funcionam em qualquer região?**
 Sim: `--region americas` (padrão), `europe` ou `asia`.
+
+**Como atualizo as skills?**
+Instaladas via `npx`: rode `npx skills update` (ou repita o `npx skills add`). Instalações locais: `git pull && python3 install.py --force`.
 
 **Por que a cotação está velha?**
 A AODP depende de jogadores com o *Albion Data Client*. Abra o mercado no jogo com o client ativo para atualizar os dados. Os scripts mostram a idade da cotação e classificam o risco.

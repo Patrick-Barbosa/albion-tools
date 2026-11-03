@@ -51,20 +51,23 @@ graph TD
 
 ## 🛠️ Comandos
 
+> Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
+> `.opencode/skills/albion-market-analyst/` no repositório ou `.agents/skills/albion-market-analyst/` após `npx skills add`.
+
 ```bash
 # Pareto dos recursos refinados (padrão), top 20
-python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py --top 20
+python3 scripts/analyze_pareto.py --top 20
 
 # Pareto de bolsas e capas em uma cidade específica
-python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py \
+python3 scripts/analyze_pareto.py \
   --category "Bolsas & Capas" --city Martlock --top 15
 
 # Histórico diário de um item
-python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py \
+python3 scripts/analyze_pareto.py \
   --history-item T4_BAG --city Caerleon --days 14
 
 # Cotação do ouro
-python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py --gold --gold-points 48
+python3 scripts/analyze_pareto.py --gold --gold-points 48
 ```
 
 O relatório devolve `total_market_daily_silver`, `pareto_80.items_needed` e, por item, `avg_price`, `daily_sales`, `share_pct` e `cum_share_pct`.

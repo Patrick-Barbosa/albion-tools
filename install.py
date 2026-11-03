@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Instalador das skills Albion Tools.
+Instalador local das skills Albion Tools.
 
-Copia a árvore `.opencode/skills` (skills + núcleo compartilhado) para o destino
-escolhido. Zero dependências — só a biblioteca padrão.
+Copia as 6 skills para o destino escolhido. Cada skill é autocontida: leva a
+própria cópia de `_albion_core`, exatamente como o `npx skills add` instala.
+Zero dependências — só a biblioteca padrão.
 
 Uso:
     python3 install.py                     # instala em ~/.config/opencode/skills
@@ -47,13 +48,11 @@ def copy_tree(destination: Path, force: bool) -> int:
     destination.mkdir(parents=True, exist_ok=True)
     copied = 0
 
-    for source_item in sorted(SOURCE.iterdir()):
-        if not source_item.is_dir() or source_item.name == "__pycache__":
-            continue
-
-        target_item = destination / source_item.name
+    for name in list_skills():
+        source_item = SOURCE / name
+        target_item = destination / name
         if target_item.exists() and not force:
-            print(f"⏭️  {source_item.name} já existe (use --force para sobrescrever)")
+            print(f"⏭️  {name} já existe (use --force para sobrescrever)")
             continue
 
         if target_item.exists():
@@ -66,9 +65,8 @@ def copy_tree(destination: Path, force: bool) -> int:
         )
         copied += 1
 
-    print(f"✅ {copied} pasta(s) instalada(s) em {destination}")
+    print(f"✅ {copied} skill(s) instalada(s) em {destination}")
     print(f"   Skills: {', '.join(list_skills())}")
-    print("   Núcleo compartilhado:", CORE_DIR)
     return 0
 
 

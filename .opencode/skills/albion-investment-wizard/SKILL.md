@@ -61,29 +61,32 @@ Entregue quantidades e preços exatos de bid, local de encantamento e preço de 
 
 ## 🛠️ Comandos
 
+> Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
+> `.opencode/skills/albion-investment-wizard/` no repositório ou `.agents/skills/albion-investment-wizard/` após `npx skills add`.
+
 ```bash
 # 1. Carteira: 5M, Lymhurst -> Black Market, Premium
-python3 .opencode/skills/albion-investment-wizard/scripts/run_wizard.py \
+python3 scripts/run_wizard.py \
   --budget 5000000 --city Lymhurst --dest "Black Market" --premium --min-roi 15
 
 # 2. Auditoria de frescor/fantasma dos alvos
-python3 .opencode/skills/albion-investment-wizard/scripts/live_market_audit.py \
+python3 scripts/live_market_audit.py \
   --city Lymhurst --items T4_BAG,T5_BAG,T5_RUNE
 
 # 3. Build econômica (T7 equivalente)
-python3 .opencode/skills/albion-investment-wizard/scripts/optimize_build.py \
+python3 scripts/optimize_build.py \
   --city Lymhurst --tier 7 --items "Machado de Guerra" "Casaco de Mercenário" "Capuz de Assassino" "Botas de Soldado"
 
 # 4. Encantamento: custo de insumos vs venda do item encantado
 python3 - <<'EOF'
-import sys; sys.path.insert(0, ".opencode/skills")
+import sys; sys.path.insert(0, ".")
 from _albion_core import economics
 print(economics.simulate_enchantment("T6_MAIN_SWORD", 1, 85000, 320, 130000, has_premium=True))
 EOF
 
 # 5. Breakeven exato
 python3 - <<'EOF'
-import sys; sys.path.insert(0, ".opencode/skills")
+import sys; sys.path.insert(0, ".")
 from _albion_core import anti_phantom
 print(anti_phantom.calculate_breakeven_price(85000, is_buy_order=True, has_premium=True, target_roi_pct=15))
 EOF

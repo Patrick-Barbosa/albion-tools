@@ -108,8 +108,10 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
 
 ## 🛠️ Comandos de Desenvolvimento & Operação
 
-- **Instalar skills**: `python3 install.py` (global em `~/.config/opencode/skills`) ou `python3 install.py --target ./destino`
+- **Instalar skills (npx)**: `npx skills@latest add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist` (ou `--skill='*'` para todas; `-g` para global)
+- **Instalar skills (local)**: `python3 install.py` (global em `~/.config/opencode/skills`) ou `python3 install.py --target ./destino`
 - **Listar skills**: `python3 install.py --list`
+- **Vendorizar o núcleo**: `python3 tools/sync_core.py` (obrigatório após editar `_albion_core`; `--check` só verifica)
 - **Testes**: `pytest tests -v` (offline, sem rede; `pytest.ini` já aponta `pythonpath = .opencode/skills`)
 - **Smoke manual**: `python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py --resource ORE --tier 5 --premium`
 - **Configuração do OpenCode**: [opencode.json](opencode.json)
@@ -118,7 +120,7 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
 
 ## 🏛️ Arquitetura (skills-only)
 
-- **`.opencode/skills/_albion_core/`** — núcleo compartilhado, **somente biblioteca padrão**:
+- **`.opencode/skills/_albion_core/`** — núcleo compartilhado, **somente biblioteca padrão** (fonte de verdade):
   - `http.py`: cliente AODP via `urllib`, gzip/deflate, batching de 50 itens, cache TTL (120s cotações / 30min histórico) e rate limiter (175/min, 290/5min).
   - `market.py`: cotações, histórico, ouro e quota.
   - `items.py`: busca e ficha técnica de itens.
@@ -130,9 +132,11 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
   - `hearts.py`: transporte de facção, ciclo de corações e capas.
   - `calculator.py`, `metadata.py`, `loadout_optimizer.py`, `faction_transport.py`, `cape_crafting.py`: fórmulas e catálogo.
   - `data/items.json`: catálogo local (~847 itens).
-- **`.opencode/skills/<skill>/`** — `SKILL.md` + `scripts/` de cada personalidade.
-- **`install.py`** — copia a árvore de skills para o destino escolhido.
-- **`tests/`** — suíte offline (sem rede) de fórmulas, catálogo e CLIs.
+- **`.opencode/skills/<skill>/`** — `SKILL.md` + `scripts/` + **`_albion_core/` vendorizado** de cada personalidade. A cópia existe porque `npx skills add --skill=<nome>` copia **apenas a pasta da skill**; nunca edite a cópia, edite a fonte e rode `tools/sync_core.py`.
+- **`skills.sh.json`** — declara `./.opencode/skills` como container para o CLI do skills.sh descobrir as 6 skills.
+- **`tools/sync_core.py`** — replica o núcleo para as 6 skills (`--check` detecta deriva; a suíte também).
+- **`install.py`** — copia as 6 skills autocontidas para o destino escolhido.
+- **`tests/`** — suíte offline (sem rede) de fórmulas, catálogo, CLIs e empacotamento.
 
 ---
 

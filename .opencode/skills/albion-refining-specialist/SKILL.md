@@ -71,17 +71,20 @@ graph TD
 
 ## 🛠️ Comandos
 
+> Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
+> `.opencode/skills/albion-refining-specialist/` no repositório ou `.agents/skills/albion-refining-specialist/` após `npx skills add`.
+
 ```bash
 # Refino simples: 1 barra T5 em Thetford, Premium ativo
-python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py \
+python3 scripts/calculate_refining.py \
   --resource ORE --tier 5 --premium
 
 # Com Foco (53,9% RRR) e encantamento .1
-python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py \
+python3 scripts/calculate_refining.py \
   --resource ORE --tier 5 --enchant 1 --focus --premium
 
 # Cascata completa com 5M de orçamento
-python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py \
+python3 scripts/calculate_refining.py \
   --resource WOOD --tier 6 --focus --premium --cascade --budget 5000000
 ```
 
