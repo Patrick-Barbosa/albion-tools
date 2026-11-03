@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/Patrick-Barbosa/albion-tools)](https://skills.sh/Patrick-Barbosa/albion-tools)
 
-Seis skills para o OpenCode que respondem pergunta de mercado com número: quanto sobra numa
+Seis skills para agentes de código que respondem pergunta de mercado com número: quanto sobra numa
 rota Thetford → Martlock, se vale refinar T5 com Foco, qual set T7 sai mais barato. Cada
 skill tem um `SKILL.md` com o fluxo de trabalho e um CLI em Python que consulta a API do
 Albion Online Data Project e aplica impostos, RRR e capacidade de carga.
@@ -20,11 +20,44 @@ npx skills add Patrick-Barbosa/albion-tools --skill='*' -g
 
 A primeira linha instala uma skill, a segunda instala as seis e a terceira instala global em
 `~/.agents/skills` em vez de `.agents/skills` no projeto. O CLI grava a origem em
-`skills-lock.json`, então `npx skills update` atualiza depois. Para Claude Code, Cursor ou
-Codex, passe `-a <agente>`.
+`skills-lock.json`, então `npx skills update` atualiza depois.
+
+Vinte e quatro agentes leem `.agents/skills` direto, entre eles OpenCode, Cursor, Codex,
+Cline, Gemini CLI e Copilot. Para os que usam diretório próprio, escolha no `-a`:
+
+```bash
+npx skills add Patrick-Barbosa/albion-tools -a claude-code   # .claude/skills
+npx skills add Patrick-Barbosa/albion-tools -a '*'           # todos os detectados
+```
 
 Cada skill leva a própria cópia de `_albion_core/` e do catálogo de itens, então
 `--skill=<nome>` funciona sozinho, sem instalar mais nada.
+
+### Plugin nativo
+
+Claude Code, Codex e GitHub Copilot também instalam o repositório como plugin. Use um canal
+por agente: plugin e skill ao mesmo tempo deixam as skills duplicadas.
+
+```bash
+# Claude Code
+claude plugin marketplace add Patrick-Barbosa/albion-tools
+claude plugin install albion-tools@albion-tools
+
+# Codex
+codex plugin marketplace add Patrick-Barbosa/albion-tools
+codex plugin add albion-tools@albion-tools
+
+# GitHub Copilot CLI
+copilot plugin marketplace add Patrick-Barbosa/albion-tools
+copilot plugin install albion-tools@albion-tools
+```
+
+No VS Code, rode `Chat: Install Plugin From Source` e informe
+`https://github.com/Patrick-Barbosa/albion-tools`.
+
+Os manifestos ficam em `.claude-plugin/` para Claude Code, `.agents/plugins/` para Codex e
+`.github/plugin/` para Copilot. O `plugin.json` da raiz segue o formato Agent Plugins 1.0 e
+as skills são lidas de `skills/`.
 
 Se preferir clonar:
 
@@ -78,7 +111,7 @@ porque a fonte é o mercado ao vivo.
 ## Comandos
 
 Os caminhos abaixo assumem a raiz do repositório. Numa skill instalada via `npx`, troque
-`skills/` por `.agents/skills/`.
+`skills/` por `.agents/skills/`. Num plugin, use o diretório de instalação do agente.
 
 ```bash
 # Arbitragem Thetford -> Martlock, Premium, ROI mínimo de 15%, só rotas seguras

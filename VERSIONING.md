@@ -37,6 +37,25 @@ Sintaxe combinada: `owner/repo#ref@skill`
 npx skills add Patrick-Barbosa/albion-tools#next@albion-refining-specialist
 ```
 
+### Plugin nativo
+
+Os manifestos de plugin seguem a mesma tag do Git. Quem instala por marketplace aponta para
+a branch default, então recebe a próxima release no update do agente; não existe `#ref` no
+comando de plugin.
+
+| Cliente | Manifesto | Comando |
+| :--- | :--- | :--- |
+| Claude Code | `.claude-plugin/marketplace.json` | `claude plugin marketplace add owner/repo` |
+| Codex | `.agents/plugins/marketplace.json` | `codex plugin marketplace add owner/repo` |
+| GitHub Copilot | `.github/plugin/marketplace.json` | `copilot plugin marketplace add owner/repo` |
+
+O `plugin.json` da raiz usa Agent Plugins 1.0 e é lido por Codex e Copilot. As skills são
+descobertas de `skills/`; o `.claude-plugin/plugin.json` lista as seis explicitamente.
+
+Ao publicar uma release, confira se as versões de `plugin.json`,
+`.claude-plugin/plugin.json` e do `metadata.version` do marketplace do Copilot continuam
+iguais. O teste `tests/test_plugin_manifests.py` falha se divergirem.
+
 ---
 
 ## 3. Release estável (branch default)
@@ -181,6 +200,8 @@ python3 -m pytest tests -q          # empacotamento + CLIs
 ```
 
 - `name` deve ser igual ao nome da pasta (lowercase, hífens).
+- Adicione a skill em `.claude-plugin/plugin.json` (`skills`); os outros manifestos leem
+  `skills/` direto.
 - Atualize a tabela do `README.md` e `test_six_publishable_skills`.
 - Se a skill tiver CLI, adicione um caso em `tests/test_cli.py` (contagem de scripts).
 

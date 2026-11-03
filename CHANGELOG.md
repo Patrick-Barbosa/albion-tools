@@ -5,6 +5,23 @@ Mudanças relevantes deste repositório ficam neste arquivo. O formato segue o
 [SemVer](https://semver.org/lang/pt-BR/). Os canais de distribuição (branch default, tag,
 `next` e skill experimental) estão em [VERSIONING.md](VERSIONING.md).
 
+## [1.0.1] - 2026-11-03
+
+As skills continuam instaláveis por `npx skills add`. Esta versão acrescenta canais de
+plugin nativo para os três CLIs agênticos que suportam marketplace.
+
+### Adicionado
+
+- `.claude-plugin/plugin.json` e `.claude-plugin/marketplace.json` para o Claude Code,
+  com as seis skills declaradas em `skills`.
+- `plugin.json` na raiz no formato Agent Plugins 1.0.0, lido pelo Codex e pelo GitHub
+  Copilot. As skills são descobertas de `skills/` sem campo de configuração.
+- `.agents/plugins/marketplace.json` com `policy.installation` e
+  `policy.authentication` para o marketplace de repositório do Codex.
+- `.github/plugin/marketplace.json` para o marketplace do GitHub Copilot.
+- Teste offline que valida os cinco manifestos e mantém a versão sincronizada com este
+  changelog.
+
 ## [1.0.0] - 2026-11-03
 
 Primeira release pública. As seis skills instalam com
@@ -57,4 +74,5 @@ padrão, sem `pip install`.
 - Servidor MCP, pipeline de histórico no Databricks e integração NATS. A fonte de dados
   passou a ser apenas a API REST do AODP.
 
+[1.0.1]: https://github.com/Patrick-Barbosa/albion-tools/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Patrick-Barbosa/albion-tools/releases/tag/v1.0.0

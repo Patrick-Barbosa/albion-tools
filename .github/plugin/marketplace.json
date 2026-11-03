@@ -1,0 +1,27 @@
+{
+  "name": "albion-tools",
+  "owner": {
+    "name": "Patrick Barbosa",
+    "email": "patrick.oliveira27@hotmail.com"
+  },
+  "metadata": {
+    "description": "Skills de inteligência de mercado do Albion Online para GitHub Copilot.",
+    "version": "1.0.1"
+  },
+  "plugins": [
+    {
+      "name": "albion-tools",
+      "description": "Seis skills de mercado do Albion Online: arbitragem, Black Market, refino, builds, Pareto e investimentos.",
+      "version": "1.0.1",
+      "source": "./",
+      "category": "productivity",
+      "keywords": [
+        "albion-online",
+        "market",
+        "arbitrage",
+        "refining",
+        "trading"
+      ]
+    }
+  ]
+}

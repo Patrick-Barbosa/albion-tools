@@ -44,6 +44,10 @@ A suíte é offline. Nenhum teste chama a AODP, então ela roda em CI e em máqu
 ├── install.py                 # instalador local
 ├── skills.sh.json             # descoberta pelo CLI do skills.sh
 ├── opencode.json              # declara skills/ para o OpenCode
+├── plugin.json                # Agent Plugins 1.0 (Codex e Copilot)
+├── .claude-plugin/            # plugin e marketplace do Claude Code
+├── .agents/plugins/           # marketplace de repositório do Codex
+├── .github/plugin/            # marketplace do GitHub Copilot
 ├── AGENTS.md                  # diretrizes do agente
 ├── BUSINESS_RULES.md          # spec de domínio
 └── VERSIONING.md              # canais, tags e promoção
@@ -88,6 +92,8 @@ Regras:
 
 - `name` no frontmatter tem que ser igual ao nome da pasta, em kebab-case.
 - Se a skill tiver CLI, adicione um caso em `tests/test_cli.py`.
+- Adicione a skill em `.claude-plugin/plugin.json`; `tests/test_plugin_manifests.py`
+  falha se a lista ficar incompleta.
 - Atualize a tabela do `README.md` e o teste `test_six_publishable_skills`.
 - Skill experimental vai em `skills/.experimental/<nome>/`, com nome diferente da estável.
   O `sync_core.py` recusa nome duplicado.

@@ -1,0 +1,23 @@
+{
+  "name": "albion-tools",
+  "owner": {
+    "name": "Patrick Barbosa",
+    "url": "https://github.com/Patrick-Barbosa"
+  },
+  "description": "Skills de inteligência de mercado do Albion Online para Claude Code.",
+  "plugins": [
+    {
+      "name": "albion-tools",
+      "source": "./",
+      "description": "Seis skills de mercado do Albion Online: arbitragem, Black Market, refino, builds, Pareto e investimentos.",
+      "category": "productivity",
+      "keywords": [
+        "albion-online",
+        "market",
+        "arbitrage",
+        "refining",
+        "trading"
+      ]
+    }
+  ]
+}

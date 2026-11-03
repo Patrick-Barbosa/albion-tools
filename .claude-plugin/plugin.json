@@ -1,0 +1,29 @@
+{
+  "name": "albion-tools",
+  "version": "1.0.1",
+  "description": "Seis skills de inteligência de mercado do Albion Online: arbitragem entre capitais, Black Market, refino, builds econômicas, curva de Pareto e investimentos.",
+  "author": {
+    "name": "Patrick Barbosa",
+    "url": "https://github.com/Patrick-Barbosa"
+  },
+  "homepage": "https://github.com/Patrick-Barbosa/albion-tools#readme",
+  "repository": "https://github.com/Patrick-Barbosa/albion-tools",
+  "license": "MIT",
+  "keywords": [
+    "albion-online",
+    "market",
+    "arbitrage",
+    "refining",
+    "black-market",
+    "trading",
+    "skills"
+  ],
+  "skills": [
+    "./skills/albion-arbitrage-copilot",
+    "./skills/albion-black-market-sniper",
+    "./skills/albion-build-optimizer",
+    "./skills/albion-investment-wizard",
+    "./skills/albion-market-analyst",
+    "./skills/albion-refining-specialist"
+  ]
+}
