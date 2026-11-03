@@ -52,3 +52,6 @@ old/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Sandbox de testes de instalação (não versionar)
+sandbox-testing/
