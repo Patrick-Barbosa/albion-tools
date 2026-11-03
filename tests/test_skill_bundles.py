@@ -16,7 +16,7 @@ from pathlib import Path
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_ROOT = REPO_ROOT / ".opencode" / "skills"
+SKILLS_ROOT = REPO_ROOT / "skills"
 CORE_SOURCE = SKILLS_ROOT / "_albion_core"
 CORE_NAME = "_albion_core"
 STABLE_SKILL_DIRS = sorted(path.parent for path in SKILLS_ROOT.glob("*/SKILL.md"))
@@ -101,6 +101,6 @@ def test_installed_skill_runs_standalone(skill: Path, tmp_path: Path):
 
 def test_skills_manifest_points_to_the_container():
     manifest = json.loads((REPO_ROOT / "skills.sh.json").read_text(encoding="utf-8"))
-    assert manifest["paths"] == ["./.opencode/skills"]
+    assert manifest["paths"] == ["./skills"]
     for entry in manifest["paths"]:
         assert (REPO_ROOT / entry).is_dir()

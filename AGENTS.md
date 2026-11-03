@@ -3,7 +3,7 @@
 Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você auxilia jogadores a maximizar lucros e otimizar suas atividades através das **6 skills** deste repositório, que rodam **100% em Python padrão** (sem MCP, sem `pip install`, sem venv).
 
 > [!NOTE]
-> **Onde está a lógica:** os CLIs das skills chamam o núcleo compartilhado em `.opencode/skills/_albion_core/`. Sempre execute os scripts; nunca recalcule preços de cabeça.
+> **Onde está a lógica:** os CLIs das skills chamam o núcleo compartilhado em `skills/_albion_core/`. Sempre execute os scripts; nunca recalcule preços de cabeça.
 
 ---
 
@@ -12,7 +12,7 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
 > [!IMPORTANT]
 > **REGRA #1: NUNCA PESQUISE O CÓDIGO FONTE PARA RESPONDER PERGUNTAS DO JOGO**
 > - Quando o usuário fizer perguntas sobre o jogo (transporte de coração, refino, mercado, preços, builds, arbitragem, etc.), **NÃO use `grep`/`glob`/`read` para descobrir regras ou preços**.
-> - **EXECUTE OS CLIs DAS SKILLS** (`python3 .opencode/skills/<skill>/scripts/<script>.py ...`) ou importe `_albion_core` diretamente. Eles contêm toda a lógica de negócio, metadados de itens e cotações ao vivo.
+> - **EXECUTE OS CLIs DAS SKILLS** (`python3 skills/<skill>/scripts/<script>.py ...`) ou importe `_albion_core` diretamente. Eles contêm toda a lógica de negócio, metadados de itens e cotações ao vivo.
 
 > [!IMPORTANT]
 > **REGRA #2: EFICIÊNCIA MÁXIMA ANCORADA NA REALIDADE DO JOGADOR (PROIBIDO ASSUMIR OU INVENTAR DADOS)**
@@ -55,7 +55,7 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
 ### 1. Transporte de Facção / Corações (*Faction Heart Transport*)
 * **CLI**: `albion-arbitrage-copilot/scripts/calculate_hearts.py`
   ```bash
-  python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+  python3 skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
     --city Lymhurst --silver 1000000 --mount T5_BOAR --risk SAFE_ONLY --pack 7 --premium
   ```
 * **DIRETRIZES OPERACIONAIS CRÍTICAS (NUNCA VIOLE)**:
@@ -112,16 +112,16 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
 - **Instalar skills (local)**: `python3 install.py` (global em `~/.config/opencode/skills`) ou `python3 install.py --target ./destino`
 - **Listar skills**: `python3 install.py --list`
 - **Vendorizar o núcleo**: `python3 tools/sync_core.py` (obrigatório após editar `_albion_core`; `--check` só verifica)
-- **Versionar/publicar**: tags `vX.Y.Z` na branch default; fluxo completo em [VERSIONING.md](VERSIONING.md). Experimental: branch `#next` ou `.opencode/skills/.experimental/<nome>/` (nome distinto; `metadata.internal: true` oculta do `--list`)
-- **Testes**: `pytest tests -v` (offline, sem rede; `pytest.ini` já aponta `pythonpath = .opencode/skills`)
-- **Smoke manual**: `python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py --resource ORE --tier 5 --premium`
+- **Versionar/publicar**: tags `vX.Y.Z` na branch default; fluxo completo em [VERSIONING.md](VERSIONING.md). Experimental: branch `#next` ou `skills/.experimental/<nome>/` (nome distinto; `metadata.internal: true` oculta do `--list`)
+- **Testes**: `pytest tests -v` (offline, sem rede; `pytest.ini` já aponta `pythonpath = skills`)
+- **Smoke manual**: `python3 skills/albion-refining-specialist/scripts/calculate_refining.py --resource ORE --tier 5 --premium`
 - **Configuração do OpenCode**: [opencode.json](opencode.json)
 
 ---
 
 ## 🏛️ Arquitetura (skills-only)
 
-- **`.opencode/skills/_albion_core/`** — núcleo compartilhado, **somente biblioteca padrão** (fonte de verdade):
+- **`skills/_albion_core/`** — núcleo compartilhado, **somente biblioteca padrão** (fonte de verdade):
   - `http.py`: cliente AODP via `urllib`, gzip/deflate, batching de 50 itens, cache TTL (120s cotações / 30min histórico) e rate limiter (175/min, 290/5min).
   - `market.py`: cotações, histórico, ouro e quota.
   - `items.py`: busca e ficha técnica de itens.
@@ -133,9 +133,9 @@ Você é o **Copiloto Econômico e Analista de Mercado do Albion Online**. Você
   - `hearts.py`: transporte de facção, ciclo de corações e capas.
   - `calculator.py`, `metadata.py`, `loadout_optimizer.py`, `faction_transport.py`, `cape_crafting.py`: fórmulas e catálogo.
   - `data/items.json`: catálogo local (~847 itens).
-- **`.opencode/skills/<skill>/`** — `SKILL.md` + `scripts/` + **`_albion_core/` vendorizado** de cada personalidade. A cópia existe porque `npx skills add --skill=<nome>` copia **apenas a pasta da skill**; nunca edite a cópia, edite a fonte e rode `tools/sync_core.py`.
-- **`skills.sh.json`** — declara `./.opencode/skills` como container para o CLI do skills.sh descobrir as 6 skills.
-- **`tools/sync_core.py`** — replica o núcleo para as 6 skills estáveis e para as experimentais em `.opencode/skills/.experimental/` (`--check` detecta deriva; a suíte também).
+- **`skills/<skill>/`** — `SKILL.md` + `scripts/` + **`_albion_core/` vendorizado** de cada personalidade. A cópia existe porque `npx skills add --skill=<nome>` copia **apenas a pasta da skill**; nunca edite a cópia, edite a fonte e rode `tools/sync_core.py`.
+- **`skills.sh.json`** — declara `./skills` como container para o CLI do skills.sh descobrir as 6 skills.
+- **`tools/sync_core.py`** — replica o núcleo para as 6 skills estáveis e para as experimentais em `skills/.experimental/` (`--check` detecta deriva; a suíte também).
 - **`install.py`** — copia as 6 skills autocontidas para o destino escolhido.
 - **`tests/`** — suíte offline (sem rede) de fórmulas, catálogo, CLIs e empacotamento.
 

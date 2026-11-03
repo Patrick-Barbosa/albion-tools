@@ -55,7 +55,7 @@ graph TD
 ## 🛠️ Comandos
 
 > Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
-> `.opencode/skills/albion-black-market-sniper/` no repositório ou `.agents/skills/albion-black-market-sniper/` após `npx skills add`.
+> `skills/albion-black-market-sniper/` no repositório ou `.agents/skills/albion-black-market-sniper/` após `npx skills add`.
 
 ```bash
 # Sniping básico (Premium, margem mínima 20%)

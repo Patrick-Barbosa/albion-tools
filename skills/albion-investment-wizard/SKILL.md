@@ -62,7 +62,7 @@ Entregue quantidades e preços exatos de bid, local de encantamento e preço de 
 ## 🛠️ Comandos
 
 > Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
-> `.opencode/skills/albion-investment-wizard/` no repositório ou `.agents/skills/albion-investment-wizard/` após `npx skills add`.
+> `skills/albion-investment-wizard/` no repositório ou `.agents/skills/albion-investment-wizard/` após `npx skills add`.
 
 ```bash
 # 1. Carteira: 5M, Lymhurst -> Black Market, Premium

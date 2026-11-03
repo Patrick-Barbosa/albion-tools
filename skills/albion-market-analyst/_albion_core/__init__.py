@@ -6,7 +6,7 @@ Uso típico dentro dos scripts de skill (o núcleo fica ao lado da pasta `script
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     from _albion_core import market, economics
 
-No repositório, a fonte de verdade fica em `.opencode/skills/_albion_core/`.
+No repositório, a fonte de verdade fica em `skills/_albion_core/`.
 Nas skills publicadas via `npx skills add`, cada skill carrega a própria cópia
 vendorizada (gerada por `tools/sync_core.py`).
 

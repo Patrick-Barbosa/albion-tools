@@ -6,7 +6,7 @@ O `npx skills add <owner/repo> --skill=<nome>` copia **apenas** a pasta da skill
 escolhida. Para que cada skill funcione sozinha depois de instalada, ela precisa
 carregar a própria cópia de `_albion_core`.
 
-A fonte de verdade continua sendo `.opencode/skills/_albion_core/`; este script
+A fonte de verdade continua sendo `skills/_albion_core/`; este script
 apenas replica essa pasta para dentro das 6 skills. As cópias são versionadas
 (byte a byte idênticas, então o Git guarda um único blob).
 
@@ -25,7 +25,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_ROOT = REPO_ROOT / ".opencode" / "skills"
+SKILLS_ROOT = REPO_ROOT / "skills"
 CORE_NAME = "_albion_core"
 CORE_SOURCE = SKILLS_ROOT / CORE_NAME
 EXPERIMENTAL_DIR = ".experimental"

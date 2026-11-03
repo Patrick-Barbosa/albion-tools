@@ -28,7 +28,7 @@ htmlcov/
 # Data (gerados em runtime, não versionáveis)
 # ──────────────────────────────────────────────
 # Apenas o diretório da raiz: o catálogo das skills vive versionado em
-# .opencode/skills/_albion_core/data/items.json
+# skills/_albion_core/data/items.json
 /data/
 *.db
 *.tgz

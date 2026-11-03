@@ -37,7 +37,7 @@ padrão, sem `pip install`.
 - Catálogo local com 847 itens em `data/items.json`.
 - Cópia vendorizada do núcleo dentro de cada skill, gerada por `tools/sync_core.py`. O CLI
   do skills.sh copia apenas a pasta da skill, então cada uma precisa ser autocontida.
-- `skills.sh.json` declarando `.opencode/skills` como container de descoberta.
+- `skills.sh.json` declarando `skills` como container de descoberta.
 
 **Desenvolvimento**
 

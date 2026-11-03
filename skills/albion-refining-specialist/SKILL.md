@@ -72,7 +72,7 @@ graph TD
 ## 🛠️ Comandos
 
 > Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
-> `.opencode/skills/albion-refining-specialist/` no repositório ou `.agents/skills/albion-refining-specialist/` após `npx skills add`.
+> `skills/albion-refining-specialist/` no repositório ou `.agents/skills/albion-refining-specialist/` após `npx skills add`.
 
 ```bash
 # Refino simples: 1 barra T5 em Thetford, Premium ativo

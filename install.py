@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
-SOURCE = REPO_ROOT / ".opencode" / "skills"
+SOURCE = REPO_ROOT / "skills"
 CORE_DIR = "_albion_core"
 
 

@@ -52,7 +52,7 @@ graph TD
 ## 🛠️ Comandos
 
 > Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
-> `.opencode/skills/albion-market-analyst/` no repositório ou `.agents/skills/albion-market-analyst/` após `npx skills add`.
+> `skills/albion-market-analyst/` no repositório ou `.agents/skills/albion-market-analyst/` após `npx skills add`.
 
 ```bash
 # Pareto dos recursos refinados (padrão), top 20

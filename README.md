@@ -1,258 +1,160 @@
-# ⚔️ Albion Online — Market Intelligence Skills
+# Albion Online Market Intelligence
 
 [![skills.sh](https://skills.sh/b/Patrick-Barbosa/albion-tools)](https://skills.sh/Patrick-Barbosa/albion-tools)
 
-Seis **skills de agente** para o [OpenCode](https://opencode.ai) que transformam o assistente em um copiloto econômico do **Albion Online**: arbitragem entre cidades, sniper do Mercado Negro, refino industrial, otimização de builds, análise macro (Pareto/ouro) e um wizard de investimentos.
+Seis skills para o OpenCode que respondem pergunta de mercado com número: quanto sobra numa
+rota Thetford → Martlock, se vale refinar T5 com Foco, qual set T7 sai mais barato. Cada
+skill tem um `SKILL.md` com o fluxo de trabalho e um CLI em Python que consulta a API do
+Albion Online Data Project e aplica impostos, RRR e capacidade de carga.
 
-> **Zero dependências.** Tudo roda com o **Python 3.10+ puro** — sem `pip install`, sem venv, sem servidor MCP, sem NATS. A única fonte de dados é a API pública do **Albion Online Data Project (AODP)**.
+Os scripts usam só a biblioteca padrão do Python 3.10+. Não precisa de `pip install` nem de
+venv: `python3 script.py --help` roda em máquina limpa.
 
----
-
-## 🚀 Instalação
-
-### Via `npx skills` (recomendado)
+## Instalação
 
 ```bash
-# Uma skill específica
-npx skills@latest add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist
-
-# Todas as 6 de uma vez
-npx skills@latest add Patrick-Barbosa/albion-tools --skill='*'
-
-# Instalação global (~/.agents/skills) em vez de .agents/skills do projeto
-npx skills@latest add Patrick-Barbosa/albion-tools --skill='*' -g
+npx skills add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist
+npx skills add Patrick-Barbosa/albion-tools --skill='*'
+npx skills add Patrick-Barbosa/albion-tools --skill='*' -g
 ```
 
-O CLI detecta o OpenCode, copia a skill para `.agents/skills/` (projeto) ou `~/.agents/skills/` (global) e registra a origem em `skills-lock.json` — depois é só rodar `npx skills update` para atualizar. Outros agentes (Claude Code, Cursor, Codex…) funcionam com `-a <agente>`.
+A primeira linha instala uma skill, a segunda instala as seis e a terceira instala global em
+`~/.agents/skills` em vez de `.agents/skills` no projeto. O CLI grava a origem em
+`skills-lock.json`, então `npx skills update` atualiza depois. Para Claude Code, Cursor ou
+Codex, passe `-a <agente>`.
 
-> [!NOTE]
-> **Cada skill é autocontida.** Ela leva a própria cópia de `_albion_core/` e do catálogo de itens, então `--skill=<nome>` funciona sozinho, sem instalar nada além daquela pasta.
+Cada skill leva a própria cópia de `_albion_core/` e do catálogo de itens, então
+`--skill=<nome>` funciona sozinho, sem instalar mais nada.
 
-### Local (clone do repositório)
+Se preferir clonar:
 
 ```bash
-# 1. Clone o repositório
 git clone https://github.com/Patrick-Barbosa/albion-tools.git
 cd albion-tools
-
-# 2. Instale as skills no OpenCode (global)
-python3 install.py
-
-# 3. Pronto. Abra o OpenCode e pergunte sobre o mercado.
+python3 install.py               # instala em ~/.config/opencode/skills
+python3 install.py --list        # mostra o que seria instalado
+python3 install.py --target ./x  # instala em outra pasta
 ```
 
-### Outros destinos
+Abrir o OpenCode na raiz do repositório também funciona, porque as skills em
+`skills/` são detectadas sem instalação.
 
-```bash
-python3 install.py --list                    # lista as skills disponíveis
-python3 install.py --target ./minhas-skills  # pasta específica
-python3 install.py --agents                  # instala em .agents/skills (Antigravity/Cursor)
-python3 install.py --force                   # sobrescreve instalações existentes
+## Um exemplo
+
+Couro T4 em Martlock, com Premium e sem Foco:
+
+```text
+$ python3 skills/albion-refining-specialist/scripts/calculate_refining.py \
+    --resource HIDE --tier 4 --premium
+
+====================================================================
+🏭 REFINO T4 · Martlock
+====================================================================
+Insumo bruto:     2x T4 Hide @ 107 🪙 (Fort Sterling)
+Barra anterior:   1x T3 Leather @ 214 🪙
+Produto:          Couro do Adepto vendido a 299 🪙
+RRR aplicado:     40.0% (foco: não)
+Custo efetivo:    265 🪙
+Receita líquida:  280 🪙
+Lucro por barra:  15 🪙  (ROI 5.66%)
+Veredito:         🟡 Margem baixa
 ```
 
-> [!NOTE]
-> Este repositório já funciona **in-place**: se você abrir o OpenCode na raiz do projeto, as skills em `.opencode/skills/` são detectadas automaticamente.
+O preço de venda é o menor sell order em Martlock e o custo já desconta a taxa de 4% do
+Premium. Sem `--premium` a taxa vai para 8% e o lucro cai. Os valores mudam a cada consulta
+porque a fonte é o mercado ao vivo.
 
----
+## As seis skills
 
-## 🏷️ Versionamento e canais
-
-`npx skills@latest` é a versão do **CLI**, não da skill. A versão de uma skill é o **commit/tag do Git**:
-
-| Canal | Comando |
-| :--- | :--- |
-| Estável (branch default) | `npx skills add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist` |
-| Pinado (tag) | `npx skills add Patrick-Barbosa/albion-tools#v1.2.0 --skill=albion-refining-specialist` |
-| Experimental (branch) | `npx skills add Patrick-Barbosa/albion-tools#next --skill=albion-refining-specialist` |
-| Experimental (skill separada) | `npx skills add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist-next` |
-
-`npx skills check` avisa quando há atualização e `npx skills update` atualiza seguindo o ref instalado. O fluxo completo (tags SemVer, promoção de experimental, `metadata.internal`, depreciação e lockfile) está em [`VERSIONING.md`](VERSIONING.md). O histórico de versões publicadas fica em [`CHANGELOG.md`](CHANGELOG.md) e na página de [releases](https://github.com/Patrick-Barbosa/albion-tools/releases).
-
-> `#v1.2.0` e `#next` são exemplos de canais — substitua pelas suas tags/branches reais. O comando sem `#ref` usa a **branch default do GitHub**, então garanta que ela contém o commit publicado.
-
----
-
-## 🧩 As 6 skills
-
-| Skill | Para que serve | CLI principal |
+| Skill | Para que serve | CLI |
 | :--- | :--- | :--- |
-| **`albion-arbitrage-copilot`** | Arbitragem entre capitais, transporte de facção (corações), rotas seguras vs. Zona Vermelha, travas anti-fantasma e breakeven fiscal. | `scan_arbitrage.py`, `calculate_hearts.py` |
-| **`albion-black-market-sniper`** | Cruza Buy Orders do Black Market de Caerleon com o menor sell order das capitais e calcula a margem líquida. | `snipe_black_market.py` |
-| **`albion-refining-specialist`** | Refino na capital de bônus (40% RRR / 53.9% com Foco), cascata de sobras e kit de transporte. | `calculate_refining.py` |
-| **`albion-build-optimizer`** | Menor custo por slot para um Tier Equivalente (4.3, 5.2, 6.1 vs 7.0) + reroll de qualidade. | `optimize_loadout.py` |
-| **`albion-market-analyst`** | Curva de Pareto 80/20 de prata diária, histórico de preço/volume e cotação do ouro. | `analyze_pareto.py` |
-| **`albion-investment-wizard`** | Auditoria de frescor/fantasma, carteira com alocação inteira de orçamento e simulação de encantamento. | `run_wizard.py`, `live_market_audit.py`, `optimize_build.py` |
+| `albion-arbitrage-copilot` | Arbitragem entre capitais, transporte de facção, rotas seguras vs. Zona Vermelha, travas anti-fantasma e breakeven fiscal. | `scan_arbitrage.py`, `calculate_hearts.py` |
+| `albion-black-market-sniper` | Cruza as Buy Orders do Black Market de Caerleon com o menor sell order das capitais e calcula a margem líquida. | `snipe_black_market.py` |
+| `albion-refining-specialist` | Refino na capital de bônus (40% de RRR, 53,9% com Foco), cascata de sobras e kit de transporte. | `calculate_refining.py` |
+| `albion-build-optimizer` | Menor custo por slot para um Tier Equivalente (4.3, 5.2, 6.1 vs 7.0) e reroll de qualidade. | `optimize_loadout.py` |
+| `albion-market-analyst` | Curva de Pareto 80/20 de prata diária, histórico de preço e volume, cotação do ouro. | `analyze_pareto.py` |
+| `albion-investment-wizard` | Auditoria de frescor e ordem fantasma, carteira com alocação inteira de orçamento e simulação de encantamento. | `run_wizard.py`, `live_market_audit.py`, `optimize_build.py` |
 
-Cada skill tem um `SKILL.md` com o fluxo de trabalho, as fórmulas e as regras de resposta ao jogador.
+## Comandos
 
----
-
-## 💻 Exemplos de uso (CLI)
-
-Os scripts podem ser executados diretamente — útil para testar ou automatizar. Os caminhos abaixo assumem a raiz do repositório; numa skill instalada via `npx`, troque `.opencode/skills/` por `.agents/skills/` (ou `~/.config/opencode/skills/` no modo global).
+Os caminhos abaixo assumem a raiz do repositório. Numa skill instalada via `npx`, troque
+`skills/` por `.agents/skills/`.
 
 ```bash
-# Arbitragem: Thetford -> Martlock, Premium, ROI mínimo 15%, só rotas seguras
-python3 .opencode/skills/albion-arbitrage-copilot/scripts/scan_arbitrage.py \
+# Arbitragem Thetford -> Martlock, Premium, ROI mínimo de 15%, só rotas seguras
+python3 skills/albion-arbitrage-copilot/scripts/scan_arbitrage.py \
   --origin Thetford --destination Martlock --premium --min-roi 15 --safe-only
 
-# Transporte de facção: fardo médio (7 corações) em Lymhurst
-python3 .opencode/skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
+# Transporte de facção: fardo de 7 corações saindo de Lymhurst
+python3 skills/albion-arbitrage-copilot/scripts/calculate_hearts.py \
   --city Lymhurst --silver 1000000 --mount T5_BOAR --risk SAFE_ONLY --pack 7 --premium
 
-# Black Market: margem mínima 20% e cotações de até 24h
-python3 .opencode/skills/albion-black-market-sniper/scripts/snipe_black_market.py \
+# Black Market: margem mínima de 20% e cotações de até 24h
+python3 skills/albion-black-market-sniper/scripts/snipe_black_market.py \
   --items T4_BAG,T5_BAG,T6_BAG --premium --min-margin 20 --max-age 86400
 
-# Refino: 1 barra T5 em Thetford com Foco (53.9% RRR)
-python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py \
-  --resource ORE --tier 5 --focus --premium
-
-# Cascata: 5M de orçamento em tábuas T6
-python3 .opencode/skills/albion-refining-specialist/scripts/calculate_refining.py \
+# Refino em cascata: 5M de orçamento em tábuas T6
+python3 skills/albion-refining-specialist/scripts/calculate_refining.py \
   --resource WOOD --tier 6 --focus --premium --cascade --budget 5000000
 
-# Build T7 equivalente em Lymhurst
-python3 .opencode/skills/albion-build-optimizer/scripts/optimize_loadout.py \
-  --city Lymhurst --tier 7 \
-  --items "Machado de Guerra" "Casaco de Mercenário" "Capuz de Caçador" "Botas de Soldado"
-
-# Pareto dos recursos refinados
-python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py \
-  --category "Recursos Refinados" --top 20
-
-# Cotação do ouro
-python3 .opencode/skills/albion-market-analyst/scripts/analyze_pareto.py --gold
-
-# Carteira: 5M, Lymhurst -> Black Market
-python3 .opencode/skills/albion-investment-wizard/scripts/run_wizard.py \
+# Carteira: 5M saindo de Lymhurst para o Black Market
+python3 skills/albion-investment-wizard/scripts/run_wizard.py \
   --budget 5000000 --city Lymhurst --dest "Black Market" --premium --min-roi 15
-
-# Auditoria de frescor/fantasma
-python3 .opencode/skills/albion-investment-wizard/scripts/live_market_audit.py \
-  --city Lymhurst --items T4_BAG,T5_BAG
 ```
 
-Todos os CLIs aceitam `--help` e a maioria aceita `--json` para saída estruturada.
+Todos aceitam `--help`. Os que geram relatório aceitam `--json` para saída estruturada.
 
----
-
-## 📐 Regras econômicas embutidas
+## Regras econômicas
 
 | Regra | Valor |
 | :--- | :--- |
-| **Setup Fee** (criar/editar ordem) | **2,5%** não reembolsável |
-| **Taxa de venda** | **4%** com Premium · **8%** sem Premium |
-| **Venda direta** (Buy Order / Black Market) | Apenas a taxa de venda (sem setup fee) |
-| **RRR de refino** | **40%** na capital bônus · **53,9%** com Foco |
-| **Tier Equivalente** | `tier base + encantamento` (cada `.1` = +100 IP) |
-| **Capacidade de carga** | `(montaria + bolsa + 50) × (1 + torta%) × (1 + bota%)` |
+| Setup Fee ao criar ou editar ordem | 2,5%, não reembolsável |
+| Taxa de venda | 4% com Premium, 8% sem Premium |
+| Venda direta em Buy Order | só a taxa de venda, sem setup fee |
+| RRR de refino | 40% na capital bônus, 53,9% com Foco |
+| Tier Equivalente | tier base mais encantamento (cada `.1` vale 100 IP) |
+| Capacidade de carga | `(montaria + bolsa + 50) × (1 + torta%) × (1 + bota%)` |
 
-O detalhamento completo (fórmulas, tabelas de tiers, logística, capas de facção) está em [`BUSINESS_RULES.md`](BUSINESS_RULES.md).
+As fórmulas completas, tabelas de tier e regras de logística estão em
+[BUSINESS_RULES.md](BUSINESS_RULES.md).
 
----
+## Dados e limites
 
-## 🔌 Fonte de dados e limites
+A fonte é a API REST do AODP (`west`, `europe` e `asia`), que expõe `stats/prices`,
+`stats/history` e `stats/gold`. O cliente em `_albion_core/http.py` usa `urllib` e faz o
+mínimo para não estourar o limite: junta até 50 itens por requisição, guarda cotações por
+120s e histórico por 30min, e segura o ritmo em 175 req/min (o limite oficial é 180). Em
+HTTP 429 ele espera e tenta de novo.
 
-A AODP (`https://west.albion-online-data.com`, com variantes `europe` e `asia`) expõe:
+O que você precisa saber antes de confiar num número:
 
-- `stats/prices` — menor sell order e maior buy order por item/cidade/qualidade;
-- `stats/history` — histórico de transações (preço médio e volume);
-- `stats/gold` — cotação do ouro.
+- A base é alimentada por jogadores com o Albion Data Client aberto. Uma cotação pode ter
+  horas de idade, e os scripts expõem `quote_age_seconds` e `freshness` para você conferir.
+- Varredura de muitos itens estoura o limite da AODP. Use `--max-items` ou uma lista
+  explícita.
+- Sem internet não há cotação. O catálogo de itens é local, os preços não.
+- O CLI calcula e mostra; ele não coloca ordem no jogo. A compra e a venda são suas.
+- Refino com Foco exige Premium. Sem Premium o RRR fica em 40%.
 
-O cliente em `.opencode/skills/_albion_core/http.py` usa **somente `urllib`** e aplica:
+## Versionamento
 
-- **batching** de até 50 itens por requisição;
-- **cache TTL** de 120s para cotações e 30min para histórico/ouro;
-- **rate limiter** de 175 req/min e 290 req/5min (margem sobre o limite oficial);
-- **backoff** automático em HTTP 429;
-- compressão `gzip/deflate` (exigida pela AODP).
-
-> [!WARNING]
-> Limites oficiais da AODP: **180 requisições por minuto** e **300 a cada 5 minutos**, por IP. Varreduras grandes devem usar `--max-items` ou listas explícitas de itens.
->
-> A base é alimentada por jogadores com o *Albion Data Client* ativo. Cotações podem ter **horas de idade** — sempre confira a idade antes de comprar. Os scripts expõem `quote_age_seconds`/`freshness` para isso.
-
----
-
-## 🗂️ Estrutura do repositório
-
-```text
-.
-├── .opencode/skills/
-│   ├── _albion_core/          # fonte de verdade do núcleo (stdlib only)
-│   │   ├── http.py            # cliente AODP + cache + rate limit
-│   │   ├── market.py          # cotações, histórico, ouro
-│   │   ├── economics.py       # impostos, encantamento, arbitragem
-│   │   ├── refining.py        # refino e cascata
-│   │   ├── pareto.py          # curva 80/20
-│   │   ├── builds.py          # tier equivalente
-│   │   ├── anti_phantom.py    # breakeven, fantasma, knapsack, reroll, carga
-│   │   ├── hearts.py          # transporte de facção e capas
-│   │   ├── calculator.py      # fórmulas fiscais
-│   │   ├── metadata.py        # catálogo PT-BR/EN
-│   │   ├── loadout_optimizer.py
-│   │   ├── faction_transport.py
-│   │   ├── cape_crafting.py
-│   │   └── data/items.json    # catálogo local (~847 itens)
-│   ├── albion-arbitrage-copilot/
-│   │   ├── SKILL.md
-│   │   ├── scripts/
-│   │   └── _albion_core/      # cópia vendorizada (gerada, não editar)
-│   ├── albion-black-market-sniper/
-│   ├── albion-build-optimizer/
-│   ├── albion-investment-wizard/
-│   ├── albion-market-analyst/
-│   └── albion-refining-specialist/
-├── tools/sync_core.py         # replica o núcleo para as 6 skills
-├── skills.sh.json             # descoberta de skills pelo CLI do skills.sh
-├── tests/                     # suíte offline (sem rede)
-├── install.py                 # instalador local alternativo
-├── AGENTS.md                  # diretrizes do agente
-├── VERSIONING.md              # canais, tags e promoção de experimental
-├── BUSINESS_RULES.md          # spec de domínio
-└── opencode.json
-```
-
----
-
-## 🧪 Testes
-
-A suíte é **100% offline** (nenhuma chamada de rede) e cobre fórmulas fiscais, catálogo, rotas de facção, capas, carga, anti-fantasma, rate limiter e o bootstrap dos CLIs.
+`npx skills@latest` é a versão do CLI, não da skill. A versão de uma skill é o commit ou a
+tag do Git de onde ela foi copiada. Sem `#ref` o CLI usa a branch `main`; com `#v1.0.0` ele
+fica congelado naquela tag.
 
 ```bash
-# requer apenas pytest
-python3 -m pytest tests -v
+npx skills add Patrick-Barbosa/albion-tools#v1.0.0 --skill=albion-refining-specialist
 ```
 
-`pytest.ini` já configura `pythonpath = .opencode/skills`, então os testes importam `from _albion_core import ...` sem instalação.
+O histórico de versões está em [CHANGELOG.md](CHANGELOG.md) e na página de
+[releases](https://github.com/Patrick-Barbosa/albion-tools/releases). Os canais, as tags e o
+fluxo de promoção de experimental estão em [VERSIONING.md](VERSIONING.md).
 
-> [!IMPORTANT]
-> Ao alterar qualquer módulo de `.opencode/skills/_albion_core/`, rode `python3 tools/sync_core.py` para replicar a mudança nas 6 skills. A suíte falha se alguma cópia vendorizada divergir.
+## Contribuir
 
----
+A estrutura do repositório, como rodar os testes e como alterar o núcleo compartilhado estão
+em [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## ❓ Perguntas frequentes
+## Licença
 
-**Preciso de Premium para usar as skills?**
-Não. As skills funcionam com ou sem Premium — mas a taxa muda (4% vs 8%) e o refino com Foco exige Premium. Sempre informe seu status.
-
-**As skills funcionam em qualquer região?**
-Sim: `--region americas` (padrão), `europe` ou `asia`.
-
-**Como atualizo as skills?**
-Instaladas via `npx`: rode `npx skills update` (ou repita o `npx skills add`). Instalações locais: `git pull && python3 install.py --force`.
-
-**Por que a cotação está velha?**
-A AODP depende de jogadores com o *Albion Data Client*. Abra o mercado no jogo com o client ativo para atualizar os dados. Os scripts mostram a idade da cotação e classificam o risco.
-
-**O que aconteceu com o servidor MCP?**
-Foi removido na migração para skills-only. O núcleo de cálculo é o mesmo, agora sem `httpx`, `polars`, `nats-py`, `pydantic` ou `mcp`.
-
----
-
-## 📄 Licença
-
-Distribuído sob a licença **MIT**. Veja [LICENSE](LICENSE) para o texto completo.
-
-Você pode usar, copiar, modificar e redistribuir as skills livremente, inclusive comercialmente, desde que preserve o aviso de copyright.
+MIT. Veja [LICENSE](LICENSE).

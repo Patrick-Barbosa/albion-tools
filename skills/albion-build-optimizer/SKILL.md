@@ -63,7 +63,7 @@ graph TD
 ## 🛠️ Comandos
 
 > Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
-> `.opencode/skills/albion-build-optimizer/` no repositório ou `.agents/skills/albion-build-optimizer/` após `npx skills add`.
+> `skills/albion-build-optimizer/` no repositório ou `.agents/skills/albion-build-optimizer/` após `npx skills add`.
 
 ```bash
 # Otimizar build T7 equivalente em Lymhurst

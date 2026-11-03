@@ -83,7 +83,7 @@ npx skills add Patrick-Barbosa/albion-tools#next --skill=albion-refining-special
 ### Opção B — skill experimental no mesmo branch
 
 ```text
-.opencode/skills/
+skills/
 ├── albion-refining-specialist/          # estável
 └── .experimental/
     └── albion-refining-specialist-next/ # experimental
@@ -91,7 +91,7 @@ npx skills add Patrick-Barbosa/albion-tools#next --skill=albion-refining-special
         └── scripts/
 ```
 
-- O CLI varre o container `./.opencode/skills` até 3 níveis, então a pasta `.experimental/` é descoberta sem config extra.
+- O CLI varre o container `./skills` até 3 níveis, então a pasta `.experimental/` é descoberta sem config extra.
 - **Use um nome diferente** (`-next`, `-beta`). O CLI mantém o primeiro `name` encontrado e a ordem de varredura não é garantida — nome repetido gera comportamento imprevisível.
 - Rode `python3 tools/sync_core.py` para vendorizar o núcleo na skill experimental também (o script já inclui `.experimental/`).
 - `python3 install.py` instala **apenas as estáveis**; a experimental é instalada via `npx ... --skill=albion-refining-specialist-next`.
@@ -115,8 +115,8 @@ metadata:
 ### Promoção de uma experimental (Opção B/C)
 
 ```bash
-git mv .opencode/skills/.experimental/albion-refining-specialist-next \
-       .opencode/skills/albion-refining-specialist
+git mv skills/.experimental/albion-refining-specialist-next \
+       skills/albion-refining-specialist
 # editar name: no SKILL.md, remover metadata.internal
 python3 tools/sync_core.py
 python3 -m pytest tests -q
@@ -172,7 +172,7 @@ npx skills remove <skill>       # desinstala
 ## 8. Checklist para criar uma skill nova
 
 ```bash
-cp -r .opencode/skills/albion-refining-specialist .opencode/skills/albion-minha-skill
+cp -r skills/albion-refining-specialist skills/albion-minha-skill
 # editar SKILL.md: name = nome da pasta, description, fluxo
 # editar/trocar scripts/
 python3 tools/sync_core.py          # vendoriza _albion_core
@@ -188,7 +188,7 @@ python3 -m pytest tests -q          # empacotamento + CLIs
 
 ## 9. Mudanças no núcleo compartilhado
 
-- Edite **somente** `.opencode/skills/_albion_core/`.
+- Edite **somente** `skills/_albion_core/`.
 - Rode `python3 tools/sync_core.py` e commite as 6 cópias junto.
 - `tools/sync_core.py --check` e `tests/test_skill_bundles.py` falham se alguma cópia divergir.
 - Uma mudança breaking no núcleo deve ir para a branch `next` e virar MAJOR na promoção.

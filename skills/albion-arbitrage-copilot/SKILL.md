@@ -69,7 +69,7 @@ graph TD
 ## 🛠️ Comandos
 
 > Execute os comandos **a partir da pasta desta skill** (a que contém este `SKILL.md`):
-> `.opencode/skills/albion-arbitrage-copilot/` no repositório ou `.agents/skills/albion-arbitrage-copilot/` após `npx skills add`.
+> `skills/albion-arbitrage-copilot/` no repositório ou `.agents/skills/albion-arbitrage-copilot/` após `npx skills add`.
 
 ```bash
 # 1. Escanear arbitragem (rotas seguras, Premium ativo)
