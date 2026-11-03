@@ -1,0 +1,27 @@
+# Configuração das notas de release geradas pelo GitHub.
+# Usado pelo botão "Generate release notes" em /releases/new.
+# Referência: https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes
+
+changelog:
+  exclude:
+    labels:
+      - skip-changelog
+    authors:
+      - dependabot
+
+  categories:
+    - title: Novas skills e funcionalidades
+      labels:
+        - feature
+        - enhancement
+    - title: Correções
+      labels:
+        - bug
+        - fix
+    - title: Documentação
+      labels:
+        - documentation
+        - docs
+    - title: Outras mudanças
+      labels:
+        - "*"

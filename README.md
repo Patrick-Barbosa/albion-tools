@@ -66,7 +66,7 @@ python3 install.py --force                   # sobrescreve instalações existen
 | Experimental (branch) | `npx skills add Patrick-Barbosa/albion-tools#next --skill=albion-refining-specialist` |
 | Experimental (skill separada) | `npx skills add Patrick-Barbosa/albion-tools --skill=albion-refining-specialist-next` |
 
-`npx skills check` avisa quando há atualização e `npx skills update` atualiza seguindo o ref instalado. O fluxo completo (tags SemVer, promoção de experimental, `metadata.internal`, depreciação e lockfile) está em [`VERSIONING.md`](VERSIONING.md).
+`npx skills check` avisa quando há atualização e `npx skills update` atualiza seguindo o ref instalado. O fluxo completo (tags SemVer, promoção de experimental, `metadata.internal`, depreciação e lockfile) está em [`VERSIONING.md`](VERSIONING.md). O histórico de versões publicadas fica em [`CHANGELOG.md`](CHANGELOG.md) e na página de [releases](https://github.com/Patrick-Barbosa/albion-tools/releases).
 
 > `#v1.2.0` e `#next` são exemplos de canais — substitua pelas suas tags/branches reais. O comando sem `#ref` usa a **branch default do GitHub**, então garanta que ela contém o commit publicado.
 
